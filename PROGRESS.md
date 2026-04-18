@@ -1,4 +1,4 @@
-# Supanova Landing Page — 작업 진행 상황 (2026-04-12)
+# Supanova Landing Page — 작업 진행 상황 (2026-04-18)
 
 ## 📊 완료 현황
 
@@ -100,25 +100,31 @@ src/
 
 ## 🐛 알려진 이슈 & 해결
 
-1. ✅ **한글 자모 삽입 문제** — Git pre-commit hook 설치로 자동 방지
-2. ✅ **법적 페이지 렌더링 안 됨** — re-export 패턴 제거, 독립 컴포넌트로 전환
-3. ✅ **누락 페이지 (검은 화면)** — 7개 P1 페이지 추가 구현
+1. ✅ **CSS Cascade Layer 우선순위 문제** — @layer base/components 분리로 해결
+   - 원인: `* { padding: 0; margin: 0 }` 등이 레이어 없이 선언되어 Tailwind utilities 무효화
+   - 해결: 모든 기본 스타일을 @layer base로, 컴포넌트를 @layer components로 변경
+   - 결과: 여백, 정렬, 박스 좌우여백 모두 정상 작동
+2. ✅ **한글 자모 삽입 문제** — Git pre-commit hook 설치로 자동 방지
+3. ✅ **법적 페이지 렌더링 안 됨** — re-export 패턴 제거, 독립 컴포넌트로 전환
+4. ✅ **누락 페이지 (검은 화면)** — 7개 P1 페이지 추가 구현
 
 ## 📈 다음 단계 (P2 & 이후)
 
-### 즉시 (1주일 내)
-- [ ] 회사 블로그 (Blog, BlogPost, BlogCategory)
-- [ ] 고객 리뷰 더 추가 (현재 3명 → 5명 목표)
-- [ ] 메타 데이터 (Open Graph, 모든 페이지 SEO)
+### 즉시 (1주일 내) — 배포 완료 후
+- [ ] SEO 메타데이터 (Open Graph, sitemap.xml, robots.txt)
+- [ ] Google Analytics 연동
+- [ ] 페이지별 제목/description 최적화
 
 ### 2~3주
+- [ ] 블로그 섹션 (`/blog`, `/blog/:slug`, `/blog/category`)
+- [ ] 고객 리뷰 추가 (현재 3명 → 5명)
 - [ ] 이메일 구독 기능 (Supabase + SendGrid)
-- [ ] 분석 트래킹 (PostHog 또는 Mixpanel)
-- [ ] 제품 카운트다운 (얼리버드 남은 기간)
+- [ ] 얼리버드 카운트다운 타이머
 
 ### 한 달 후
 - [ ] 다국어 지원 (영어, 일본어)
-- [ ] 대시보드 (사용자 라이선스 관리)
+- [ ] 분석 트래킹 (PostHog 또는 Mixpanel)
+- [ ] 사용자 대시보드 (라이선스 관리)
 - [ ] API 문서 (개발자용)
 
 ## 💾 저장된 문서
@@ -127,11 +133,13 @@ src/
   - 정정 사항: "100% 오프라인/로컬 연산" 표현 모두 "원본 파일 보호/프라이빗 RAG"로 수정
   - 추가 사항: 사내 AI 서버 (Azure, Bedrock) 연동 옵션 명시
 
-## 🚀 현재 상태
+## 🚀 현재 상태 — ✅ 프로덕션 배포 완료
 
-**dev 서버**: http://localhost:5173 (모든 라우트 정상 작동)
-**빌드 상태**: ✅ 성공 (495.25 KB, gzip 148.09 KB)
-**배포 준비**: Netlify 준비 완료 (_redirects 파일 추가됨)
+**Live URL**: https://createnova.netlify.app
+**GitHub**: https://github.com/ryan-uhhg/supanova-landing
+**배포 플랫폼**: Netlify (자동 배포 설정 완료)
+**빌드 상태**: ✅ 성공 (529.83 KB, gzip 156.73 KB)
+**라우팅**: 15개 경로 모두 정상 작동 ✅
 
 ## 📝 주요 성과
 
@@ -144,8 +152,9 @@ src/
 
 ---
 
-**작업일**: 2026-04-12  
+**작업일**: 2026-04-18  
 **총 페이지 수**: 14개 (P0 7개 + P1 7개)  
 **컴포넌트 수**: 27개 (공유 4개 포함)  
 **라우트 수**: 15개 경로  
-**코드라인**: ~8,500 SLOC (JSX + CSS)
+**코드라인**: ~8,500 SLOC (JSX + CSS)  
+**배포 상태**: ✅ Netlify 프로덕션 배포 완료
