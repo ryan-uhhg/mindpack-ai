@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 
@@ -40,13 +41,14 @@ const PACKAGES = [
     id: 'examples',
     icon: 'solar:presentation-graph-bold-duotone',
     title: '슬라이드 예시 모음',
-    subtitle: '4종 HTML 파일',
+    subtitle: '5종 HTML 파일',
     description: '프레임워크를 AI와 함께 실제로 작성했을 때 나오는 완성 슬라이드 예시. 고객사 제안서 수준.',
     files: [
       { label: 'McKinsey 7S 슬라이드 예시', url: '/free-resources/examples/mckinsey-7s-example.html', ext: 'HTML' },
       { label: 'BCG Matrix 슬라이드 예시', url: '/free-resources/examples/bcg-matrix-example.html', ext: 'HTML' },
       { label: "Porter's Forces 슬라이드 예시", url: '/free-resources/examples/porters-five-forces-example.html', ext: 'HTML' },
       { label: 'SWOT 슬라이드 예시', url: '/free-resources/examples/swot-example.html', ext: 'HTML' },
+      { label: 'JTBD 슬라이드 예시', url: '/free-resources/examples/jtbd-example.html', ext: 'HTML' },
     ],
     accentColor: 'emerald-accent',
     badgeColor: 'bg-emerald-accent/10 text-emerald-accent border-emerald-accent/20',
@@ -224,7 +226,6 @@ export default function FreeDownloadSection() {
 
           <div className="card-bezel">
             <div className="card-bezel-inner py-8 px-6 md:px-8 flex flex-col gap-6">
-
               {/* Step 1: 패키지 선택 */}
               <div>
                 <p className="text-ash text-[11px] font-semibold uppercase tracking-widest mb-3">
@@ -309,6 +310,17 @@ export default function FreeDownloadSection() {
             </div>
           </div>
         </motion.div>
+
+        {/* 가이드 링크 */}
+        <div className="mt-6 text-center">
+          <Link
+            to="/guide"
+            className="inline-flex items-center gap-1.5 text-ash/60 hover:text-accent text-[12px] transition-colors duration-200"
+          >
+            <Icon icon="ph:book-open-duotone" className="w-4 h-4" />
+            받은 파일 어떻게 사용하나요? → 사용 가이드 보기
+          </Link>
+        </div>
       </div>
     </section>
   );

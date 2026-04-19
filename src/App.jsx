@@ -14,6 +14,7 @@ import DocsPage from './pages/DocsPage';
 import FAQPage from './pages/FAQPage';
 import ChangelogPage from './pages/ChangelogPage';
 import ReviewsPage from './pages/ReviewsPage';
+import GuidePage from './pages/GuidePage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/refund" element={<RefundPage />} />
+        <Route path="/guide" element={<GuidePage />} />
       </Route>
     </Routes>
   );

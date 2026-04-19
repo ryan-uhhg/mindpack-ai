@@ -10,6 +10,7 @@ const footerLinks = {
   ],
   지원: [
     { label: '시작하기', href: '/docs' },
+    { label: '사용 가이드', href: '/guide' },
     { label: '자주 묻는 질문', href: '/docs/faq' },
     { label: '업데이트 내역', href: '/changelog' },
     { label: '시스템 요구사항', href: '/docs/requirements' },
