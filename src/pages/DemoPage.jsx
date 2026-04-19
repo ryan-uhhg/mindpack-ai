@@ -16,6 +16,15 @@ const steps = [
   },
   {
     num: '02',
+    title: 'Claude API 연결',
+    body: 'Supanova는 귀하의 Anthropic 계정을 직접 사용합니다. API 키를 한 번 입력하면 앱이 OS 키체인에 안전하게 저장합니다. Supanova 서버에는 키가 전달되지 않으며, API 비용은 Anthropic 계정에서 직접 청구됩니다.',
+    badge: '키체인 보안 저장',
+    icon: 'solar:key-bold-duotone',
+    color: 'gold',
+    mockup: <ApiKeyMockup />,
+  },
+  {
+    num: '03',
     title: '문서 투입',
     body: '분석할 문서를 드래그 앤 드롭하십시오. PDF, DOCX, PPTX, XLSX, TXT, CSV — 6가지 포맷을 지원합니다. 한 번에 최대 20개 파일을 동시에 투입할 수 있습니다.',
     badge: '6종 포맷 지원',
@@ -24,7 +33,7 @@ const steps = [
     mockup: <DropzoneMockup />,
   },
   {
-    num: '03',
+    num: '04',
     title: '스마트 토큰 다이어트',
     body: '파이썬 전처리 모듈이 문서의 불순물(헤더, 푸터, 워터마크, 반복 구문)을 자동 제거합니다. 원본 대비 평균 40% 토큰을 절감하여 API 한도를 보호합니다.',
     badge: '평균 40% 절감',
@@ -33,7 +42,7 @@ const steps = [
     mockup: <TokenMockup />,
   },
   {
-    num: '04',
+    num: '05',
     title: '컨설팅 프레임워크 선택',
     body: '분석 목적에 맞는 프레임워크를 선택하십시오. McKinsey 7S, Porter\'s Five Forces, SWOT, 3C 분석 등 12종이 내장되어 있습니다.',
     badge: '12종 내장',
@@ -42,7 +51,7 @@ const steps = [
     mockup: <FrameworkMockup />,
   },
   {
-    num: '05',
+    num: '06',
     title: '프라이빗 RAG 분석',
     body: '파이썬이 로컬에서 추출한 텍스트만 Claude API로 전송하여 분석합니다. 원본 파일 자체는 귀하의 기기를 절대 벗어나지 않으며, Supanova 자체 서버에는 어떤 데이터도 전송되지 않습니다.',
     badge: '원본 파일 보호',
@@ -51,7 +60,7 @@ const steps = [
     mockup: <AnalysisMockup />,
   },
   {
-    num: '06',
+    num: '07',
     title: '즉시 보고 가능한 산출물',
     body: '분석이 완료되면 .pptx 파일이 자동 생성됩니다. 컨설팅 펌 수준의 논리 구조와 시각적 레이아웃이 적용된 프레젠테이션을 즉시 다운로드하십시오.',
     badge: '.pptx 자동 출력',
@@ -245,6 +254,35 @@ function InstallMockup() {
           </div>
         </div>
         <span className="text-emerald-accent text-[11px] bg-emerald-accent/[0.08] px-3 py-1 rounded-full border border-emerald-accent/15">CLI 없이 설치 완료</span>
+      </div>
+    </MockupShell>
+  );
+}
+
+function ApiKeyMockup() {
+  return (
+    <MockupShell title="Claude API 연결">
+      <div className="flex flex-col gap-4 py-2">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="w-8 h-8 rounded-lg bg-gold/[0.08] border border-gold/20 flex items-center justify-center">
+            <Icon icon="solar:key-bold-duotone" className="w-4 h-4 text-gold" />
+          </div>
+          <div>
+            <div className="text-snow text-[13px] font-medium">Anthropic API 키 연결</div>
+            <div className="text-ash/60 text-[10px]">console.anthropic.com에서 발급</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 bg-white/[0.03] border border-white/[0.06] rounded-lg px-3 py-2.5">
+          <span className="text-silver/40 font-mono text-[11px] flex-1">sk-ant-••••••••••••••••••••••</span>
+          <Icon icon="solar:eye-closed-bold-duotone" className="w-3.5 h-3.5 text-ash/40" />
+        </div>
+        <div className="flex items-center gap-2 text-[11px] text-ash/60">
+          <Icon icon="solar:lock-bold-duotone" className="w-3.5 h-3.5 text-emerald-accent/60 shrink-0" />
+          OS 키체인에 저장 · 서버 전송 없음
+        </div>
+        <div className="w-full py-2 rounded-lg bg-gold/10 border border-gold/20 text-center text-gold text-[12px] font-semibold">
+          연결 완료 ✓
+        </div>
       </div>
     </MockupShell>
   );

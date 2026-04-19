@@ -7,6 +7,12 @@ import CTABanner from '../components/shared/CTABanner';
 
 const techCards = [
   {
+    icon: 'solar:key-bold-duotone',
+    title: 'API 키 로컬 저장',
+    body: '귀하의 Anthropic API 키는 Supanova에 보관되지 않습니다. 키는 귀하의 OS 키체인(macOS Keychain / Windows Credential Manager)에만 저장되며, 앱 외 어디에도 전송되지 않습니다. Supanova는 귀하의 API 크레딧을 대신 관리하지 않습니다.',
+    color: 'gold',
+  },
+  {
     icon: 'solar:lock-keyhole-bold-duotone',
     title: '원본 파일 보호',
     body: 'PDF, PPTX, XLSX 등 원본 파일은 귀하의 기기 밖으로 나가지 않습니다. 파이썬 전처리 모듈이 로컬에서 텍스트만 추출하며, 추출된 텍스트만 Claude API로 전송됩니다. 파일의 레이아웃, 이미지, 메타데이터는 전송 대상이 아닙니다.',
