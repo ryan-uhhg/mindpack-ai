@@ -184,21 +184,33 @@ function PricingCard({ plan, index }) {
           {/* CTA */}
           <div className="relative z-10 mt-auto">
             {plan.ctaStyle === 'primary' ? (
-              <button className="group relative w-full py-4 rounded-2xl bg-gradient-to-r from-gold/90 via-gold to-gold-bright font-bold text-void text-base transition-all duration-300 hover:shadow-[0_0_60px_rgba(240,198,116,0.4)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer overflow-hidden">
-                <span className="relative z-10 flex items-center justify-center gap-2">
-                  {plan.cta}
-                  <Icon icon="solar:arrow-right-bold" className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-                </span>
-                {/* Shimmer sweep on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              </button>
+              <a href="/pricing">
+                <button className="group relative w-full py-4 rounded-2xl bg-gradient-to-r from-gold/90 via-gold to-gold-bright font-bold text-void text-base transition-all duration-300 hover:shadow-[0_0_60px_rgba(240,198,116,0.4)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer overflow-hidden">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {plan.cta}
+                    <Icon icon="solar:arrow-right-bold" className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+                </button>
+              </a>
+            ) : plan.tier === 'Free' ? (
+              <a href="/pricing#free-email">
+                <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
+                  <span className="flex items-center justify-center gap-2">
+                    {plan.cta}
+                    <Icon icon="solar:arrow-right-linear" className="w-4 h-4 opacity-40 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-0.5" />
+                  </span>
+                </button>
+              </a>
             ) : (
-              <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
-                <span className="flex items-center justify-center gap-2">
-                  {plan.cta}
-                  <Icon icon="solar:arrow-right-linear" className="w-4 h-4 opacity-40 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-0.5" />
-                </span>
-              </button>
+              <a href="mailto:createnova.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.">
+                <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
+                  <span className="flex items-center justify-center gap-2">
+                    {plan.cta}
+                    <Icon icon="solar:arrow-right-linear" className="w-4 h-4 opacity-40 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-0.5" />
+                  </span>
+                </button>
+              </a>
             )}
           </div>
         </div>

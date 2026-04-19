@@ -33,7 +33,7 @@ export default function TermsPage() {
       <LegalSection title="제4조 (결제 및 제품 제공)">
         <p>제품은 결제 완료 즉시 등록하신 이메일로 다운로드 링크를 제공합니다.</p>
         <p>지원 결제 수단: 신용카드(국내/해외), 카카오페이, 토스페이, 네이버페이</p>
-        <p>법인 구매 시 세금계산서를 발급해 드립니다. support@createnova.co로 요청하여 주십시오.</p>
+        <p>법인 구매 시 세금계산서를 발급해 드립니다. createnova.help@gmail.com로 요청하여 주십시오.</p>
       </LegalSection>
 
       <LegalSection title="제5조 (환불 정책)">
@@ -57,8 +57,8 @@ export default function TermsPage() {
       <div className="mt-12 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
         <p className="text-ash text-[12.5px]">
           문의:{' '}
-          <a href="mailto:support@createnova.co" className="text-accent hover:underline">
-            support@createnova.co
+          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
+            createnova.help@gmail.com
           </a>
         </p>
       </div>

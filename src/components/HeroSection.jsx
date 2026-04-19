@@ -109,11 +109,10 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          <a href="#pricing">
+          <a href="/pricing">
             <button className="cta-pulse group relative inline-flex items-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent font-semibold text-white text-base transition-all duration-300 hover:shadow-[0_0_70px_rgba(139,92,246,0.5)] hover:scale-[1.04] active:scale-[0.98] cursor-pointer">
               <span>사전 예약 한정 특가로 소장하기</span>
               <Icon icon="solar:arrow-right-bold" className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-              {/* Bloom glow layer */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent opacity-0 group-hover:opacity-70 blur-2xl transition-opacity duration-500 -z-10" />
             </button>
           </a>

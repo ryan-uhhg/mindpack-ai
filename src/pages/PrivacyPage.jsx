@@ -90,8 +90,8 @@ export default function PrivacyPage() {
         <p>귀하는 언제든지 수집된 개인정보의 열람, 정정, 삭제, 처리정지를 요청할 수 있습니다.</p>
         <p>
           요청 방법:{' '}
-          <a href="mailto:support@createnova.co" className="text-accent hover:underline">
-            support@createnova.co
+          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
+            createnova.help@gmail.com
           </a>
         </p>
       </LegalSection>
@@ -100,8 +100,8 @@ export default function PrivacyPage() {
         <p>Createnova 개인정보 보호책임자: Createnova 파운더</p>
         <p>
           연락처:{' '}
-          <a href="mailto:support@createnova.co" className="text-accent hover:underline">
-            support@createnova.co
+          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
+            createnova.help@gmail.com
           </a>
         </p>
       </LegalSection>
