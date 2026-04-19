@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<title>BCG Matrix 분석 — Createnova</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;color:#0d1f0d;font-family:'Pretendard',sans-serif;overflow:hidden}
+.wrap{width:1280px;height:720px;position:relative;margin:0 auto}
+.slide{width:1280px;height:720px;position:absolute;top:0;left:0;display:none;padding:0;flex-direction:column}
+.slide.active{display:flex;animation:fadeUp .4s cubic-bezier(.16,1,.3,1)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+/* 딥그린 + 데이터 대시보드 — 상단 헤더 레이아웃 */
+.topbar{height:72px;background:#0a3d0a;display:flex;align-items:center;justify-content:space-between;padding:0 48px;flex-shrink:0}
+.topbar .logo{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.topbar .slide-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4ade80}
+.topbar h3{font-size:16px;font-weight:700;color:#fff}
+.topbar .pg{font-size:12px;color:rgba(255,255,255,.4)}
+.main{flex:1;padding:32px 48px;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+.green{color:#0a3d0a}
+.lgreen{color:#16a34a}
+h1{font-size:44px;font-weight:800;line-height:1.15;letter-spacing:-.02em;color:#0a3d0a}
+h2.mh{font-size:26px;font-weight:700;color:#0a3d0a;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+h2.mh::after{content:'';flex:1;height:1px;background:#e2f0e2}
+h3{font-size:16px;font-weight:700;color:#0a3d0a}
+.body{font-size:14px;line-height:1.7;color:#4b5e4b}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.grid4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px}
+.card{background:#f4fbf4;border:1px solid #c6e6c6;border-radius:10px;padding:18px;border-left:4px solid #0a3d0a}
+.card.star{border-left-color:#d97706}
+.card.qm{border-left-color:#2563eb}
+.card.dog{border-left-color:#9ca3af}
+.card.warn{border-left-color:#dc2626}
+.tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#16a34a;margin-bottom:8px}
+ul{list-style:none;margin-top:8px}
+ul li{font-size:13px;color:#4b5e4b;padding:3px 0;display:flex;gap:6px}
+ul li::before{content:'›';color:#16a34a;font-weight:700;flex-shrink:0}
+.stat{text-align:center;padding:12px;background:#e8f5e8;border-radius:8px}
+.stat-n{font-size:28px;font-weight:800;color:#0a3d0a}
+.stat-l{font-size:11px;color:#4b5e4b;margin-top:2px}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
+.badge-star{background:#fef3c7;color:#92400e}
+.badge-cow{background:#dcfce7;color:#14532d}
+.badge-qm{background:#dbeafe;color:#1e3a8a}
+.badge-dog{background:#f3f4f6;color:#374151}
+.timeline{display:flex;gap:0;margin-top:12px}
+.tl-item{flex:1;padding:0 10px;position:relative;text-align:center}
+.tl-item::before{content:'';position:absolute;top:14px;left:0;right:0;height:2px;background:#c6e6c6}
+.tl-item:first-child::before{left:50%}
+.tl-item:last-child::before{right:50%}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:#0a3d0a;margin:9px auto 12px;position:relative;z-index:1}
+.tl-dot.off{background:#c6e6c6}
+.tl-t{font-size:10px;font-weight:700;color:#16a34a;text-transform:uppercase;margin-bottom:6px}
+.tl-b{font-size:11px;color:#4b5e4b;line-height:1.5}
+.cta-btn{display:inline-block;background:#0a3d0a;color:#fff;font-size:14px;font-weight:700;padding:14px 32px;border-radius:8px;text-decoration:none;margin-top:16px}
+.brand{position:fixed;top:16px;right:24px;font-size:11px;color:#A1A1AA;z-index:200}
+.slide-num{position:fixed;bottom:22px;right:24px;font-size:11px;color:#A1A1AA;z-index:200}
+.prog-wrap{position:fixed;bottom:0;left:0;width:100%;height:3px;background:#e2f0e2;z-index:200}
+.prog{height:3px;background:#0a3d0a;transition:width .3s}
+.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:200}
+.nav button{background:#0a3d0a;border:none;color:#fff;width:36px;height:30px;border-radius:6px;cursor:pointer;font-size:14px}
+.nav button:hover{background:#16a34a}
+@media print{body{overflow:auto}.slide{position:relative;display:flex!important;page-break-after:always}.brand,.nav,.prog-wrap,.slide-num{display:none}}
+</style>
+</head>
+<body>
+<div class="brand">Createnova</div>
+<div class="slide-num" id="snum">01 / 10</div>
+<div class="prog-wrap"><div class="prog" id="prog" style="width:10%"></div></div>
+<div class="nav"><button onclick="go(-1)">←</button><button onclick="go(1)">→</button></div>
+<div class="wrap">
+
+<!-- S1 -->
+<div class="slide active">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Portfolio Analysis</div>
+    <div class="pg">01 / 10</div>
+  </div>
+  <div class="main" style="justify-content:center">
+    <div style="display:flex;gap:64px;align-items:center">
+      <div style="flex:1">
+        <div class="tag">BCG Growth-Share Matrix</div>
+        <h1>넥스트플로우<br><span class="lgreen">포트폴리오</span><br>BCG 분석</h1>
+        <div style="width:48px;height:3px;background:#0a3d0a;margin:20px 0"></div>
+        <p class="body">5개 제품 포트폴리오의 자원 배분 전략을 수립하고<br>성장 동력을 재설계합니다. 2026 · Createnova</p>
+      </div>
+      <div style="flex:0 0 auto">
+        <div class="grid2" style="gap:12px;width:300px">
+          <div class="stat"><div class="stat-n">5</div><div class="stat-l">분석 제품</div></div>
+          <div class="stat"><div class="stat-n">56억</div><div class="stat-l">총 매출</div></div>
+          <div class="stat"><div class="stat-n">보통</div><div class="stat-l">포트폴리오 건강도</div></div>
+          <div class="stat"><div class="stat-n">1개</div><div class="stat-l">즉시 철수 권고</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S2: Summary -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Executive Summary</div>
+    <div class="pg">02 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">핵심 발견 3가지</h2>
+    <div class="grid3">
+      <div class="card"><div class="tag">Finding 01</div><h3>CoreSuite가 현금의 70% 창출</h3><p class="body" style="margin-top:6px;font-size:13px">28억 매출·42% 이익률. 잉여현금 11.7억이 전략 투자 재원.</p></div>
+      <div class="card star"><div class="tag" style="color:#d97706">Finding 02</div><h3>AIAnalytics에 전략 집중 필요</h3><p class="body" style="margin-top:6px;font-size:13px">55% 고성장 시장. 18개월 내 Stars 전환 가능성 높음.</p></div>
+      <div class="card warn"><div class="tag" style="color:#dc2626">Finding 03</div><h3>LegacyHR 즉시 철수 권고</h3><p class="body" style="margin-top:6px;font-size:13px">연 1.2억 적자 + 전략 시너지 없음. 자원 재배분 시급.</p></div>
+    </div>
+    <div class="grid4" style="margin-top:20px">
+      <div class="stat"><div class="badge badge-star" style="margin-bottom:6px">★ Stars</div><div class="stat-n" style="font-size:20px">StarPlan</div><div class="stat-l">12억 · 35% 성장</div></div>
+      <div class="stat"><div class="badge badge-cow" style="margin-bottom:6px">💰 Cash Cow</div><div class="stat-n" style="font-size:20px">CoreSuite</div><div class="stat-l">28억 · 4% 성장</div></div>
+      <div class="stat"><div class="badge badge-qm" style="margin-bottom:6px">? Question</div><div class="stat-n" style="font-size:20px">AI · Mobile</div><div class="stat-l">4억 · 5억 규모</div></div>
+      <div class="stat"><div class="badge badge-dog" style="margin-bottom:6px">🐕 Dog</div><div class="stat-n" style="font-size:20px">LegacyHR</div><div class="stat-l">7억 · 철수 권고</div></div>
+    </div>
+  </div>
+</div>
+<!-- S3: BCG 매트릭스 -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">BCG Matrix</div>
+    <div class="pg">03 / 10</div>
+  </div>
+  <div class="main" style="align-items:center;flex-direction:row;gap:40px">
+    <div style="flex:0 0 auto">
+      <svg viewBox="0 0 520 460" width="520" height="460">
+        <rect x="40" y="20" width="220" height="200" fill="#fffbeb" rx="6"/>
+        <rect x="260" y="20" width="220" height="200" fill="#eff6ff" rx="6"/>
+        <rect x="40" y="220" width="220" height="200" fill="#f0fdf4" rx="6"/>
+        <rect x="260" y="220" width="220" height="200" fill="#f9fafb" rx="6"/>
+        <text x="150" y="44" text-anchor="middle" font-size="13" font-family="Pretendard" fill="#d97706" font-weight="700">★ Stars</text>
+        <text x="370" y="44" text-anchor="middle" font-size="13" font-family="Pretendard" fill="#2563eb" font-weight="700">? Question Marks</text>
+        <text x="150" y="244" text-anchor="middle" font-size="13" font-family="Pretendard" fill="#16a34a" font-weight="700">💰 Cash Cows</text>
+        <text x="370" y="244" text-anchor="middle" font-size="13" font-family="Pretendard" fill="#6b7280" font-weight="700">🐕 Dogs</text>
+        <line x1="260" y1="20" x2="260" y2="420" stroke="#c6e6c6" stroke-width="1.5" stroke-dasharray="5"/>
+        <line x1="40" y1="220" x2="480" y2="220" stroke="#c6e6c6" stroke-width="1.5" stroke-dasharray="5"/>
+        <!-- StarPlan: star, 성장35%, 1.8x -->
+        <circle cx="170" cy="110" r="38" fill="rgba(217,119,6,.25)" stroke="#d97706" stroke-width="2.5"/>
+        <text x="170" y="106" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#0a3d0a" font-weight="700">StarPlan</text>
+        <text x="170" y="122" text-anchor="middle" font-size="10" font-family="Pretendard" fill="#d97706">35% · 1.8x</text>
+        <!-- CoreSuite: cow, 4%, 2.3x -->
+        <circle cx="130" cy="330" r="52" fill="rgba(22,163,74,.2)" stroke="#16a34a" stroke-width="2.5"/>
+        <text x="130" y="326" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#0a3d0a" font-weight="700">CoreSuite</text>
+        <text x="130" y="342" text-anchor="middle" font-size="10" font-family="Pretendard" fill="#16a34a">4% · 2.3x</text>
+        <!-- AIAnalytics: qm, 55%, 0.3x -->
+        <circle cx="390" cy="55" r="22" fill="rgba(37,99,235,.2)" stroke="#2563eb" stroke-width="2"/>
+        <text x="390" y="51" text-anchor="middle" font-size="10" font-family="Pretendard" fill="#0a3d0a" font-weight="700">AIAnalytics</text>
+        <text x="390" y="65" text-anchor="middle" font-size="9" font-family="Pretendard" fill="#2563eb">55% · 0.3x</text>
+        <!-- MobileApp: qm, 42%, 0.5x -->
+        <circle cx="430" cy="140" r="25" fill="rgba(37,99,235,.15)" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="430" y="136" text-anchor="middle" font-size="10" font-family="Pretendard" fill="#0a3d0a" font-weight="700">MobileApp</text>
+        <text x="430" y="150" text-anchor="middle" font-size="9" font-family="Pretendard" fill="#2563eb">42% · 0.5x</text>
+        <!-- LegacyHR: dog, 1%, 0.4x -->
+        <circle cx="390" cy="320" r="28" fill="rgba(107,114,128,.15)" stroke="#9ca3af" stroke-width="2"/>
+        <text x="390" y="316" text-anchor="middle" font-size="10" font-family="Pretendard" fill="#0a3d0a" font-weight="700">LegacyHR</text>
+        <text x="390" y="330" text-anchor="middle" font-size="9" font-family="Pretendard" fill="#9ca3af">1% · 0.4x</text>
+        <text x="40" y="445" font-size="10" font-family="Pretendard" fill="#9ca3af">← 상대적 시장점유율 높음 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 낮음 →</text>
+      </svg>
+    </div>
+    <div style="flex:1">
+      <div class="tag">범례 & 해석</div>
+      <ul style="margin-top:12px">
+        <li><span class="badge badge-star">★ Stars</span>&nbsp;StarPlan — 리더십 유지 투자</li>
+        <li style="margin-top:8px"><span class="badge badge-cow">💰 Cow</span>&nbsp;CoreSuite — 현금 창출, 효율 극대화</li>
+        <li style="margin-top:8px"><span class="badge badge-qm">? QM</span>&nbsp;AIAnalytics — 투자하여 Star로 육성</li>
+        <li style="margin-top:8px"><span class="badge badge-qm">? QM</span>&nbsp;MobileApp — 6개월 관찰 후 재판단</li>
+        <li style="margin-top:8px"><span class="badge badge-dog">🐕 Dog</span>&nbsp;LegacyHR — 12개월 내 철수</li>
+      </ul>
+      <div style="margin-top:20px;padding:16px;background:#e8f5e8;border-radius:8px;border-left:3px solid #0a3d0a">
+        <div class="tag">버블 크기 = 매출 규모</div>
+        <p class="body" style="font-size:12px">CoreSuite가 가장 큰 버블(28억). 버블 크기로 포트폴리오 내 비중을 직관적으로 파악할 수 있습니다.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S4: Stars -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Stars Analysis</div>
+    <div class="pg">04 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">★ Stars — <span class="lgreen">StarPlan 상세</span></h2>
+    <div class="grid2">
+      <div class="card star"><div class="tag" style="color:#d97706">핵심 지표</div><ul><li>연간 매출: 12억원 (YoY +35%)</li><li>상대 점유율: 1.8x (업계 1위)</li><li>NPS: 72점 (평균 45점)</li><li>LTV/CAC: 4.2배</li></ul></div>
+      <div class="card star"><div class="tag" style="color:#d97706">경쟁 우위</div><ul><li>AI 기반 자동 플랜 생성</li><li>온보딩 3분 완료 (UX 차별화)</li><li>엔터프라이즈 API 연동 지원</li><li>글로벌 확장 준비 완료</li></ul></div>
+      <div class="card star"><div class="tag" style="color:#d97706">투자 현황</div><ul><li>R&D: 연 3억원</li><li>마케팅: 연 1.5억원</li><li>순현금: ±0 (성장 재투자)</li></ul></div>
+      <div class="card" style="border-left-color:#0a3d0a;background:#e8f5e8"><div class="tag">전략 권고</div><p class="body" style="font-size:13px;margin-top:6px">투자 유지·강화. CoreSuite 잉여현금 5억 우선 배분. 시장 성숙 전 점유율 2.5x 목표. 글로벌 진출로 TAM 확장.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- S5: Cash Cow -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Cash Cow Analysis</div>
+    <div class="pg">05 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">💰 Cash Cow — <span class="lgreen">CoreSuite 상세</span></h2>
+    <div class="grid3" style="margin-bottom:20px">
+      <div class="stat"><div class="stat-n">28억</div><div class="stat-l">연간 매출</div></div>
+      <div class="stat"><div class="stat-n">42%</div><div class="stat-l">영업이익률</div></div>
+      <div class="stat"><div class="stat-n">11.7억</div><div class="stat-l">연간 잉여현금</div></div>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="tag">효율화 기회</div><ul><li>지원 자동화 → 마진 +3%p</li><li>업셀링 CoreSuite→StarPlan</li><li>연간 계약 전환 유도</li></ul></div>
+      <div class="card"><div class="tag">현금 배분 계획</div><ul><li>StarPlan 투자 → 5억원</li><li>AIAnalytics 육성 → 4억원</li><li>잉여 / 부채 상환 → 2.7억</li></ul></div>
+      <div class="card" style="background:#e8f5e8;border-left-color:#0a3d0a"><div class="tag">전략 권고</div><p class="body" style="font-size:13px;margin-top:6px">과잉 투자 금지. 효율 극대화에 집중하고 잉여현금을 Stars·QM에 재배분. 연간 계약 비율 60% 목표.</p></div>
+    </div>
+  </div>
+</div>
+<!-- S6: QM -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Question Marks</div>
+    <div class="pg">06 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">? Question Marks — <span class="lgreen">투자 vs 철수 판단</span></h2>
+    <div class="grid2">
+      <div class="card qm">
+        <div class="badge badge-qm" style="margin-bottom:10px">✅ 투자 권고 — AIAnalytics</div>
+        <ul><li>시장 성장률 55% (AI 분석 시장)</li><li>CoreSuite 고객과 높은 연계성</li><li>경쟁 진입 전 점유율 확보 시급</li><li>Stars 전환 가능성: 높음 ★★★★</li></ul>
+        <div style="margin-top:14px;padding:10px;background:#dbeafe;border-radius:6px"><p style="font-size:12px;color:#1e3a8a;font-weight:700">→ 연 4억 투자, 점유율 1.0x 목표</p></div>
+      </div>
+      <div class="card" style="border-left-color:#d97706">
+        <div class="badge badge-star" style="margin-bottom:10px">⚠ 관찰 유지 — MobileApp</div>
+        <ul><li>시장 성장률 42% (모바일 생산성)</li><li>현재 점유율 0.5x — 경쟁 치열</li><li>독립 수익화 경로 불명확</li><li>Stars 전환 가능성: 중간 ★★★</li></ul>
+        <div style="margin-top:14px;padding:10px;background:#fef3c7;border-radius:6px"><p style="font-size:12px;color:#92400e;font-weight:700">→ 6개월 관찰 후 재판단. 투자 동결</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7: Dogs -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Dogs Analysis</div>
+    <div class="pg">07 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">🐕 Dogs — <span style="color:#dc2626">LegacyHR 철수 판단</span></h2>
+    <div class="grid2">
+      <div class="card dog"><div class="tag" style="color:#6b7280">현황 진단</div><ul><li>연간 매출: 7억 (YoY -8%)</li><li>영업이익: -1.2억 (지속 적자)</li><li>시장 성장률: 1% (완전 성숙)</li><li>점유율: 0.4x (업계 3위)</li></ul></div>
+      <div class="card warn"><div class="tag" style="color:#dc2626">철수 근거</div><ul><li>전략적 시너지 없음</li><li>연 유지비 3억 소모</li><li>ROI 회복 5년 이상 소요</li><li>감정적 집착으로 유지 중</li></ul></div>
+    </div>
+    <div class="card" style="margin-top:16px;border-left-color:#dc2626;background:#fff5f5">
+      <div class="tag" style="color:#dc2626">권고 — 12개월 내 철수 또는 매각</div>
+      <p class="body" style="font-size:13px;margin-top:8px">인력 2명 CoreSuite팀 재배치 · 서버 절감 1.2억/년 · 매각가 추정 5~8억(EBITDA 기준) · 회수 현금은 AIAnalytics 투자 재원 활용</p>
+    </div>
+  </div>
+</div>
+
+<!-- S8: 리밸런싱 -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Portfolio Rebalancing</div>
+    <div class="pg">08 / 10</div>
+  </div>
+  <div class="main" style="align-items:center">
+    <h2 class="mh" style="width:100%">현금 흐름 <span class="lgreen">리밸런싱</span></h2>
+    <svg viewBox="0 0 780 320" width="780" height="320">
+      <rect x="20" y="110" width="160" height="80" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <text x="100" y="145" text-anchor="middle" font-size="14" font-family="Pretendard" fill="#14532d" font-weight="700">💰 CoreSuite</text>
+      <text x="100" y="163" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#4b5e4b">+11.7억 창출</text>
+      <rect x="300" y="20" width="160" height="80" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" font-size="14" font-family="Pretendard" fill="#92400e" font-weight="700">★ StarPlan</text>
+      <text x="380" y="73" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#4b5e4b">5억 투자</text>
+      <rect x="300" y="210" width="160" height="80" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+      <text x="380" y="245" text-anchor="middle" font-size="14" font-family="Pretendard" fill="#1e3a8a" font-weight="700">? AIAnalytics</text>
+      <text x="380" y="263" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#4b5e4b">4억 투자</text>
+      <rect x="570" y="110" width="180" height="80" rx="10" fill="#fff5f5" stroke="#dc2626" stroke-width="2" stroke-dasharray="6"/>
+      <text x="660" y="145" text-anchor="middle" font-size="14" font-family="Pretendard" fill="#991b1b" font-weight="700">🐕 LegacyHR</text>
+      <text x="660" y="163" text-anchor="middle" font-size="12" font-family="Pretendard" fill="#4b5e4b">철수 → 7.2억 회수</text>
+      <path d="M180 140 Q240 60 300 60" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#ag)"/>
+      <path d="M180 160 Q240 250 300 250" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#ab)"/>
+      <path d="M570 150 Q520 150 460 150" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="8" marker-end="url(#ar)"/>
+      <text x="232" y="48" font-size="11" font-family="Pretendard" fill="#16a34a">5억원</text>
+      <text x="232" y="265" font-size="11" font-family="Pretendard" fill="#2563eb">4억원</text>
+      <text x="490" y="143" font-size="11" font-family="Pretendard" fill="#dc2626">재배분</text>
+      <defs>
+        <marker id="ag" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#16a34a"/></marker>
+        <marker id="ab" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/></marker>
+        <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/></marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+
+<!-- S9: 로드맵 -->
+<div class="slide">
+  <div class="topbar">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Execution Roadmap</div>
+    <div class="pg">09 / 10</div>
+  </div>
+  <div class="main">
+    <h2 class="mh">3단계 <span class="lgreen">실행 계획</span></h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-line"></div><div class="tl-dot"></div><div class="tl-t">Phase 1 · 즉시</div><div class="tl-b">LegacyHR 매각 시작<br>CoreSuite 효율화 TF<br>AIAnalytics 투자 결의<br>MobileApp 모니터링</div></div>
+      <div class="tl-item"><div class="tl-line"></div><div class="tl-dot off"></div><div class="tl-t">Phase 2 · 3~6개월</div><div class="tl-b">AIAnalytics 베타 출시<br>StarPlan 글로벌 확장<br>LegacyHR 매각 완료<br>MobileApp 재판단</div></div>
+      <div class="tl-item"><div class="tl-line"></div><div class="tl-dot off"></div><div class="tl-t">Phase 3 · 6~12개월</div><div class="tl-b">AIAnalytics Stars 진입<br>포트폴리오 재평가<br>신규 QM 탐색<br>Stars 2개 체제 구축</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- S10: CTA -->
+<div class="slide">
+  <div class="topbar" style="background:#0a3d0a">
+    <div class="logo">Createnova</div>
+    <div class="slide-label">Get Started</div>
+    <div class="pg">10 / 10</div>
+  </div>
+  <div class="main" style="justify-content:center;align-items:center;text-align:center">
+    <div class="tag">BCG · SWOT · 7S · Porter's · JTBD</div>
+    <h1 style="font-size:36px;margin:12px 0">포트폴리오 분석부터<br><span class="lgreen">실행 전략</span>까지<br>AI가 자동 생성합니다</h1>
+    <div style="width:48px;height:3px;background:#0a3d0a;margin:20px auto"></div>
+    <p class="body" style="margin-bottom:20px">자료를 붙여넣기만 하면 컨설팅급 슬라이드가 완성됩니다.</p>
+    <a class="cta-btn" href="https://createnova.netlify.app">무료로 시작하기 →</a>
+  </div>
+</div>
+</div>
+<script>
+let cur=0,tot=10;
+function go(d){let s=document.querySelectorAll('.slide');s[cur].classList.remove('active');cur=Math.max(0,Math.min(tot-1,cur+d));s[cur].classList.add('active');document.getElementById('snum').textContent=String(cur+1).padStart(2,'0')+' / '+String(tot).padStart(2,'0');document.getElementById('prog').style.width=((cur+1)/tot*100)+'%';}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(1);if(e.key==='ArrowLeft')go(-1);if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}});
+</script></body></html>

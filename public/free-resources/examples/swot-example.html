@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Createnova SWOT 분석</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0A0A0A;--surface:#141414;--border:#2A2A2A;--accent:#F97316;--text:#F5F5F5;--text2:#A1A1AA;--text3:#71717A;--green:#22C55E;--red:#EF4444;--blue:#3B82F6;--yellow:#EAB308;--card-shadow:0 4px 24px rgba(0,0,0,0.4);--card-radius:16px}
+html,body{font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100%;width:100%}
+.deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:80px 100px;opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .4s ease,transform .4s ease}
+.slide.active{opacity:1;transform:translateY(0);pointer-events:auto}
+.slide-inner{width:100%;max-width:1280px;height:100%;max-height:720px;margin:auto;display:flex;flex-direction:column;justify-content:center;position:relative}
+.brand{position:fixed;top:32px;right:48px;font-size:13px;font-weight:500;color:var(--text2);letter-spacing:.02em;z-index:100}
+.slide-num{position:fixed;bottom:32px;right:48px;font-size:13px;font-weight:500;color:var(--text3);z-index:100;font-variant-numeric:tabular-nums}
+.progress{position:fixed;bottom:0;left:0;height:2px;background:var(--accent);z-index:100;transition:width .4s ease}
+/* Typography */
+.display{font-size:64px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.h1{font-size:48px;font-weight:700;line-height:1.15;letter-spacing:-.015em}
+.h2{font-size:36px;font-weight:700;line-height:1.2}
+.h3{font-size:24px;font-weight:600;line-height:1.3}
+.body{font-size:16px;font-weight:400;line-height:1.6;color:var(--text2)}
+.body-l{font-size:20px;font-weight:400;line-height:1.6;color:var(--text2)}
+.caption{font-size:13px;font-weight:500;color:var(--text3)}
+.label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.accent{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);box-shadow:var(--card-shadow);padding:32px;overflow:hidden}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}.mt-40{margin-top:40px}.mt-8{margin-top:8px}
+.mb-8{margin-bottom:8px}.mb-16{margin-bottom:16px}
+ul{list-style:none;padding:0}
+ul li{position:relative;padding-left:16px;margin-bottom:6px;font-size:14px;line-height:1.5;color:var(--text2)}
+ul li::before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--text3)}
+.color-bar{height:3px;border-radius:3px 3px 0 0;margin:-32px -32px 24px -32px}
+.tag{display:inline-block;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em}
+/* Slide 1 */
+.s1-date{font-size:15px;font-weight:500;color:var(--text3);margin-top:20px}
+.s1-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;border:1px solid var(--border);font-size:13px;font-weight:500;color:var(--text2);margin-bottom:24px}
+.s1-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+/* Mini matrix */
+.mini-matrix{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:280px}
+.mini-cell{padding:12px;border-radius:8px;font-size:11px;font-weight:600;text-align:center;background:var(--surface);border:1px solid var(--border)}
+/* SWOT colors */
+.swot-s{border-top:3px solid var(--green)}.swot-s .label,.swot-s .h3{color:var(--green)}
+.swot-w{border-top:3px solid var(--red)}.swot-w .label,.swot-w .h3{color:var(--red)}
+.swot-o{border-top:3px solid var(--blue)}.swot-o .label,.swot-o .h3{color:var(--blue)}
+.swot-t{border-top:3px solid var(--yellow)}.swot-t .label,.swot-t .h3{color:var(--yellow)}
+/* Detail cards */
+.detail-items{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.detail-item{display:flex;gap:16px;align-items:flex-start;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.detail-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.detail-item h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px}
+.detail-item p{font-size:13px;color:var(--text3);line-height:1.5}
+/* Timeline */
+.timeline{display:flex;gap:0;margin-top:24px;position:relative}
+.timeline::before{content:'';position:absolute;top:20px;left:0;right:0;height:2px;background:var(--border)}
+.phase{flex:1;position:relative;padding-top:40px}
+.phase-dot{position:absolute;top:12px;left:24px;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.phase .card{margin-right:12px}
+/* CTA */
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:var(--accent);color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(249,115,22,.3)}
+/* TOWS */
+.tows-cell{padding:24px}
+.tows-cell h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.tows-cell ul li{font-size:12px;margin-bottom:4px}
+@media print{
+  .deck{overflow:visible!important}
+  .slide{position:relative!important;opacity:1!important;transform:none!important;pointer-events:auto!important;page-break-after:always;height:720px;padding:60px 80px}
+  .brand,.slide-num,.progress{position:absolute}
+  body{background:#fff;color:#111}
+  .card{background:#f9f9f9;border-color:#ddd;box-shadow:none}
+  .body,.body-l,ul li{color:#333}
+  .caption{color:#666}
+}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+  <div class="brand">Createnova</div>
+  <div class="slide-num" id="slideNum">01 / 10</div>
+  <div class="progress" id="progress" style="width:10%"></div>
+
+  <!-- Slide 1: Title -->
+  <div class="slide active" data-slide="1">
+    <div class="slide-inner" style="justify-content:center;align-items:flex-start">
+      <div class="s1-badge"><span class="dot"></span>AI-Powered Analysis</div>
+      <h1 class="display">Createnova<br><span class="accent">SWOT 분석</span></h1>
+      <p class="s1-date">2026년 4월 19일 · 전략 분석 보고서</p>
+      <div style="margin-top:40px;display:flex;gap:12px">
+        <span class="tag" style="background:rgba(249,115,22,.12);color:var(--accent)">전략 프레임워크</span>
+        <span class="tag" style="background:rgba(255,255,255,.06);color:var(--text2)">SaaS · AI · B2B</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: Executive Summary -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <p class="label accent mb-8">Executive Summary</p>
+      <h2 class="h1">핵심 분석 요약</h2>
+      <div class="grid2 mt-32" style="align-items:start">
+        <div>
+          <p class="body-l" style="margin-bottom:20px">Createnova는 AI 기반 비즈니스 분석 SaaS로서 <strong style="color:var(--text)">강력한 기술적 차별성</strong>과 <strong style="color:var(--text)">시장 성장 기회</strong>를 보유하고 있습니다.</p>
+          <div class="card" style="padding:20px">
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+              <div style="flex:1;min-width:100px"><p class="caption">강점</p><p class="h3" style="color:var(--green)">4개</p></div>
+              <div style="flex:1;min-width:100px"><p class="caption">약점</p><p class="h3" style="color:var(--red)">3개</p></div>
+              <div style="flex:1;min-width:100px"><p class="caption">기회</p><p class="h3" style="color:var(--blue)">3개</p></div>
+              <div style="flex:1;min-width:100px"><p class="caption">위협</p><p class="h3" style="color:var(--yellow)">3개</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="mini-matrix">
+          <div class="mini-cell swot-s">💪 강점<br><span class="caption">기술 우위</span></div>
+          <div class="mini-cell swot-w">⚠️ 약점<br><span class="caption">브랜드 인지도</span></div>
+          <div class="mini-cell swot-o">🚀 기회<br><span class="caption">시장 성장</span></div>
+          <div class="mini-cell swot-t">🔥 위협<br><span class="caption">경쟁 심화</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 3: Full SWOT Matrix -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <p class="label accent mb-8">SWOT Matrix</p>
+      <h2 class="h2">SWOT 전체 매트릭스</h2>
+      <div class="grid2 mt-24">
+        <div class="card swot-s">
+          <p class="label" style="color:var(--green)">Strengths · 강점</p>
+          <ul class="mt-12">
+            <li>AI 기반 자동 분석으로 90% 시간 절감</li>
+            <li>50+ 전략 프레임워크 라이브러리 보유</li>
+            <li>1인 운영 저비용 구조 (높은 마진)</li>
+            <li>SaaS 모델의 무한 확장성</li>
+            <li>실시간 데이터 기반 인사이트 제공</li>
+          </ul>
+        </div>
+        <div class="card swot-w">
+          <p class="label" style="color:var(--red)">Weaknesses · 약점</p>
+          <ul class="mt-12">
+            <li>신규 브랜드로 인지도 부족</li>
+            <li>1인 운영에 따른 확장 리스크</li>
+            <li>제한된 마케팅 예산</li>
+            <li>고객 지원 대응 속도 한계</li>
+          </ul>
+        </div>
+        <div class="card swot-o">
+          <p class="label" style="color:var(--blue)">Opportunities · 기회</p>
+          <ul class="mt-12">
+            <li>AI 도구 시장 연 40% 이상 성장</li>
+            <li>1인 기업 / 프리랜서 폭발적 증가</li>
+            <li>글로벌 SaaS 시장 진출 가능</li>
+            <li>컨설팅 비용 대체 수요 증가</li>
+            <li>API 생태계 파트너십 기회</li>
+          </ul>
+        </div>
+        <div class="card swot-t">
+          <p class="label" style="color:var(--yellow)">Threats · 위협</p>
+          <ul class="mt-12">
+            <li>ChatGPT / 기존 AI 도구와의 경쟁</li>
+            <li>대기업의 유사 서비스 진입</li>
+            <li>AI 기술 변화 속도에 대한 적응</li>
+            <li>경기 침체 시 SaaS 구독 해지 증가</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: Strengths Detail -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <p class="label mb-8" style="color:var(--green)">Strengths · 강점 상세</p>
+      <h2 class="h2">핵심 경쟁 우위 요소</h2>
+      <div class="detail-items">
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(34,197,94,.12)">🤖</div>
+          <div><h4>AI 기반 자동 분석 엔진</h4><p>복잡한 비즈니스 데이터를 입력하면 수초 내에 전문 컨설턴트급 분석 결과를 자동 생성합니다. 기존 대비 90% 이상의 시간과 비용을 절감합니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(34,197,94,.12)">📚</div>
+          <div><h4>50+ 전략 프레임워크 라이브러리</h4><p>SWOT, Porter's 5 Forces, BCG Matrix 등 50개 이상의 검증된 프레임워크를 즉시 활용할 수 있습니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(34,197,94,.12)">💰</div>
+          <div><h4>저비용 운영 구조</h4><p>1인 운영 + AI 자동화로 고정비를 최소화하여 높은 마진율을 유지하며 가격 경쟁력을 확보합니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(34,197,94,.12)">📈</div>
+          <div><h4>SaaS 기반 무한 확장성</h4><p>클라우드 인프라 기반으로 사용자 증가에 따른 한계 비용이 거의 제로에 수렴합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: Weaknesses Detail -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <p class="label mb-8" style="color:var(--red)">Weaknesses · 약점 상세</p>
+      <h2 class="h2">개선이 필요한 영역</h2>
+      <div class="detail-items">
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(239,68,68,.12)">👁️</div>
+          <div><h4>신규 브랜드 인지도 부족</h4><p>시장에 진입한 지 얼마 되지 않아 타겟 고객층의 브랜드 인지도와 신뢰도가 낮습니다. 초기 고객 확보에 더 많은 노력이 필요합니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(239,68,68,.12)">🧑</div>
+          <div><h4>1인 운영 리스크</h4><p>핵심 인력 의존도가 높아 운영 연속성과 업무 과부하 리스크가 존재합니다. 핵심 프로세스의 자동화와 외부 협력이 필요합니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(239,68,68,.12)">💸</div>
+          <div><h4>제한된 마케팅 예산</h4><p>초기 단계에서 마케팅에 투입할 수 있는 예산이 제한적이어서 유기적 성장과 바이럴 전략에 의존해야 합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 6: Opportunities Detail -->
+  <div class="slide" data-slide="6">
+    <div class="slide-inner">
+      <p class="label mb-8" style="color:var(--blue)">Opportunities · 기회 상세</p>
+      <h2 class="h2">성장 기회 요인</h2>
+      <div class="detail-items">
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(59,130,246,.12)">🌊</div>
+          <div><h4>AI 도구 시장 폭발적 성장</h4><p>글로벌 AI 시장은 연간 40% 이상 성장 중이며, 비즈니스 AI 도구에 대한 수요가 급격히 증가하고 있습니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(59,130,246,.12)">🧑‍💻</div>
+          <div><h4>1인 기업 · 프리랜서 시장 확대</h4><p>전 세계적으로 1인 기업과 프리랜서가 증가하면서 저렴하고 전문적인 분석 도구에 대한 니즈가 커지고 있습니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(59,130,246,.12)">🌍</div>
+          <div><h4>글로벌 시장 진출 기회</h4><p>SaaS 특성상 언어만 지원하면 글로벌 시장 진출이 용이합니다. 영어, 일본어 시장부터 단계적으로 확장 가능합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Threats Detail -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <p class="label mb-8" style="color:var(--yellow)">Threats · 위협 상세</p>
+      <h2 class="h2">주요 위협 요인</h2>
+      <div class="detail-items">
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(234,179,8,.12)">⚔️</div>
+          <div><h4>ChatGPT / 기존 AI 도구와의 경쟁</h4><p>범용 AI 도구들이 유사한 분석 기능을 제공할 수 있어, 전문화된 가치 제안과 차별화가 필수적입니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(234,179,8,.12)">🏢</div>
+          <div><h4>대기업의 시장 진입</h4><p>Microsoft, Google 등 대기업이 비즈니스 분석 AI 도구 시장에 본격 진출할 경우 경쟁이 심화될 수 있습니다.</p></div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon" style="background:rgba(234,179,8,.12)">⚡</div>
+          <div><h4>기술 변화 속도</h4><p>AI 기술이 빠르게 발전하면서 지속적인 기술 업데이트와 적응이 필요하며, 기술 부채 관리가 중요합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: TOWS Strategy -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <p class="label accent mb-8">TOWS Strategy Matrix</p>
+      <h2 class="h2">전략 도출 매트릭스</h2>
+      <div class="grid2 mt-24">
+        <div class="card swot-s" style="padding:24px">
+          <p class="label" style="color:var(--green)">SO 전략 · 강점×기회</p>
+          <ul class="mt-12">
+            <li>AI 기술력으로 급성장 시장 선점</li>
+            <li>프리랜서 타겟 프리미엄 플랜 출시</li>
+            <li>영어 버전 MVP로 글로벌 진출</li>
+          </ul>
+        </div>
+        <div class="card swot-w" style="padding:24px">
+          <p class="label" style="color:var(--red)">WO 전략 · 약점×기회</p>
+          <ul class="mt-12">
+            <li>콘텐츠 마케팅으로 브랜드 인지도 구축</li>
+            <li>AI 자동화로 1인 운영 한계 보완</li>
+            <li>프리미엄 무료 체험으로 진입 장벽 제거</li>
+          </ul>
+        </div>
+        <div class="card swot-o" style="padding:24px">
+          <p class="label" style="color:var(--blue)">ST 전략 · 강점×위협</p>
+          <ul class="mt-12">
+            <li>전문 프레임워크로 범용 AI 대비 차별화</li>
+            <li>니치 시장 집중으로 대기업과 차별화</li>
+            <li>빠른 기술 적응을 위한 모듈형 아키텍처</li>
+          </ul>
+        </div>
+        <div class="card swot-t" style="padding:24px">
+          <p class="label" style="color:var(--yellow)">WT 전략 · 약점×위협</p>
+          <ul class="mt-12">
+            <li>커뮤니티 빌딩으로 충성 고객 확보</li>
+            <li>파트너십 통한 리소스 부족 보완</li>
+            <li>핵심 기능 집중으로 효율적 경쟁</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 9: Action Plan -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <p class="label accent mb-8">Action Plan</p>
+      <h2 class="h2">실행 계획 타임라인</h2>
+      <div class="timeline mt-32">
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="card">
+            <p class="label accent mb-8">Phase 1 · 0–3개월</p>
+            <h4 class="h3" style="font-size:18px;margin-bottom:8px">기반 구축</h4>
+            <ul>
+              <li>MVP 런칭 및 베타 테스트</li>
+              <li>초기 100명 사용자 확보</li>
+              <li>콘텐츠 마케팅 시작</li>
+              <li>핵심 프레임워크 20개 구현</li>
+            </ul>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="card">
+            <p class="label accent mb-8">Phase 2 · 3–6개월</p>
+            <h4 class="h3" style="font-size:18px;margin-bottom:8px">성장 가속</h4>
+            <ul>
+              <li>유료 전환율 5% 달성</li>
+              <li>영어 버전 출시</li>
+              <li>SEO / 소셜 채널 확대</li>
+              <li>프레임워크 50개로 확장</li>
+            </ul>
+          </div>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <div class="card">
+            <p class="label accent mb-8">Phase 3 · 6–12개월</p>
+            <h4 class="h3" style="font-size:18px;margin-bottom:8px">스케일업</h4>
+            <ul>
+              <li>MRR $10K 달성</li>
+              <li>API 파트너십 구축</li>
+              <li>일본어 시장 진출</li>
+              <li>팀 빌딩 시작</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: CTA -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center">
+      <p class="label accent mb-16">Start Now</p>
+      <h2 class="display" style="font-size:52px">Createnova로<br>더 깊은 분석을 시작하세요</h2>
+      <p class="body-l mt-16" style="max-width:560px">AI가 자동으로 생성하는 전문 비즈니스 분석.<br>지금 바로 무료로 체험해 보세요.</p>
+      <button class="cta-btn mt-40" onclick="window.open('https://createnova.com','_blank')">무료로 시작하기 →</button>
+      <p class="caption mt-24">신용카드 불필요 · 무료 플랜 제공</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),total=slides.length;
+let current=0;
+function go(n){
+  if(n<0||n>=total)return;
+  slides[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  document.getElementById('slideNum')=String(current+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+  document.getElementById('progress').style.width=((current+1)/total*100)+'%';
+}
+// fix assignment
+Object.defineProperty(window,'updateUI',{value:function(){
+  document.getElementById('slideNum').textContent=String(current+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+  document.getElementById('progress').style.width=((current+1)/total*100)+'%';
+}});
+function goTo(n){
+  if(n<0||n>=total)return;
+  slides[current].classList.remove('active');
+  current=n;
+  slides[current].classList.add('active');
+  window.updateUI();
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();goTo(current+1)}
+  else if(e.key==='ArrowLeft'){e.preventDefault();goTo(current-1)}
+  else if(e.key==='f'||e.key==='F'){document.documentElement.requestFullscreen?.()}
+});
+window.updateUI();
+</script>
+</body>
+</html>
