@@ -1,7 +1,7 @@
 // Netlify Function: EmailOctopus 구독 프록시
 // API 키는 Netlify 환경변수에서만 읽음 → 브라우저에 절대 노출되지 않음
 
-const LIST_ID = '7f4cff3c-3bba-11f1-aa4b-f33e051b0fe6';
+const LIST_ID = '844faab4-4ba2-11f1-b5b9-b585d5cbec3d';
 const EO_API_URL = `https://emailoctopus.com/api/1.6/lists/${LIST_ID}/contacts`;
 
 export default async (req) => {
