@@ -20,8 +20,8 @@ const techCards = [
   },
   {
     icon: 'solar:server-minimalistic-bold-duotone',
-    title: 'Createnova 자체 서버 제로',
-    body: 'Createnova는 자체 서버를 운영하지 않습니다. 귀하의 데이터가 Createnova 인프라를 경유하는 경로가 존재하지 않습니다. Anthropic API 이용약관에 따라 API 전송 데이터는 모델 훈련에 사용되지 않습니다.',
+    title: 'Mindpack AI 자체 서버 제로',
+    body: 'Createnova는 자체 서버를 운영하지 않습니다. 귀하의 데이터가 Mindpack AI 인프라를 경유하는 경로가 존재하지 않습니다. Anthropic API 이용약관에 따라 API 전송 데이터는 모델 훈련에 사용되지 않습니다.',
     color: 'accent',
   },
   {
@@ -42,7 +42,7 @@ const comparisonRows = [
   { label: '파일 업로드 방식', web: '원본 파일 전체 클라우드 업로드', supra: '원본 파일 업로드 없음 (텍스트만 추출)' },
   { label: '전송 데이터', web: '파일 전체 + 대화 내용 + 메타데이터', supra: '파싱된 텍스트만 (레이아웃·이미지 제외)' },
   { label: '전처리', web: '없음 (원본 그대로 전송)', supra: '파이썬이 로컬에서 노이즈 제거 후 전송' },
-  { label: 'Createnova 서버 경유', web: '해당 없음', supra: '경유 제로' },
+  { label: 'Mindpack AI 서버 경유', web: '해당 없음', supra: '경유 제로' },
   { label: '대화 기록 저장', web: '서비스 제공자 서버에 저장', supra: '로컬 디스크에만 저장' },
   { label: '모델 훈련 활용', web: '웹 사용 시 훈련에 사용될 수 있음', supra: 'API 이용약관상 훈련에 미사용' },
   { label: '보안 감사 시', web: '원본 파일 외부 전송 이력 발생', supra: '원본 파일 전송 이력 없음' },
@@ -68,16 +68,16 @@ const faqItems = [
     a: '문서 내용에 따라 가능합니다. 전처리 모듈이 헤더, 푸터, 워터마크 등 불필요한 데이터를 사전 제거합니다. Anthropic API 이용약관에 따라 전송 데이터는 모델 훈련에 사용되지 않습니다. 극도로 민감한 데이터의 경우 사내 AI 서버 연동을 권장합니다.',
   },
   {
-    q: 'Createnova 자체 서버에 데이터가 저장됩니까?',
-    a: '아닙니다. Createnova는 자체 서버를 운영하지 않습니다. 귀하의 데이터는 오직 귀하의 기기 → Claude API 경로로만 이동하며, Createnova 인프라를 경유하지 않습니다. 분석 결과는 귀하의 로컬 디스크에만 저장됩니다.',
+    q: 'Mindpack AI 자체 서버에 데이터가 저장됩니까?',
+    a: '아닙니다. Createnova는 자체 서버를 운영하지 않습니다. 귀하의 데이터는 오직 귀하의 기기 → Claude API 경로로만 이동하며, Mindpack AI 인프라를 경유하지 않습니다. 분석 결과는 귀하의 로컬 디스크에만 저장됩니다.',
   },
   {
     q: '사내 AI 서버(Azure OpenAI, AWS Bedrock 등)에 연결할 수 있습니까?',
-    a: '네. Createnova 설정에서 API 엔드포인트만 귀사의 사내 AI 서버 주소로 변경하면 즉시 연동됩니다. 이 경우 추출된 텍스트도 사내망을 벗어나지 않으므로, 가장 엄격한 보안 환경에서도 사용할 수 있습니다.',
+    a: '네. Mindpack AI 설정에서 API 엔드포인트만 귀사의 사내 AI 서버 주소로 변경하면 즉시 연동됩니다. 이 경우 추출된 텍스트도 사내망을 벗어나지 않으므로, 가장 엄격한 보안 환경에서도 사용할 수 있습니다.',
   },
   {
     q: 'IT 보안팀에 제출할 수 있는 기술 문서가 있습니까?',
-    a: '데이터 흐름 아키텍처 문서와 보안 검토 체크리스트를 PDF로 제공합니다. createnova.help@gmail.com로 요청하시면 즉시 발송해 드립니다.',
+    a: '데이터 흐름 아키텍처 문서와 보안 검토 체크리스트를 PDF로 제공합니다. mindpackai.help@gmail.com로 요청하시면 즉시 발송해 드립니다.',
   },
 ];
 
@@ -174,7 +174,7 @@ export default function SecurityPage() {
 
               {/* Zero markers */}
               <div className="flex flex-wrap justify-center gap-4 mt-8">
-                {['Createnova 자체 서버 경유 없음', '원본 파일 업로드 없음', '사용자 추적 없음'].map(t => (
+                {['Mindpack AI 자체 서버 경유 없음', '원본 파일 업로드 없음', '사용자 추적 없음'].map(t => (
                   <div key={t} className="flex items-center gap-1.5 text-[11px] text-ash/60">
                     <Icon icon="solar:close-circle-bold" className="w-3.5 h-3.5 text-ash/30" />
                     {t}
@@ -229,7 +229,7 @@ export default function SecurityPage() {
               Comparison
             </span>
             <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">
-              웹 AI vs. Createnova 비교
+              웹 AI vs. Mindpack AI 비교
             </h2>
           </div>
           <div className="card-bezel">
@@ -240,7 +240,7 @@ export default function SecurityPage() {
                     <tr className="border-b border-white/[0.06]">
                       <th className="text-left px-6 py-4 text-ash text-[12px] font-semibold w-1/3">항목</th>
                       <th className="text-center px-4 py-4 text-ash text-[12px] font-semibold w-1/3">ChatGPT / Claude 웹</th>
-                      <th className="text-center px-4 py-4 text-emerald-accent text-[12px] font-bold bg-emerald-accent/[0.04] w-1/3">Createnova</th>
+                      <th className="text-center px-4 py-4 text-emerald-accent text-[12px] font-bold bg-emerald-accent/[0.04] w-1/3">Mindpack AI</th>
                     </tr>
                   </thead>
                   <tbody>

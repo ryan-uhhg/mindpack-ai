@@ -38,7 +38,7 @@ const stats = [
   { value: '8년', label: '기획 실무 경력' },
   { value: '8개월', label: '제품 개발 기간' },
   { value: '12종', label: '내장 컨설팅 프레임워크' },
-  { value: '0건', label: 'Createnova 서버 전송 데이터' },
+  { value: '0건', label: 'Mindpack AI 서버 전송 데이터' },
 ];
 
 const colorClass = {
@@ -51,7 +51,7 @@ export default function AboutPage() {
   return (
     <div>
       <PageHero
-        eyebrow="About Createnova"
+        eyebrow="About Mindpack AI"
         headline={'기획자의 생존 도구를\n만들었습니다.'}
         subCopy="이것은 시장 조사로 시작된 제품이 아닙니다. 정보 과잉에 매일 패배하던 한 기획자가, 자신을 구하기 위해 직접 만든 시스템입니다."
       />
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-8 pt-8 border-t border-white/[0.05]">
                   <div className="text-ash text-[13px]">
-                    <span className="text-ivory font-semibold">Createnova 파운더</span>
+                    <span className="text-ivory font-semibold">Mindpack AI 파운더</span>
                     <span className="text-ash/50 mx-2">·</span>
                     8년차 UX 기획자
                   </div>

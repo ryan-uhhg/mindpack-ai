@@ -1,5 +1,5 @@
 # McKinsey 7S Framework — AI 슬라이드 생성 프롬프트
-> Createnova | createnova.netlify.app
+> Mindpack AI | mindpackai.netlify.app
 
 ---
 
@@ -126,7 +126,7 @@ Text-sub:  #71717a
 - 키보드: ← → 이동, Space 다음, F 풀스크린
 - 우측 하단: 슬라이드 번호
 - 하단: 진행률 바
-- 우측 상단: "Createnova"
+- 우측 상단: "Mindpack AI"
 
 ### 인쇄 대응
 ```css

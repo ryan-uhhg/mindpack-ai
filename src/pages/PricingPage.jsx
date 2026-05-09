@@ -104,7 +104,7 @@ const faqItems = [
   },
   {
     q: '법인 대량 구매 할인이 있습니까?',
-    a: '5라이선스 이상 대량 구매 시 별도 법인 할인을 제공합니다. createnova.help@gmail.com로 문의하여 주십시오.',
+    a: '5라이선스 이상 대량 구매 시 별도 법인 할인을 제공합니다. mindpackai.help@gmail.com로 문의하여 주십시오.',
   },
   {
     q: '환불 조건이 무엇입니까?',
@@ -116,7 +116,7 @@ const faqItems = [
   },
   {
     q: '세금계산서 발급이 가능합니까?',
-    a: '네. 법인 또는 사업자 구매 시 세금계산서를 발급해 드립니다. 결제 완료 후 createnova.help@gmail.com로 사업자등록증 사본과 함께 요청하여 주십시오.',
+    a: '네. 법인 또는 사업자 구매 시 세금계산서를 발급해 드립니다. 결제 완료 후 mindpackai.help@gmail.com로 사업자등록증 사본과 함께 요청하여 주십시오.',
   },
 ];
 
@@ -333,13 +333,13 @@ function PricingCardInner({ tier }) {
           </button>
         </a>
       ) : tier.isPrimary ? (
-        <a href={`mailto:createnova.help@gmail.com?subject=Premium 구매 문의&body=안녕하세요, Premium 플랜 구매를 원합니다.`}>
+        <a href={`mailto:mindpackai.help@gmail.com?subject=Premium 구매 문의&body=안녕하세요, Premium 플랜 구매를 원합니다.`}>
           <button className="group w-full py-4 rounded-2xl bg-gradient-to-r from-gold/90 via-gold to-gold-bright font-bold text-void text-[14px] transition-all duration-300 hover:shadow-[0_0_50px_rgba(240,198,116,0.35)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
             {tier.cta}
           </button>
         </a>
       ) : (
-        <a href={`mailto:createnova.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.`}>
+        <a href={`mailto:mindpackai.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.`}>
           <button className="w-full py-4 rounded-2xl border border-white/[0.08] text-silver text-[14px] font-semibold hover:bg-white/[0.04] hover:text-pearl transition-all duration-300 cursor-pointer">
             {tier.cta}
           </button>

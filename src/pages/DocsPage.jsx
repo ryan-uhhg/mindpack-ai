@@ -20,7 +20,7 @@ const sysReqs = {
 
 const installSteps = [
   { step: '1', title: '다운로드 링크 확인', desc: '결제 완료 후 이메일로 수신된 다운로드 링크를 클릭합니다.' },
-  { step: '2', title: '설치 파일 실행', desc: 'macOS: .dmg 파일을 열고 Createnova.app을 Applications 폴더로 드래그합니다. Windows: .exe 설치 파일을 실행하고 안내에 따라 진행합니다.' },
+  { step: '2', title: '설치 파일 실행', desc: 'macOS: .dmg 파일을 열고 Mindpack AI.app을 Applications 폴더로 드래그합니다. Windows: .exe 설치 파일을 실행하고 안내에 따라 진행합니다.' },
   { step: '3', title: 'API 키 설정', desc: '최초 실행 시 Anthropic API 키 입력 화면이 표시됩니다. Anthropic Console에서 발급한 API 키를 입력하십시오. 사내 AI 서버를 사용하는 경우 엔드포인트 주소를 입력하십시오.' },
   { step: '4', title: '문서 투입 및 분석 시작', desc: '분석할 문서를 드래그 앤 드롭하고, 프레임워크를 선택한 뒤 분석 시작을 클릭합니다.' },
 ];
@@ -28,7 +28,7 @@ const installSteps = [
 const faqInstall = [
   { q: 'API 키는 어디서 발급합니까?', a: 'Anthropic Console(console.anthropic.com)에서 발급할 수 있습니다. 계정 생성 후 API Keys 메뉴에서 새 키를 생성하십시오.' },
   { q: 'API 키를 입력했는데 오류가 발생합니다.', a: 'API 키 앞뒤의 공백을 확인하십시오. 키가 정상인데도 오류가 발생하면 Anthropic 계정의 크레딧 잔액을 확인하십시오. 잔액이 부족하면 분석이 실행되지 않습니다.' },
-  { q: 'macOS에서 "개발자를 확인할 수 없음" 메시지가 표시됩니다.', a: '시스템 환경설정 → 개인 정보 보호 및 보안 → "확인 없이 열기"를 클릭하십시오. 또는 터미널에서 xattr -cr /Applications/Createnova.app 을 실행하십시오.' },
+  { q: 'macOS에서 "개발자를 확인할 수 없음" 메시지가 표시됩니다.', a: '시스템 환경설정 → 개인 정보 보호 및 보안 → "확인 없이 열기"를 클릭하십시오. 또는 터미널에서 xattr -cr /Applications/Mindpack AI.app 을 실행하십시오.' },
   { q: 'Windows에서 Defender가 차단합니다.', a: '"추가 정보" 클릭 후 "실행" 버튼을 누르십시오. 최초 실행 시에만 표시되는 경고입니다.' },
 ];
 

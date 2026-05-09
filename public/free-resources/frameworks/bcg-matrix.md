@@ -1,5 +1,5 @@
 # BCG Matrix — AI 슬라이드 생성 프롬프트
-> Createnova | createnova.netlify.app
+> Mindpack AI | mindpackai.netlify.app
 
 ---
 
@@ -123,5 +123,5 @@ Text-sub:  #71717a
 
 ### 네비게이션 및 인쇄
 - 1280×720px, 키보드 ← → Space F
-- 우측 상단 "Createnova", 하단 진행률 바
+- 우측 상단 "Mindpack AI", 하단 진행률 바
 - @media print: page-break-after, print-color-adjust: exact

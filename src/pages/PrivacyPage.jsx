@@ -6,8 +6,8 @@ export default function PrivacyPage() {
       <div className="mb-10 p-5 rounded-2xl border border-emerald-accent/20 bg-emerald-accent/[0.03]">
         <p className="text-emerald-accent text-[13px] font-semibold mb-2">데이터 처리 투명성 선언</p>
         <p className="text-silver text-[13px] leading-[1.8]">
-          Createnova 앱은 원본 파일을 업로드하지 않습니다. 파이썬이 로컬에서 텍스트만 추출하고,
-          추출된 텍스트만 Claude API(Anthropic)로 전송합니다. Createnova 자체 서버에는 어떠한
+          Mindpack AI 앱은 원본 파일을 업로드하지 않습니다. 파이썬이 로컬에서 텍스트만 추출하고,
+          추출된 텍스트만 Claude API(Anthropic)로 전송합니다. Mindpack AI 자체 서버에는 어떠한
           데이터도 전송되지 않습니다.
         </p>
       </div>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           {[
             '앱 사용 통계 (실행 횟수, 사용 시간 등)',
             'IP 주소, 기기 정보, 위치 정보',
-            'Createnova 자체 서버로의 어떠한 데이터 전송',
+            'Mindpack AI 자체 서버로의 어떠한 데이터 전송',
           ].map((t) => (
             <li key={t} className="flex items-start gap-2 text-silver">
               <span className="text-ash/50 mt-1 shrink-0">✕</span>{t}
@@ -90,18 +90,18 @@ export default function PrivacyPage() {
         <p>귀하는 언제든지 수집된 개인정보의 열람, 정정, 삭제, 처리정지를 요청할 수 있습니다.</p>
         <p>
           요청 방법:{' '}
-          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
-            createnova.help@gmail.com
+          <a href="mailto:mindpackai.help@gmail.com" className="text-accent hover:underline">
+            mindpackai.help@gmail.com
           </a>
         </p>
       </LegalSection>
 
       <LegalSection title="제6조 (개인정보 보호책임자)">
-        <p>Createnova 개인정보 보호책임자: Createnova 파운더</p>
+        <p>Mindpack AI 개인정보 보호책임자: Mindpack AI 파운더</p>
         <p>
           연락처:{' '}
-          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
-            createnova.help@gmail.com
+          <a href="mailto:mindpackai.help@gmail.com" className="text-accent hover:underline">
+            mindpackai.help@gmail.com
           </a>
         </p>
       </LegalSection>

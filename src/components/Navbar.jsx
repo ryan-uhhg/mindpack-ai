@@ -78,7 +78,7 @@ export default function Navbar() {
             <Icon icon="solar:star-bold-duotone" className="w-4 h-4 text-white" />
           </div>
           <span className="text-ivory font-extrabold text-sm tracking-tight group-hover:text-snow transition-colors duration-300">
-            Createnova
+            Mindpack AI
           </span>
         </Link>
 

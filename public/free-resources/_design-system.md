@@ -1,4 +1,4 @@
-# Createnova 슬라이드 디자인 시스템 v2
+# Mindpack AI 슬라이드 디자인 시스템 v2
 > Anti-Slop Edition — taste-skill 원칙 기반
 
 ---
@@ -125,7 +125,7 @@ tailwind.config = {
   - 우측 하단: 슬라이드 번호 "03 / 10" (text-xs text-zinc-400)
   - 하단 전체: 진행률 바 (h-0.5, accent 색상, transition-all duration-300)
   - 좌측 하단: ← → 버튼 (bg-zinc-100 hover:bg-zinc-200, rounded-lg, p-2)
-  - 우측 상단: "Createnova" (text-[10px] tracking-[0.12em] uppercase text-zinc-400)
+  - 우측 상단: "Mindpack AI" (text-[10px] tracking-[0.12em] uppercase text-zinc-400)
 
 키보드:
   - ← → : 슬라이드 이동

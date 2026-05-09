@@ -15,19 +15,19 @@ const faqGeneral = [
 const faqPurchase = [
   { q: '구독 모델입니까?', a: '아닙니다. 1회 결제 영구 라이선스입니다. 추가 비용이 발생하지 않습니다.' },
   { q: '여러 기기에서 사용할 수 있습니까?', a: '1인 사용자 기준 최대 2대의 기기에 설치하실 수 있습니다.' },
-  { q: '법인 라이선스가 있습니까?', a: '5라이선스 이상 구매 시 법인 할인을 제공합니다. createnova.help@gmail.com로 문의하여 주십시오.' },
+  { q: '법인 라이선스가 있습니까?', a: '5라이선스 이상 구매 시 법인 할인을 제공합니다. mindpackai.help@gmail.com로 문의하여 주십시오.' },
   { q: '결제 후 어떻게 받습니까?', a: '결제 완료 즉시 등록하신 이메일로 다운로드 링크가 발송됩니다.' },
 ];
 
 const faqSecurity = [
-  { q: '원본 파일이 외부로 전송됩니까?', a: '아닙니다. 원본 파일(PDF, PPTX 등)은 귀하의 기기를 벗어나지 않습니다. 파이썬이 로컬에서 텍스트만 추출하고, 추출된 텍스트만 Claude API로 전송됩니다. Createnova 자체 서버에는 어떤 데이터도 전송되지 않습니다.' },
+  { q: '원본 파일이 외부로 전송됩니까?', a: '아닙니다. 원본 파일(PDF, PPTX 등)은 귀하의 기기를 벗어나지 않습니다. 파이썬이 로컬에서 텍스트만 추출하고, 추출된 텍스트만 Claude API로 전송됩니다. Mindpack AI 자체 서버에는 어떤 데이터도 전송되지 않습니다.' },
   { q: '사내 AI 서버(Azure OpenAI, AWS Bedrock 등)에 연결할 수 있습니까?', a: '네. 설정에서 API 엔드포인트만 귀사의 사내 AI 서버 주소로 변경하면 즉시 연동됩니다. 이 경우 추출된 텍스트도 사내망을 벗어나지 않아 가장 엄격한 보안 환경에서도 사용할 수 있습니다.' },
-  { q: '사내 보안 감사를 통과할 수 있습니까?', a: '원본 파일이 외부 전송되지 않으므로 DLP 정책 관점에서 유리합니다. 보안 검토용 기술 문서는 createnova.help@gmail.com로 요청하실 수 있습니다.' },
+  { q: '사내 보안 감사를 통과할 수 있습니까?', a: '원본 파일이 외부 전송되지 않으므로 DLP 정책 관점에서 유리합니다. 보안 검토용 기술 문서는 mindpackai.help@gmail.com로 요청하실 수 있습니다.' },
 ];
 
 const faqSupport = [
   { q: '기술 지원은 어떻게 받습니까?', a: 'Premium 구매자는 전용 지원 채널(이메일 우선 응답)을 이용하실 수 있습니다. Basic 구매자는 일반 이메일 지원을 제공합니다.' },
-  { q: '앱이 작동하지 않으면 어떻게 합니까?', a: 'createnova.help@gmail.com로 문의하시면 24시간 이내에 기술 지원을 제공합니다. 해결 불가 시 100% 환불 보증이 적용됩니다.' },
+  { q: '앱이 작동하지 않으면 어떻게 합니까?', a: 'mindpackai.help@gmail.com로 문의하시면 24시간 이내에 기술 지원을 제공합니다. 해결 불가 시 100% 환불 보증이 적용됩니다.' },
 ];
 
 const sections = [
@@ -43,7 +43,7 @@ export default function FAQPage() {
       <PageHero
         eyebrow="FAQ"
         headline={'자주 묻는 질문'}
-        subCopy="궁금한 점이 해결되지 않으면 createnova.help@gmail.com로 문의하여 주십시오."
+        subCopy="궁금한 점이 해결되지 않으면 mindpackai.help@gmail.com로 문의하여 주십시오."
       />
 
       <section className="w-full py-4 pb-24">
@@ -61,11 +61,11 @@ export default function FAQPage() {
         <div className="section-container max-w-3xl text-center">
           <p className="text-ash text-[14px] mb-4">원하시는 답변을 찾지 못하셨습니까?</p>
           <a
-            href="mailto:createnova.help@gmail.com"
+            href="mailto:mindpackai.help@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] transition-all duration-300"
           >
             <Icon icon="solar:letter-bold-duotone" className="w-4 h-4" />
-            createnova.help@gmail.com 문의하기
+            mindpackai.help@gmail.com 문의하기
           </a>
         </div>
       </section>

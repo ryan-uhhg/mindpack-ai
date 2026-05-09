@@ -1,5 +1,5 @@
 # Jobs-to-be-Done — AI 슬라이드 생성 프롬프트
-> Createnova | createnova.netlify.app
+> Mindpack AI | mindpackai.netlify.app
 
 ---
 
@@ -76,7 +76,7 @@
 | 7 | Data Table | Job 우선순위 매트릭스 (중요도 × 만족도) |
 | 8 | Numbered List | Underserved Needs Top 5 |
 | 9 | Timeline / Flow | 혁신 기회 → 제품 전략 로드맵 |
-| 10 | CTA / Closing | 다음 단계 + Createnova |
+| 10 | CTA / Closing | 다음 단계 + Mindpack AI |
 
 ---
 
@@ -107,5 +107,5 @@ Secondary: #0d9488 (teal-600, for contrast)
 
 ### 절대 금지: 이모지, 연속 동일 레이아웃, 3열 균등, 가짜 통계, 텍스트 그라디언트
 ### 한글: word-break: keep-all, leading-tight/relaxed
-### 네비게이션: 1280×720, ← → Space F, "Createnova"
+### 네비게이션: 1280×720, ← → Space F, "Mindpack AI"
 ### 인쇄: page-break-after, print-color-adjust: exact

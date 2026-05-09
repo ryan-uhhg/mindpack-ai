@@ -17,7 +17,7 @@ const steps = [
   {
     num: '02',
     title: 'Claude API 연결',
-    body: 'Createnova는 귀하의 Anthropic 계정을 직접 사용합니다. API 키를 한 번 입력하면 앱이 OS 키체인에 안전하게 저장합니다. Createnova 서버에는 키가 전달되지 않으며, API 비용은 Anthropic 계정에서 직접 청구됩니다.',
+    body: 'Createnova는 귀하의 Anthropic 계정을 직접 사용합니다. API 키를 한 번 입력하면 앱이 OS 키체인에 안전하게 저장합니다. Mindpack AI 서버에는 키가 전달되지 않으며, API 비용은 Anthropic 계정에서 직접 청구됩니다.',
     badge: '키체인 보안 저장',
     icon: 'solar:key-bold-duotone',
     color: 'gold',
@@ -53,7 +53,7 @@ const steps = [
   {
     num: '06',
     title: '프라이빗 RAG 분석',
-    body: '파이썬이 로컬에서 추출한 텍스트만 Claude API로 전송하여 분석합니다. 원본 파일 자체는 귀하의 기기를 절대 벗어나지 않으며, Createnova 자체 서버에는 어떤 데이터도 전송되지 않습니다.',
+    body: '파이썬이 로컬에서 추출한 텍스트만 Claude API로 전송하여 분석합니다. 원본 파일 자체는 귀하의 기기를 절대 벗어나지 않으며, Mindpack AI 자체 서버에는 어떤 데이터도 전송되지 않습니다.',
     badge: '원본 파일 보호',
     icon: 'solar:shield-check-bold-duotone',
     color: 'emerald-accent',
@@ -171,7 +171,7 @@ export default function DemoPage() {
               <div className="rounded-[19px] bg-gradient-to-b from-carbon to-obsidian p-8 md:p-10 h-full">
                 <div className="flex items-center gap-2 mb-5">
                   <div className="w-2 h-2 rounded-full bg-emerald-accent" />
-                  <span className="text-emerald-accent text-[12px] font-semibold tracking-widest uppercase">Createnova</span>
+                  <span className="text-emerald-accent text-[12px] font-semibold tracking-widest uppercase">Mindpack AI</span>
                 </div>
                 <div className="text-3xl font-extrabold text-emerald-accent mb-6">10초</div>
                 <ul className="flex flex-col gap-3">
@@ -243,10 +243,10 @@ function MockupShell({ children, title }) {
 
 function InstallMockup() {
   return (
-    <MockupShell title="Createnova-v1.2.0.dmg">
+    <MockupShell title="Mindpack AI-v1.2.0.dmg">
       <div className="flex flex-col items-center gap-4 py-4">
         <Icon icon="solar:star-bold-duotone" className="w-16 h-16 text-accent" />
-        <div className="text-snow text-[13px] font-medium">Createnova.app</div>
+        <div className="text-snow text-[13px] font-medium">Mindpack AI.app</div>
         <div className="flex items-center gap-4">
           <div className="text-ash/50 text-[11px]">←</div>
           <div className="w-20 h-16 rounded-xl bg-white/[0.03] border border-white/[0.05] flex items-center justify-center">
@@ -372,7 +372,7 @@ function AnalysisMockup() {
         </div>
         <div className="flex gap-4 text-[11px]">
           <span className="text-emerald-accent flex items-center gap-1"><Icon icon="solar:shield-check-bold-duotone" className="w-3.5 h-3.5" />원본 파일 보호</span>
-          <span className="text-ash">Createnova 서버 경유 없음</span>
+          <span className="text-ash">Mindpack AI 서버 경유 없음</span>
         </div>
       </div>
     </MockupShell>

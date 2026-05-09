@@ -203,7 +203,7 @@ function PricingCard({ plan, index }) {
                 </button>
               </a>
             ) : (
-              <a href="mailto:createnova.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.">
+              <a href="mailto:mindpackai.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.">
                 <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
                   <span className="flex items-center justify-center gap-2">
                     {plan.cta}

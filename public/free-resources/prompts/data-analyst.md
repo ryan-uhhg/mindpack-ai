@@ -1,5 +1,5 @@
 # AI 데이터 분석가 프롬프트
-## Createnova — Data Analyst System Prompt
+## Mindpack AI — Data Analyst System Prompt
 
 ---
 
@@ -42,4 +42,4 @@
 
 ---
 
-*Createnova — AI로 컨설팅급 전략 분석을 누구나*
+*Mindpack AI — AI로 컨설팅급 전략 분석을 누구나*

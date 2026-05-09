@@ -1,5 +1,5 @@
 # Porter's Five Forces — AI 슬라이드 생성 프롬프트
-> Createnova | createnova.netlify.app
+> Mindpack AI | mindpackai.netlify.app
 
 ---
 
@@ -78,7 +78,7 @@
 | 7 | Data Table | Five Forces 강도 비교표 |
 | 8 | Numbered List | 핵심 발견사항 + 산업 매력도 평가 |
 | 9 | Timeline / Flow | 전략적 대응 로드맵 |
-| 10 | CTA / Closing | 다음 단계 + Createnova |
+| 10 | CTA / Closing | 다음 단계 + Mindpack AI |
 
 ---
 
@@ -113,5 +113,5 @@ Text-sub:  #71717a
 - 가짜 통계 금지
 
 ### 한글: word-break: keep-all, leading-tight/relaxed
-### 네비게이션: 1280×720, ← → Space F, "Createnova" 우측 상단
+### 네비게이션: 1280×720, ← → Space F, "Mindpack AI" 우측 상단
 ### 인쇄: page-break-after, print-color-adjust: exact

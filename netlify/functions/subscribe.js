@@ -93,7 +93,7 @@ export default async (req) => {
 function corsHeaders() {
   return {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://createnova.netlify.app',
+    'Access-Control-Allow-Origin': 'https://mindpackai.netlify.app',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   };

@@ -1,5 +1,5 @@
 # SWOT Analysis — AI 슬라이드 생성 프롬프트
-> Createnova | createnova.netlify.app
+> Mindpack AI | mindpackai.netlify.app
 
 ---
 
@@ -67,7 +67,7 @@
 | 7 | Data Table | TOWS 교차 전략 매트릭스 |
 | 8 | Numbered List | 핵심 전략 우선순위 Top 5 |
 | 9 | Timeline / Flow | 실행 로드맵 |
-| 10 | CTA / Closing | 다음 단계 + Createnova |
+| 10 | CTA / Closing | 다음 단계 + Mindpack AI |
 
 ---
 
@@ -97,5 +97,5 @@ Text-sub:  #71717a
 
 ### 절대 금지: 이모지, 연속 동일 레이아웃, 3열 균등, 가짜 통계, 텍스트 그라디언트
 ### 한글: word-break: keep-all, leading-tight/relaxed
-### 네비게이션: 1280×720, ← → Space F, "Createnova"
+### 네비게이션: 1280×720, ← → Space F, "Mindpack AI"
 ### 인쇄: page-break-after, print-color-adjust: exact

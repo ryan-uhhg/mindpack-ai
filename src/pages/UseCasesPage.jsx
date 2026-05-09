@@ -122,7 +122,7 @@ export default function UseCasesPage() {
                     <div className={`rounded-xl border p-5 ${c.color === 'gold' ? 'bg-gold/[0.03] border-gold/15' : c.color === 'emerald-accent' ? 'bg-emerald-accent/[0.03] border-emerald-accent/15' : 'bg-accent/[0.03] border-accent/15'}`}>
                       <div className="flex items-center gap-2 mb-4">
                         <div className={`w-1.5 h-1.5 rounded-full ${col.icon.replace('text-','bg-')}`} />
-                        <span className={`text-[11px] font-semibold tracking-widest uppercase ${col.icon}`}>Createnova</span>
+                        <span className={`text-[11px] font-semibold tracking-widest uppercase ${col.icon}`}>Mindpack AI</span>
                         <span className={`ml-auto font-bold text-[15px] ${col.icon}`}>{c.after.time}</span>
                       </div>
                       <ul className="space-y-2">

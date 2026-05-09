@@ -1,4 +1,4 @@
-# Supanova Landing Page — 작업 진행 상황 (2026-04-18)
+# Mindpack AI Landing Page — 작업 진행 상황 (2026-04-18)
 
 ## 📊 완료 현황
 
@@ -77,7 +77,7 @@ src/
 
 ## 🎨 디자인 시스템 적용 현황
 
-### 색상 (Supanova Premium Aesthetic)
+### 색상 (Mindpack AI Premium Aesthetic)
 - `void` (#050507) — 배경
 - `accent` (#a78bfa) — 기본 CTA, 제품 강조
 - `gold` (#f0c674) — 프리미엄, 가격, 긴급성
@@ -135,8 +135,8 @@ src/
 
 ## 🚀 현재 상태 — ✅ 프로덕션 배포 완료
 
-**Live URL**: https://createnova.netlify.app
-**GitHub**: https://github.com/ryan-uhhg/supanova-landing
+**Live URL**: https://mindpackai.netlify.app
+**GitHub**: https://github.com/ryan-uhhg/mindpack-ai-landing
 **배포 플랫폼**: Netlify (자동 배포 설정 완료)
 **빌드 상태**: ✅ 성공 (529.83 KB, gzip 156.73 KB)
 **라우팅**: 15개 경로 모두 정상 작동 ✅
@@ -146,7 +146,7 @@ src/
 - ✅ 1일차: 콘텐츠 마스터 사양서 완성 (14페이지 + 글로벌 컨벤션)
 - ✅ 2일차: P0 페이지 7개 완전 구현 + P1 페이지 7개 추가
 - ✅ 라우팅 15개 경로 모두 정상 작동
-- ✅ Supanova Premium Aesthetic Engine 100% 적용
+- ✅ Mindpack AI Premium Aesthetic Engine 100% 적용
 - ✅ 모바일 반응형 완성
 - ✅ 법적 페이지 3개 (이용약관, 개인정보, 환불)
 

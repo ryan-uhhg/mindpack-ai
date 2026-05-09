@@ -39,16 +39,16 @@ export default function Footer() {
               <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent-glow to-accent-deep flex items-center justify-center">
                 <Icon icon="solar:star-bold-duotone" className="w-4 h-4 text-white" />
               </div>
-              <span className="text-ivory font-extrabold text-sm tracking-tight">Createnova</span>
+              <span className="text-ivory font-extrabold text-sm tracking-tight">Mindpack AI</span>
             </Link>
             <p className="text-ash text-xs leading-[1.8] mb-5">
               기획자의 시간은 텍스트 정리가 아닌,<br />결정에 쓰여야 합니다.
             </p>
             <a
-              href="mailto:createnova.help@gmail.com"
+              href="mailto:mindpackai.help@gmail.com"
               className="text-ash/60 text-[11px] hover:text-silver transition-colors duration-200"
             >
-              createnova.help@gmail.com
+              mindpackai.help@gmail.com
             </a>
           </div>
 
@@ -79,7 +79,7 @@ export default function Footer() {
       <div className="border-t border-white/[0.03]">
         <div className="section-container py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-ash/50 text-[11px]">
-            © 2026 Createnova. Private Intelligence System. All rights reserved.
+            © 2026 Mindpack AI. Private Intelligence System. All rights reserved.
           </p>
           <p className="text-ash/40 text-[11px]">
             Powered by Claude API (Anthropic) · 원본 파일은 업로드되지 않습니다

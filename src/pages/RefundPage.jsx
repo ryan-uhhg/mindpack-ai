@@ -64,7 +64,7 @@ export default function RefundPage() {
       <LegalSection title="환불 절차">
         <div className="space-y-3">
           {[
-            { step: '1', title: '환불 요청 이메일 발송', desc: 'createnova.help@gmail.com로 구매일, 주문번호, 발생한 문제를 기재하여 발송' },
+            { step: '1', title: '환불 요청 이메일 발송', desc: 'mindpackai.help@gmail.com로 구매일, 주문번호, 발생한 문제를 기재하여 발송' },
             { step: '2', title: '기술 지원 시도', desc: '24시간 이내 기술 지원팀이 문제를 확인하고 해결을 시도합니다' },
             { step: '3', title: '환불 처리', desc: '해결 불가 판정 시 영업일 기준 3일 이내 전액 환불 처리' },
           ].map((item) => (
@@ -93,8 +93,8 @@ export default function RefundPage() {
       <div className="mt-12 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
         <p className="text-ash text-[12.5px]">
           환불 문의:{' '}
-          <a href="mailto:createnova.help@gmail.com" className="text-accent hover:underline">
-            createnova.help@gmail.com
+          <a href="mailto:mindpackai.help@gmail.com" className="text-accent hover:underline">
+            mindpackai.help@gmail.com
           </a>
         </p>
       </div>

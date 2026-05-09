@@ -1,5 +1,5 @@
 # AI 전략 컨설턴트 프롬프트
-## Createnova — Strategy Consultant System Prompt
+## Mindpack AI — Strategy Consultant System Prompt
 
 ---
 
@@ -43,4 +43,4 @@
 
 ---
 
-*Createnova — AI로 컨설팅급 전략 분석을 누구나*
+*Mindpack AI — AI로 컨설팅급 전략 분석을 누구나*

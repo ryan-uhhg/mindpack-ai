@@ -92,7 +92,7 @@ export default function ReviewsPage() {
               <h3 className="text-xl font-bold text-snow mb-3">귀하의 경험을 공유하여 주십시오</h3>
               <p className="text-silver text-[13.5px] mb-6">베타 테스트에 참여하셨거나 제품을 구매하셨다면, 귀하의 경험을 들려주십시오.</p>
               <a
-                href="mailto:createnova.help@gmail.com?subject=Createnova 후기 제출"
+                href="mailto:mindpackai.help@gmail.com?subject=Mindpack AI 후기 제출"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] transition-all duration-300"
               >
                 <Icon icon="solar:letter-bold-duotone" className="w-4 h-4" />
