@@ -1,273 +1,166 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
 
-const cardReveal = {
-  hidden: { opacity: 0, y: 40, scale: 0.97 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.7, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
+const SKILLS = [
+  { name: 'Atomic Habits', author: 'James Clear', icon: 'solar:refresh-circle-bold-duotone', tag: '습관 시스템', color: 'from-amber-500/20 to-orange-500/10' },
+  { name: 'GTD', author: 'David Allen', icon: 'solar:inbox-bold-duotone', tag: '업무 처리', color: 'from-blue-500/20 to-cyan-500/10' },
+  { name: 'Deep Work', author: 'Cal Newport', icon: 'solar:target-bold-duotone', tag: '집중력', color: 'from-indigo-500/20 to-purple-500/10' },
+  { name: 'PARA Method', author: 'Tiago Forte', icon: 'solar:folder-bold-duotone', tag: '지식 구조화', color: 'from-teal-500/20 to-emerald-500/10' },
+  { name: 'Eat That Frog', author: 'Brian Tracy', icon: 'solar:clock-bold-duotone', tag: '우선순위', color: 'from-green-500/20 to-lime-500/10' },
+  { name: 'The ONE Thing', author: 'Gary Keller', icon: 'solar:star-bold-duotone', tag: '초집중', color: 'from-red-500/20 to-orange-500/10' },
+  { name: 'OKR', author: 'John Doerr', icon: 'solar:chart-2-bold-duotone', tag: '목표 설계', color: 'from-blue-500/20 to-indigo-500/10' },
+  { name: '7 Habits', author: 'Stephen Covey', icon: 'solar:diamond-bold-duotone', tag: '원칙 중심', color: 'from-navy-500/20 to-blue-500/10' },
+  { name: 'Second Brain', author: 'Tiago Forte', icon: 'solar:server-bold-duotone', tag: '지식 창작', color: 'from-purple-500/20 to-violet-500/10' },
+  { name: 'Ikigai', author: '일본 전통 철학', icon: 'solar:sun-bold-duotone', tag: '삶의 방향', color: 'from-pink-500/20 to-rose-500/10' },
+  { name: 'Zettelkasten', author: 'Niklas Luhmann', icon: 'solar:notes-bold-duotone', tag: '노트 연결', color: 'from-slate-500/20 to-gray-500/10' },
+  { name: 'Bullet Journal', author: 'Ryder Carroll', icon: 'solar:notebook-bold-duotone', tag: '일상 기록', color: 'from-yellow-500/20 to-amber-500/10' },
+  { name: '설득의 심리학', author: 'Robert Cialdini', icon: 'solar:users-group-bold-duotone', tag: '영향력', color: 'from-red-500/20 to-pink-500/10' },
+  { name: '세이노의 가르침', author: '세이노', icon: 'solar:fire-bold-duotone', tag: '자기 검열', color: 'from-orange-500/20 to-red-500/10' },
+];
 
-// Bottom 3 cards each get a unique accent
-const bottomCards = [
+const STEPS = [
   {
-    icon: 'solar:file-check-bold-duotone',
-    title: '.pptx 다이렉트 출력',
-    description: '분석 결과를 즉시 보고 가능한 프레젠테이션 파일로 자동 변환합니다.',
-    accentClass: 'text-accent-bright',
-    bgClass: 'bg-accent/10',
-    borderClass: 'border-accent/15',
-    glowClass: 'bg-accent-deep/20',
+    step: '01',
+    icon: 'solar:widget-bold-duotone',
+    title: '스킬 선택',
+    desc: '"나는 집중력부터 잡고 싶어" → Deep Work 선택. 14개 중 하나로 시작합니다.',
   },
   {
-    icon: 'solar:shield-check-bold-duotone',
-    title: '사내 보안 규정 준수',
-    description: '원본 파일은 업로드되지 않습니다. 텍스트만 추출하여 분석하므로 보안 감사에 유리합니다.',
-    accentClass: 'text-emerald-accent',
-    bgClass: 'bg-emerald-accent/10',
-    borderClass: 'border-emerald-accent/15',
-    glowClass: 'bg-emerald-accent/15',
+    step: '02',
+    icon: 'solar:chat-round-dots-bold-duotone',
+    title: 'AI와 5분 온보딩',
+    desc: 'AI가 선택형 QnA로 당신의 상황을 파악합니다. 일반적인 템플릿이 아닌, 당신만의 시스템이 생성됩니다.',
   },
   {
-    icon: 'solar:cpu-bolt-bold-duotone',
-    title: '경량화 로컬 전처리',
-    description: 'GPU 없는 일반 노트북에서도 원활하게 구동되도록 최적화했습니다.',
-    accentClass: 'text-gold',
-    bgClass: 'bg-gold/10',
-    borderClass: 'border-gold/15',
-    glowClass: 'bg-gold/15',
+    step: '03',
+    icon: 'solar:refresh-bold-duotone',
+    title: '매일 30초 체크인',
+    desc: '"오늘 Deep Work 블록 확보했나요?" AI가 먼저 물어봅니다. 당신은 답하기만 하면 됩니다.',
+  },
+  {
+    step: '04',
+    icon: 'solar:graph-bold-duotone',
+    title: '시스템이 진화한다',
+    desc: '패턴을 분석해 시스템을 조정합니다. 쓸수록 당신에게 최적화됩니다.',
   },
 ];
 
-function BottomBentoCard({ card, index }) {
-  return (
-    <motion.div
-      custom={index + 3}
-      variants={cardReveal}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
-      whileHover={{ y: -4, transition: { duration: 0.3 } }}
-      className="md:col-span-4 card-bezel group cursor-default"
-    >
-      <div className="card-bezel-inner h-full flex flex-col min-h-[220px]">
-        {/* Accent glow */}
-        <div className={`absolute top-0 right-0 w-32 h-32 rounded-full ${card.glowClass} blur-[50px] opacity-50 group-hover:opacity-80 transition-opacity duration-500`} />
-
-        <div className="relative z-10">
-          <div className={`inline-flex items-center justify-center w-11 h-11 rounded-2xl ${card.bgClass} border ${card.borderClass} mb-5 group-hover:scale-110 transition-transform duration-300`}>
-            <Icon icon={card.icon} className={`w-5 h-5 ${card.accentClass}`} />
-          </div>
-          <h3 className="text-base font-bold text-ivory mb-3.5 tracking-tight">{card.title}</h3>
-          <p className="text-silver text-[14px] leading-[1.85]">{card.description}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// Animated mock UI with shimmer + processing state
-function MockUI() {
-  const [processed, setProcessed] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setProcessed(true), 1800);
-    const cycle = setInterval(() => {
-      setProcessed(false);
-      setTimeout(() => setProcessed(true), 1800);
-    }, 5000);
-    return () => { clearTimeout(timer); clearInterval(cycle); };
-  }, []);
-
-  return (
-    <div className="relative flex-1 mb-8">
-      {/* macOS window chrome */}
-      <div className="absolute top-0 left-0 right-0 h-8 flex items-center gap-1.5 px-3">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-400/50" />
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/50" />
-        <div className="w-2.5 h-2.5 rounded-full bg-green-400/50" />
-        <div className="ml-3 flex-1 h-4 rounded shimmer" style={{ maxWidth: '120px' }} />
-      </div>
-
-      <div className="pt-12 space-y-3">
-        {/* Input documents — shimmer skeleton */}
-        {[4, 3, 3.5].map((w, i) => (
-          <div key={i} className="flex items-center gap-3">
-            <div className="w-5 h-5 rounded-lg bg-accent/[0.08] flex items-center justify-center shrink-0">
-              <Icon icon="solar:document-text-bold-duotone" className="w-3 h-3 text-accent/50" />
-            </div>
-            <div className={`h-2.5 rounded-full shimmer`} style={{ width: `${w * 16}%` }} />
-            <span className="text-[10px] font-mono text-ash/50 shrink-0">
-              {['기획안_v3.pdf', '시장조사.xlsx', '경쟁사분석.pptx'][i]}
-            </span>
-          </div>
-        ))}
-
-        {/* Processing arrow */}
-        <div className="flex justify-center py-5">
-          <div className="flex flex-col items-center gap-2">
-            <div className={`processing-blink text-accent-glow/60`}>
-              <Icon icon="solar:cpu-bold-duotone" className="w-7 h-7" />
-            </div>
-            <span className="text-[10px] font-mono text-ash/60 tracking-wider">
-              {processed ? 'COMPLETE' : 'PROCESSING...'}
-            </span>
-          </div>
-        </div>
-
-        {/* Output card — animates in when processed */}
-        <AnimatePresence mode="wait">
-          {processed ? (
-            <motion.div
-              key="done"
-              initial={{ opacity: 0, y: 8, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center gap-3 p-3 rounded-xl bg-accent/[0.08] border border-accent/15"
-            >
-              <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                <Icon icon="solar:presentation-graph-bold-duotone" className="w-4 h-4 text-accent-bright" />
-              </div>
-              <div className="flex-1">
-                <div className="h-2.5 rounded-full bg-accent/25 w-full mb-2" />
-                <div className="h-2 rounded-full bg-accent/12 w-3/4" />
-              </div>
-              <span className="text-xs font-mono font-bold text-accent-bright/80 bg-accent/10 px-2 py-1 rounded-lg">.pptx</span>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="processing"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04]"
-            >
-              <div className="w-8 h-8 rounded-lg bg-white/[0.03] flex items-center justify-center shrink-0">
-                <Icon icon="solar:presentation-graph-bold-duotone" className="w-4 h-4 text-ash/40" />
-              </div>
-              <div className="flex-1 space-y-1.5">
-                <div className="h-2.5 rounded-full shimmer w-full" />
-                <div className="h-2 rounded-full shimmer w-2/3" />
-              </div>
-              <span className="text-xs font-mono text-ash/30">...</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-}
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.55, delay: i * 0.07, ease: [0.25, 0.46, 0.45, 0.94] },
+  }),
+};
 
 export default function VisualProofSection() {
-  const { ref, isInView } = useScrollReveal();
-
   return (
-    <section className="relative py-40 md:py-52 overflow-hidden">
-      {/* Section background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
-        <div className="absolute top-1/3 left-1/3 w-[600px] h-[600px] rounded-full bg-accent-deep/[0.04] blur-[120px]" />
-      </div>
-
-      <div className="relative z-10 section-container" ref={ref}>
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-28"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs font-medium tracking-wider uppercase mb-8">
-            Visual Proof
-          </span>
-          <h2 className="text-3xl md:text-[2.75rem] font-extrabold text-snow tracking-tight mb-8">
-            시각적으로 증명합니다
-          </h2>
-          <p className="text-silver text-lg max-w-2xl mx-auto leading-[1.85] text-center">
-            웹 챗봇의 휘발되는 기억력은 잊으십시오.
-          </p>
-        </motion.div>
-
-        {/* Asymmetric Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Large feature card — 7 cols */}
-          <motion.div
-            custom={0}
-            variants={cardReveal}
-            initial="hidden"
-            whileInView="visible"
-            whileHover={{ y: -3, transition: { duration: 0.3 } }}
-            viewport={{ once: true, margin: '-60px' }}
-            className="md:col-span-7 card-bezel group cursor-default"
-          >
-            <div className="card-bezel-inner relative min-h-[360px] flex flex-col justify-between">
-              <MockUI />
-              <div>
-                <h3 className="text-xl font-bold text-ivory mb-3.5 tracking-tight">문서 누적 분석 → 즉시 보고</h3>
-                <p className="text-silver text-[15px] leading-relaxed">
-                  수십 개의 문서를 누적해서 읽고, 컨설팅 펌의 프레임워크로 논리를 연산하여, 즉시 보고 가능한 형태로 출력합니다.
-                </p>
-              </div>
-            </div>
+    <>
+      {/* SKILLS SHOWCASE */}
+      <section className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+        </div>
+        <div className="section-container max-w-6xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
+            <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-ash text-xs tracking-wider uppercase mb-4">
+              14 Frameworks
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+              세계에서 검증된 생산성 시스템.<br />
+              <span className="bg-gradient-to-r from-accent-bright to-accent bg-clip-text text-transparent">
+                이제 AI가 직접 구현합니다.
+              </span>
+            </h2>
+            <p className="text-silver text-base max-w-xl mx-auto">
+              14명의 사상가. 단 하나의 시스템으로 통합. 당신의 워크플로에 직접 이식됩니다.
+            </p>
           </motion.div>
 
-          {/* Right column — stacked cards */}
-          <div className="md:col-span-5 flex flex-col gap-6">
-            <motion.div
-              custom={1}
-              variants={cardReveal}
-              initial="hidden"
-              whileInView="visible"
-              whileHover={{ y: -4, transition: { duration: 0.3 } }}
-              viewport={{ once: true, margin: '-60px' }}
-              className="card-bezel group cursor-default flex-1"
-            >
-              <div className="card-bezel-inner h-full flex flex-col">
-                <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-accent/10 blur-[50px] opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-6 bg-accent/10 border border-accent/15 group-hover:scale-110 transition-transform duration-300">
-                    <Icon icon="solar:database-bold-duotone" className="w-6 h-6 text-accent-bright" />
-                  </div>
-                  <h3 className="text-lg font-bold text-ivory mb-4 tracking-tight">누적 기억 엔진</h3>
-                  <p className="text-silver text-[15px] leading-relaxed">웹 챗봇처럼 대화가 초기화되지 않습니다. 입력한 모든 문서를 영구적으로 학습하여 맥락을 유지합니다.</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+            {SKILLS.map(({ name, author, icon, tag, color }, i) => (
+              <motion.div key={name} custom={i} variants={fadeUp} initial="hidden"
+                whileInView="visible" viewport={{ once: true }}
+                className={`relative p-4 rounded-xl bg-graphite/50 border border-white/[0.06] hover:border-white/[0.15] transition-colors group cursor-default`}>
+                <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center mb-3`}>
+                  <Icon icon={icon} className="w-4 h-4 text-white/80" />
                 </div>
-              </div>
-            </motion.div>
-            <motion.div
-              custom={2}
-              variants={cardReveal}
-              initial="hidden"
-              whileInView="visible"
-              whileHover={{ y: -4, transition: { duration: 0.3 } }}
-              viewport={{ once: true, margin: '-60px' }}
-              className="card-bezel group cursor-default flex-1"
-            >
-              <div className="card-bezel-inner h-full flex flex-col">
-                <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-accent-deep/15 blur-[50px] opacity-50 group-hover:opacity-90 transition-opacity duration-500" />
-                <div className="relative z-10">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-6 bg-accent-deep/10 border border-accent-deep/20 group-hover:scale-110 transition-transform duration-300">
-                    <Icon icon="solar:chart-square-bold-duotone" className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-bold text-ivory mb-4 tracking-tight">컨설팅 프레임워크</h3>
-                  <p className="text-silver text-[15px] leading-relaxed">맥킨지, BCG 등 검증된 프레임워크를 탑재하여, 논리적 구조화를 자동 연산합니다.</p>
-                </div>
-              </div>
+                <div className="text-ivory text-xs font-semibold leading-snug mb-1">{name}</div>
+                <div className="text-ash text-[10px] leading-tight mb-2">{author}</div>
+                <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-ash/80">
+                  {tag}
+                </span>
+              </motion.div>
+            ))}
+            {/* +더보기 카드 */}
+            <motion.div custom={14} variants={fadeUp} initial="hidden"
+              whileInView="visible" viewport={{ once: true }}
+              className="p-4 rounded-xl bg-accent/[0.04] border border-accent/15 flex flex-col items-center justify-center text-center">
+              <Icon icon="solar:add-circle-bold-duotone" className="w-8 h-8 text-accent/60 mb-2" />
+              <div className="text-accent/80 text-xs font-medium">지속 추가 예정</div>
+              <div className="text-ash/60 text-[10px] mt-1">얼리버드는 자동 업데이트</div>
             </motion.div>
           </div>
-
-          {/* Bottom row — 3 cards with distinct accents */}
-          {bottomCards.map((card, i) => (
-            <BottomBentoCard key={card.title} card={card} index={i} />
-          ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section className="relative py-28 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
+          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-deep/[0.04] blur-[120px]" />
+        </div>
+        <div className="section-container max-w-5xl">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
+            <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
+              How it works
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+              설정 5분. 이후엔 AI가 알아서 돌립니다.
+            </h2>
+            <p className="text-silver text-base max-w-xl mx-auto">
+              어렵게 공부하고, 힘들게 유지하던 시대는 끝났습니다.
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Connector line */}
+            <div className="hidden md:block absolute top-10 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+
+            <div className="grid md:grid-cols-4 gap-6">
+              {STEPS.map(({ step, icon, title, desc }, i) => (
+                <motion.div key={step} custom={i} variants={fadeUp} initial="hidden"
+                  whileInView="visible" viewport={{ once: true }}
+                  className="relative flex flex-col items-center md:items-start text-center md:text-left">
+                  {/* Step icon */}
+                  <div className="relative w-20 h-20 rounded-2xl bg-graphite border border-accent/15 flex items-center justify-center mb-5 shrink-0">
+                    <Icon icon={icon} className="w-8 h-8 text-accent" />
+                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-void text-[10px] font-extrabold flex items-center justify-center">
+                      {step}
+                    </span>
+                  </div>
+                  <h3 className="text-ivory font-semibold mb-2 text-sm">{title}</h3>
+                  <p className="text-ash text-sm leading-relaxed">{desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Quote */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ delay: 0.5 }}
+            className="mt-20 text-center p-8 rounded-2xl bg-graphite/40 border border-white/[0.06]">
+            <p className="text-silver text-lg leading-relaxed italic mb-4">
+              "AI는 일회성 답변을 주는 도구가 아니라,<br />
+              <span className="text-ivory not-italic font-medium">당신과 함께 성장하는 영구적 시스템이어야 한다.</span>"
+            </p>
+            <p className="text-ash text-sm">Mindpack AI의 설계 철학</p>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

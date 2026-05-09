@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atomic Habits — 작은 습관, 큰 변화</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: white;
+            color: #1a1a1a;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 40px;
+            margin: 0 auto;
+            background: white;
+            page-break-after: always;
+            page-break-inside: avoid;
+        }
+        
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #333;
+        }
+        
+        .book-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .book-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+        
+        .author {
+            font-size: 13px;
+            color: #999;
+            margin-top: 12px;
+        }
+        
+        .section {
+            margin-bottom: 32px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-left: 4px solid #333;
+            padding-left: 12px;
+        }
+        
+        .concept-box {
+            background: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 16px;
+            page-break-inside: avoid;
+        }
+        
+        .concept-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .concept-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .loop-diagram {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin: 24px 0;
+            page-break-inside: avoid;
+        }
+        
+        .loop-item {
+            display: inline-block;
+            padding: 12px 16px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin: 0 8px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin: 0 8px;
+            color: #999;
+            font-size: 16px;
+        }
+        
+        .laws-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .law-card {
+            background: #fff;
+            border: 2px solid #333;
+            border-radius: 4px;
+            padding: 16px;
+            page-break-inside: avoid;
+        }
+        
+        .law-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        
+        .law-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        
+        .law-description {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .law-example {
+            font-size: 11px;
+            color: #999;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+            font-style: italic;
+        }
+        
+        .highlight {
+            background: #fffacd;
+            padding: 2px 4px;
+            font-weight: 500;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="header">
+            <div class="book-title">Atomic Habits</div>
+            <div class="book-subtitle">작은 습관, 큰 변화</div>
+            <div class="author">저자: James Clear</div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">01. 핵심 개념: Identity → Process → Outcome</div>
+            <p style="font-size: 13px; color: #666; margin-bottom: 16px;">
+                Atomic Habits의 가장 강력한 통찰은 <span class="highlight">습관이 정체성(Identity)에서 비롯된다</span>는 것입니다. 
+                대부분의 사람들은 결과(Outcome)를 중심으로 목표를 세우지만, 진정한 변화는 정체성 변화에서 시작됩니다.
+            </p>
+            
+            <div class="loop-diagram">
+                <div class="loop-item">정체성<br/>(Identity)</div>
+                <div class="arrow">→</div>
+                <div class="loop-item">프로세스<br/>(Process)</div>
+                <div class="arrow">→</div>
+                <div class="loop-item">결과<br/>(Outcome)</div>
+            </div>
+            
+            <div class="concept-box">
+                <div class="concept-title">📌 정체성 중심 접근</div>
+                <div class="concept-description">
+                    "담배를 끊어야 한다"는 결과 중심 목표보다 "나는 비흡연자다"라는 정체성을 채택하는 것이 더 강력합니다. 
+                    정체성이 바뀌면, 그에 따른 작은 습관들이 자연스럽게 따라옵니다.
+                </div>
+            </div>
+            
+            <div class="concept-box">
+                <div class="concept-title">🔄 프로세스 중심 사고</div>
+                <div class="concept-description">
+                    "매일 2km를 달린다"는 구체적인 프로세스에 집중하면, 결과는 자동으로 따라옵니다. 
+                    습관은 작고 반복 가능한 행동의 누적입니다.
+                </div>
+            </div>
+            
+            <div class="concept-box">
+                <div class="concept-title">🎯 결과는 피드백 루프</div>
+                <div class="concept-description">
+                    정체성과 프로세스가 정착하면, 결과는 필연적입니다. 
+                    그 결과가 다시 정체성을 강화하는 양의 피드백 루프가 형성됩니다.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="section">
+            <div class="section-title">02. 행동 변화의 4가지 법칙</div>
+            <p style="font-size: 13px; color: #666; margin-bottom: 20px;">
+                James Clear는 습관 형성의 메커니즘을 <span class="highlight">4가지 법칙</span>으로 체계화했습니다. 
+                각 법칙은 습관 루프(Cue → Craving → Response → Reward)의 한 단계를 최적화합니다.
+            </p>
+            
+            <div class="laws-grid">
+                <div class="law-card">
+                    <div class="law-number">1</div>
+                    <div class="law-title">명확성 (Make It Obvious)</div>
+                    <div class="law-description">
+                        습관의 신호(Cue)를 명백하게 만드는 것. 환경 디자인과 습관 스택을 통해 자동성을 높입니다.
+                    </div>
+                    <div class="law-example">
+                        예: 운동복을 침대 옆에 놓아두기
+                    </div>
+                </div>
+                
+                <div class="law-card">
+                    <div class="law-number">2</div>
+                    <div class="law-title">매력성 (Make It Attractive)</div>
+                    <div class="law-description">
+                        습관을 원하게 만들기(Craving). 보상과 즉각적인 피드백으로 동기를 높입니다.
+                    </div>
+                    <div class="law-example">
+                        예: 좋아하는 음악을 들으며 운동하기
+                    </div>
+                </div>
+                
+                <div class="law-card">
+                    <div class="law-number">3</div>
+                    <div class="law-title">용이성 (Make It Easy)</div>
+                    <div class="law-description">
+                        행동의 마찰력을 줄이기(Response). 2분 규칙: 너무 작게 시작해서 습관화합니다.
+                    </div>
+                    <div class="law-example">
+                        예: 책 한 페이지만 읽기로 시작 (전체 장이 아닌)
+                    </div>
+                </div>
+                
+                <div class="law-card">
+                    <div class="law-number">4</div>
+                    <div class="law-title">만족감 (Make It Satisfying)</div>
+                    <div class="law-description">
+                        즉각적인 보상으로 강화하기(Reward). 습관 추적으로 진행 상황을 가시화합니다.
+                    </div>
+                    <div class="law-example">
+                        예: 캘린더에 X 표시하기, 습관 추적 앱 사용
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" style="margin-top: 30px;">
+            <div class="section-title">03. Atomic Habits의 핵심 통찰</div>
+            <p style="font-size: 13px; color: #666; line-height: 1.8;">
+                ✓ <strong>작은 변화의 큰 힘:</strong> 1%의 개선을 매일 반복하면 1년 후 37배 더 나아집니다.<br/>
+                ✓ <strong>환경 설계:</strong> 의지력보다 환경이 습관을 결정합니다.<br/>
+                ✓ <strong>연쇄 반응:</strong> 하나의 작은 습관이 다른 습관들을 자동으로 개선시킵니다.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

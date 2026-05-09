@@ -6,14 +6,15 @@ const plans = [
     tier: 'Free',
     price: '0',
     priceUnit: '원',
-    tagline: '범용 프레임워크 텍스트',
-    description: '웹 기반 챗봇 복붙용 최신 사고법 프롬프트',
-    cta: '이메일로 받기',
+    tagline: '스킬 1개 무료 체험',
+    description: '14개 중 원하는 프레임워크 1개를 선택해 AI 온보딩 + Personal OS 설정까지 무료로 경험하세요.',
+    cta: '이메일로 무료 받기',
     ctaStyle: 'secondary',
     features: [
-      '최신 사고 프레임워크 프롬프트',
-      '웹 챗봇 복붙 최적화',
-      '무료 업데이트 알림',
+      '프레임워크 1개 선택 (14개 중)',
+      'AI 온보딩 QnA (5분)',
+      '맞춤형 Personal OS 폴더 생성',
+      '1주일 일일 체크인',
     ],
     icon: 'solar:letter-bold-duotone',
   },
@@ -21,14 +22,14 @@ const plans = [
     tier: 'Basic',
     price: '19,900',
     priceUnit: '원',
-    tagline: '싱글 스킬 + 노션 템플릿',
-    description: 'RAG 앱 미지원 단일 리서치 요약 엔진',
+    tagline: '스킬 3개 패키지',
+    description: '목표에 맞는 3개 프레임워크를 조합해 자신만의 생산성 시스템을 구축합니다.',
     cta: 'Basic 구매하기',
     ctaStyle: 'secondary',
     features: [
-      '단일 리서치 요약 엔진',
-      '노션 템플릿 포함',
-      '기본 프롬프트 패키지',
+      '프레임워크 3개 선택',
+      'AI 온보딩 + Personal OS 구축',
+      '4주 일일 체크인 + 주간 리뷰',
       '이메일 지원',
     ],
     icon: 'solar:widget-bold-duotone',
@@ -38,20 +39,20 @@ const plans = [
     price: '39,000',
     originalPrice: '79,000',
     priceUnit: '원',
-    tagline: '인텔리전스 시스템 풀패키지',
-    description: '프라이빗 RAG 앱 + 컨설팅 PPT 템플릿 + 평생 무료 업데이트',
+    tagline: '14개 전체 무제한 + 평생 업데이트',
+    description: '14개 생산성 시스템 전부 + AI 코치 체크인 + 주간 리뷰 + 신규 프레임워크 자동 추가.',
     cta: '얼리버드 특가로 영구 소장하기',
     ctaStyle: 'primary',
     badge: '🔥 50명 한정 얼리버드',
     popularBadge: '가장 인기 있는 플랜',
     isPremium: true,
     features: [
-      '프라이빗 RAG 앱 (풀패키지)',
-      '컨설팅 PPT 템플릿 포함',
-      '평생 무료 업데이트',
-      '환경 내 미작동 시 100% 환불 보증',
+      '14개 전체 프레임워크 무제한',
+      'AI 온보딩 + 맞춤 시스템 완전 구축',
+      '매일 체크인 + 주간 리뷰 자동화',
+      '평생 무료 업데이트 (신규 프레임워크 포함)',
+      '환경 미작동 시 100% 환불 보증',
       '우선 지원 채널',
-      '향후 모든 신규 프레임워크 무료 제공',
     ],
     icon: 'solar:crown-bold-duotone',
   },
@@ -242,10 +243,10 @@ export default function PricingSection() {
             Pricing
           </span>
           <h2 className="text-3xl md:text-[2.75rem] font-extrabold text-snow tracking-tight mb-7">
-            당신의 사고력에 투자하십시오
+            같은 시간, 더 많은 아웃풋에 투자하십시오
           </h2>
           <p className="text-silver text-lg max-w-xl mx-auto leading-[1.8] text-center">
-            한 번의 결제로 영구 소장. 구독료 없이 사용하는 프라이빗 인텔리전스.
+            한 번의 결제로 영구 소장. AI가 14개 생산성 시스템을 당신의 워크플로에 직접 구현합니다.
           </p>
         </motion.div>
 

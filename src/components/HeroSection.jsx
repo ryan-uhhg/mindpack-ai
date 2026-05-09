@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 
 const fadeUp = {
@@ -7,158 +8,118 @@ const fadeUp = {
   visible: (i) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 };
 
-export default function HeroSection() {
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+const THINKERS = [
+  'James Clear', 'Cal Newport', 'David Allen', 'Tiago Forte',
+  'Gary Keller', 'Brian Tracy', 'Stephen Covey', 'Peter Drucker',
+];
 
-  // Parallax transforms for background orbs
-  const orb1Y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const orb2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']);
-  const orb1X = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']);
+export default function HeroSection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background radial gradient — parallax */}
+    <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pb-20">
+      {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          style={{ y: orb1Y, x: orb1X }}
-          className="float-slow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full bg-accent-deep/[0.08] blur-[160px]"
-        />
-        <motion.div
-          style={{ y: orb2Y }}
-          className="float-medium absolute top-1/4 right-1/4 w-[450px] h-[450px] rounded-full bg-accent/[0.05] blur-[120px]"
-        />
-        <div className="absolute bottom-1/3 left-1/4 w-[300px] h-[300px] rounded-full bg-accent-deep/[0.04] blur-[100px] float-slow" style={{ animationDelay: '3s' }} />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(109,40,217,0.18),transparent)]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-accent-deep/[0.06] blur-[180px]" />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.025]"
+          style={{ backgroundImage: 'linear-gradient(rgba(167,139,250,1) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,1) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
 
-      {/* Subtle grid lines */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(167,139,250,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.4) 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-        }}
-      />
+      <motion.div style={{ y, opacity }} className="relative z-10 section-container max-w-5xl text-center pt-32">
 
-      <div className="relative z-10 section-container text-center py-32 md:py-40">
-        {/* Eyebrow Badge */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="inline-flex items-center gap-2 mb-10"
-        >
-          <span className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-accent/20 bg-accent/[0.06] backdrop-blur-sm text-accent-bright text-[12.5px] font-medium tracking-wide">
-            <Icon icon="solar:shield-keyhole-bold-duotone" className="w-4 h-4 text-accent" />
-            Private Intelligence System
+        {/* Badge */}
+        <motion.div custom={0} variants={fadeUp} initial="hidden" animate="visible" className="mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-medium tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            14개 세계 최고 생산성 프레임워크
           </span>
         </motion.div>
 
         {/* Headline */}
-        <motion.h1
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="text-[2.75rem] sm:text-[3.25rem] md:text-[3.75rem] lg:text-[4.25rem] font-extrabold leading-[1.25] tracking-[-0.04em] text-snow mb-14"
-        >
-          파편화된 리서치 자료들,
-          <br />
-          <span className="relative inline-flex items-center gap-3">
-            {/* Sparkle icons */}
-            <span className="sparkle absolute -top-4 -left-6 text-accent-bright/60 hidden md:block">
-              <Icon icon="solar:stars-bold-duotone" className="w-5 h-5" />
-            </span>
-            <span className="relative z-10 bg-gradient-to-r from-accent-bright via-accent to-accent-deep bg-clip-text text-transparent">
-              단 10초
-            </span>
-            <span className="sparkle-delayed absolute -top-3 -right-5 text-accent/50 hidden md:block">
-              <Icon icon="solar:star-shine-bold-duotone" className="w-4 h-4" />
-            </span>
+        <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-snow tracking-tight leading-[1.1] mb-6">
+          당신이 가진 시간은<br />
+          <span className="bg-gradient-to-r from-accent-bright via-accent to-accent-glow bg-clip-text text-transparent">
+            이미 충분합니다.
           </span>
-          {' '}만에
-          <br />
-          맥킨지급 컨설팅 장표로.
         </motion.h1>
 
-        {/* Sub-copy */}
-        <motion.p
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="text-lg md:text-xl text-silver leading-[2.0] max-w-xl mx-auto mb-16 font-light"
-        >
-          사내 보안망 때문에 챗GPT에 대외비 문서를 올리지 못하셨습니까?
-          <br className="hidden md:block" />
-          원본 파일은 절대 업로드하지 않는 프라이빗 RAG 인텔리전스.
-          <br className="hidden md:block" />
-          <span className="text-pearl">1인 기획자를 위한 가장 완벽한 사고의 외주화.</span>
+        {/* Sub-headline */}
+        <motion.p custom={2} variants={fadeUp} initial="hidden" animate="visible"
+          className="text-lg md:text-xl text-silver max-w-2xl mx-auto mb-4 leading-relaxed">
+          문제는 시스템입니다.
+        </motion.p>
+        <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible"
+          className="text-base md:text-lg text-ash max-w-2xl mx-auto mb-12 leading-loose">
+          GTD, Deep Work, OKR — 당신이 이미 알고 있는 프레임워크들.<br />
+          <span className="text-ivory">Mindpack AI가 그것을 당신의 실제 업무 방식에 직접 구현합니다.</span>
         </motion.p>
 
-        {/* CTA Button */}
-        <motion.div
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <a href="/pricing">
-            <button className="cta-pulse group relative inline-flex items-center gap-3 px-10 py-4.5 rounded-2xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent font-semibold text-white text-base transition-all duration-300 hover:shadow-[0_0_70px_rgba(139,92,246,0.5)] hover:scale-[1.04] active:scale-[0.98] cursor-pointer">
-              <span>사전 예약 한정 특가로 소장하기</span>
-              <Icon icon="solar:arrow-right-bold" className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1.5" />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent opacity-0 group-hover:opacity-70 blur-2xl transition-opacity duration-500 -z-10" />
-            </button>
-          </a>
-        </motion.div>
-
-        {/* Trust indicators */}
-        <motion.div
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-20 flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm text-ash"
-        >
-          <span className="inline-flex items-center gap-2">
-            <Icon icon="solar:lock-keyhole-bold-duotone" className="w-4 h-4 text-accent/60" />
-            원본 파일 보호
-          </span>
-          <span className="w-px h-4 bg-slate-mid hidden sm:block" />
-          <span className="inline-flex items-center gap-2">
-            <Icon icon="solar:monitor-bold-duotone" className="w-4 h-4 text-accent/60" />
-            원터치 GUI
-          </span>
-          <span className="w-px h-4 bg-slate-mid hidden sm:block" />
-          <span className="inline-flex items-center gap-2">
-            <Icon icon="solar:refresh-circle-bold-duotone" className="w-4 h-4 text-accent/60" />
-            평생 무료 업데이트
-          </span>
-        </motion.div>
-
-        {/* Scroll hint */}
-        <motion.div
-          custom={5}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-20 flex flex-col items-center gap-2"
-        >
-          <span className="text-ash/50 text-xs tracking-widest uppercase font-medium">Scroll</span>
-          <div className="bounce-hint text-ash/40">
-            <Icon icon="solar:alt-arrow-down-bold-duotone" className="w-5 h-5" />
+        {/* Thinkers scroll */}
+        <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="mb-12 overflow-hidden">
+          <div className="flex gap-3 justify-center flex-wrap max-w-xl mx-auto">
+            {THINKERS.map((name) => (
+              <span key={name} className="px-3 py-1 rounded-full bg-graphite border border-slate-mid/50 text-ash text-xs font-medium">
+                {name}
+              </span>
+            ))}
+            <span className="px-3 py-1 rounded-full bg-graphite border border-accent/20 text-accent text-xs font-medium">
+              +6 more
+            </span>
           </div>
         </motion.div>
-      </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-void to-transparent" />
+        {/* CTAs */}
+        <motion.div custom={5} variants={fadeUp} initial="hidden" animate="visible"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <Link to="/pricing">
+            <button className="btn-primary group px-8 py-4 text-base font-semibold rounded-xl flex items-center gap-2 shadow-glow-accent">
+              얼리버드 특가로 시작하기
+              <Icon icon="solar:arrow-right-linear" className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </Link>
+          <Link to="/pricing#free-email">
+            <button className="px-8 py-4 text-base font-medium rounded-xl border border-white/10 text-pearl hover:border-accent/30 hover:text-ivory transition-all">
+              무료로 먼저 체험
+            </button>
+          </Link>
+        </motion.div>
+
+        {/* Trust badges */}
+        <motion.div custom={6} variants={fadeUp} initial="hidden" animate="visible"
+          className="flex flex-wrap justify-center gap-6 text-ash text-sm">
+          {[
+            { icon: 'solar:clock-circle-linear', text: '설정 5분' },
+            { icon: 'solar:refresh-circle-linear', text: '매일 30초 체크인' },
+            { icon: 'solar:infinity-linear', text: '평생 무료 업데이트' },
+            { icon: 'solar:shield-check-linear', text: '환경 미작동 시 100% 환불' },
+          ].map(({ icon, text }) => (
+            <span key={text} className="flex items-center gap-1.5">
+              <Icon icon={icon} className="w-4 h-4 text-accent/60" />
+              {text}
+            </span>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ash/50">
+        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
+          <Icon icon="solar:alt-arrow-down-linear" className="w-4 h-4" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
