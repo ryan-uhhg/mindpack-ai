@@ -810,7 +810,8 @@ export default function DemoPage() {
     <div>
       <PageHero
         eyebrow="Interactive Demo"
-        headline="5분 안에 당신의 시스템을\n직접 만들어보세요"
+        headline={`5분 안에 당신의 시스템을
+직접 만들어보세요`}
         subCopy="프리 플랜으로 시작. 스킬 선택 → QnA 온보딩 → 맞춤형 시스템 생성. 비용 없습니다."
       />
 
