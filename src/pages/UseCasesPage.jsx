@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import PageHero from '../components/shared/PageHero';
@@ -13,9 +13,9 @@ const personas = [
     color: 'accent',
     situation: '매주 보고서 작성에 시간 소모. 밤샘이 일상화. 집중할 시간이 없어 자꾸 실수.',
     frameworks: [
-      { name: 'Deep Work', desc: '집중 시간 확보' },
-      { name: 'GTD', desc: '이메일/메시지 정리' },
-      { name: 'Atomic Habits', desc: '아침 루틴' },
+      { name: 'Deep Work', id: 3, desc: '집중 시간 확보' },
+      { name: 'GTD', id: 2, desc: '이메일/메시지 정리' },
+      { name: 'Atomic Habits', id: 1, desc: '아침 루틴' },
     ],
     before: {
       metrics: [
@@ -46,8 +46,8 @@ const personas = [
     color: 'emerald-accent',
     situation: '분기마다 팀 목표 설정. 그런데 실행 과정에서 항상 흐지부지. 팀원들의 참여도가 떨어짐.',
     frameworks: [
-      { name: 'OKR', desc: '분기 목표 명확화' },
-      { name: 'The ONE Thing', desc: '우선순위 정렬' },
+      { name: 'OKR', id: 7, desc: '분기 목표 명확화' },
+      { name: 'The ONE Thing', id: 6, desc: '우선순위 정렬' },
       { name: '주간 체크인', desc: '진행도 추적' },
     ],
     before: {
@@ -79,9 +79,9 @@ const personas = [
     color: 'gold',
     situation: '할 일이 너무 많음. 마케팅, 제품, 투자... 모든 게 우선순위. 팀이 흔들림. 의사결정이 느림.',
     frameworks: [
-      { name: 'The ONE Thing', desc: '주/월/분기 1가지만 집중' },
-      { name: '7 Habits', desc: '원칙 중심 리더십' },
-      { name: 'OKR', desc: '팀 정렬' },
+      { name: 'The ONE Thing', id: 6, desc: '주/월/분기 1가지만 집중' },
+      { name: '7 Habits', id: 8, desc: '원칙 중심 리더십' },
+      { name: 'OKR', id: 7, desc: '팀 정렬' },
     ],
     before: {
       metrics: [
@@ -112,9 +112,9 @@ const personas = [
     color: 'accent',
     situation: '시간 관리가 안 됨. 클라이언트 요청이 들어오면 진행 중인 프로젝트가 밀림. 마감 지연 반복.',
     frameworks: [
-      { name: 'Deep Work', desc: '프로젝트별 집중 블록' },
-      { name: 'Atomic Habits', desc: '일일 루틴' },
-      { name: 'PARA Method', desc: '프로젝트 정리' },
+      { name: 'Deep Work', id: 3, desc: '프로젝트별 집중 블록' },
+      { name: 'Atomic Habits', id: 1, desc: '일일 루틴' },
+      { name: 'PARA Method', id: 4, desc: '프로젝트 정리' },
     ],
     before: {
       metrics: [
@@ -145,9 +145,9 @@ const personas = [
     color: 'emerald-accent',
     situation: '공부량이 많음. 뭘 우선해야 할지 모름. 자꾸 뒤쳐짐. 중도 포기 위기.',
     frameworks: [
-      { name: 'Eat That Frog', desc: '우선순위 명확화' },
-      { name: 'Atomic Habits', desc: '일일 공부 루틴' },
-      { name: 'Bullet Journal', desc: '진도 추적' },
+      { name: 'Eat That Frog', id: 5, desc: '우선순위 명확화' },
+      { name: 'Atomic Habits', id: 1, desc: '일일 공부 루틴' },
+      { name: 'Bullet Journal', id: 12, desc: '진도 추적' },
     ],
     before: {
       metrics: [
@@ -178,9 +178,9 @@ const personas = [
     color: 'gold',
     situation: '월 콘텐츠 목표는 10개. 계획만 짜고 실행은 못 함. 아이디어는 많은데 완성 못 함.',
     frameworks: [
-      { name: 'The ONE Thing', desc: '월 1개 핵심 캠페인' },
-      { name: 'Deep Work', desc: '콘텐츠 제작 시간 확보' },
-      { name: 'Second Brain', desc: '아이디어 정리' },
+      { name: 'The ONE Thing', id: 6, desc: '월 1개 핵심 캠페인' },
+      { name: 'Deep Work', id: 3, desc: '콘텐츠 제작 시간 확보' },
+      { name: 'Second Brain', id: 9, desc: '아이디어 정리' },
     ],
     before: {
       metrics: [
@@ -211,9 +211,9 @@ const personas = [
     color: 'accent',
     situation: '분기 목표는 큼. 어떻게 달성해야 할지 명확하지 않음. 활동만 많음. 성과는 저조.',
     frameworks: [
-      { name: 'OKR', desc: '분기 목표 → 주간 KPI 전환' },
-      { name: '설득의 심리학', desc: '고객 접근 전략' },
-      { name: 'Atomic Habits', desc: '일일 콜 루틴' },
+      { name: 'OKR', id: 7, desc: '분기 목표 → 주간 KPI 전환' },
+      { name: '설득의 심리학', id: 13, desc: '고객 접근 전략' },
+      { name: 'Atomic Habits', id: 1, desc: '일일 콜 루틴' },
     ],
     before: {
       metrics: [
@@ -244,9 +244,9 @@ const personas = [
     color: 'emerald-accent',
     situation: '팀원들의 방향성이 다름. 평가 때 갈등 생김. 팀 문화 구축이 어려움. 리더십에 자신 없음.',
     frameworks: [
-      { name: '7 Habits', desc: '원칙 중심 리더십' },
-      { name: 'OKR', desc: '팀 정렬' },
-      { name: '설득의 심리학', desc: '동기 부여' },
+      { name: '7 Habits', id: 8, desc: '원칙 중심 리더십' },
+      { name: 'OKR', id: 7, desc: '팀 정렬' },
+      { name: '설득의 심리학', id: 13, desc: '동기 부여' },
     ],
     before: {
       metrics: [
@@ -338,9 +338,19 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
                   <h4 className={`text-[12px] font-semibold tracking-widest uppercase ${col.icon} mb-3`}>적용 프레임워크</h4>
                   <div className="flex flex-wrap gap-2">
                     {persona.frameworks.map((fw, i) => (
-                      <div key={i} className={`px-3 py-1 rounded-lg border text-[12px] font-medium ${col.badge}`}>
-                        {fw.name}
-                      </div>
+                      fw.id ? (
+                        <button
+                          key={i}
+                          onClick={() => window.location.href = `/productivity-skills#skill-${fw.id}`}
+                          className={`px-3 py-1 rounded-lg border text-[12px] font-medium cursor-pointer hover:opacity-80 transition-opacity ${col.badge}`}
+                        >
+                          {fw.name}
+                        </button>
+                      ) : (
+                        <div key={i} className={`px-3 py-1 rounded-lg border text-[12px] font-medium ${col.badge}`}>
+                          {fw.name}
+                        </div>
+                      )
                     ))}
                   </div>
                 </div>

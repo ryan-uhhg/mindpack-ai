@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import PageHero from '../components/shared/PageHero';
@@ -5,45 +6,45 @@ import PageHero from '../components/shared/PageHero';
 const steps = [
   {
     num: '01',
-    title: '이메일로 무료 패키지 받기',
-    icon: 'ph:envelope-open-duotone',
-    desc: '프라이싱 페이지에서 이메일을 입력하면 3가지 패키지 중 원하는 것을 선택해 다운로드할 수 있습니다.',
-    sub: '프레임워크 MD · AI 프롬프트 MD · 슬라이드 예시 HTML',
+    title: '나에게 맞는 생산성 스킬 선택',
+    icon: 'ph:star-duotone',
+    desc: 'Mindpack AI에서 제공하는 14가지 생산성 스킬 중 당신의 상황에 맞는 것을 선택합니다. 각 스킬은 구체적인 상황과 QnA를 통해 맞춤형 결과를 제공합니다.',
+    sub: 'Deep Work · Atomic Habits · OKR · GTD 등',
   },
   {
     num: '02',
-    title: 'AI 채팅창 열기 (Claude / ChatGPT)',
+    title: 'AI와 상호작용 - 무료 체험',
     icon: 'ph:robot-duotone',
-    desc: 'Claude.ai 또는 ChatGPT 등 원하는 AI 서비스를 엽니다. 별도 설치 없이 웹 브라우저에서 바로 사용합니다.',
-    sub: 'Claude 3.5 Sonnet 이상 권장',
+    desc: '선택한 스킬의 QnA에 답변하면 AI가 당신에게 최적화된 실행 계획을 생성합니다. 직접 데이터를 입력하며 실시간으로 결과를 확인합니다.',
+    sub: '클라우드 기반, 설치 없음',
   },
   {
     num: '03',
-    title: 'MD 파일 내용을 붙여넣기',
-    icon: 'ph:clipboard-text-duotone',
-    desc: '다운로드한 MD 파일을 텍스트 에디터로 열고, 전체 내용을 복사해 AI 채팅창에 붙여넣습니다.',
-    sub: '메모장(Windows) · TextEdit(Mac) 모두 가능',
+    title: '맞춤형 결과 받기',
+    icon: 'ph:magic-wand-duotone',
+    desc: 'AI가 생성한 슬라이드, 체크리스트, 실행 계획을 PDF 또는 HTML로 다운로드합니다. 즉시 실행하거나 팀과 공유할 수 있습니다.',
+    sub: 'PDF 인쇄 가능 · 팀 공유 가능',
   },
   {
     num: '04',
-    title: '내 자료 추가 입력',
-    icon: 'ph:file-text-duotone',
-    desc: '분석하고 싶은 내 회사·제품·시장 정보를 이어서 입력합니다. 구체적일수록 결과가 좋습니다.',
-    sub: '예: "위 프레임워크로 [회사명]을 분석해줘. 우리 회사는 …"',
+    title: 'MD 파일로 더 깊게 (선택사항)',
+    icon: 'ph:clipboard-text-duotone',
+    desc: '무료 패키지에서 다운로드한 MD 파일을 Claude 또는 ChatGPT에 넣으면 동일 프레임워크를 확장해서 사용할 수 있습니다.',
+    sub: 'Claude 3.5 Sonnet 권장',
   },
   {
     num: '05',
-    title: 'AI가 HTML 슬라이드 생성',
-    icon: 'ph:magic-wand-duotone',
-    desc: 'AI가 McKinsey · BCG · Porter 스타일의 슬라이드 HTML 코드를 생성합니다. 프롬프트 MD를 함께 넣으면 품질이 더 높아집니다.',
-    sub: '보통 30초~2분 소요',
+    title: 'AI 채팅창으로 확장 분석',
+    icon: 'ph:file-text-duotone',
+    desc: '다운로드한 MD 파일과 추가 정보를 함께 입력해 더 깊이 있는 분석을 받습니다. 프롬프트 MD를 활용하면 품질이 높아집니다.',
+    sub: '무제한 재생성 · 추가 조건 입력 가능',
   },
   {
     num: '06',
-    title: 'HTML 저장 후 브라우저로 열기',
+    title: 'HTML 슬라이드 생성 및 공유',
     icon: 'ph:browsers-duotone',
-    desc: 'AI가 생성한 HTML 코드를 복사해 .html 파일로 저장합니다. 더블클릭하면 브라우저에서 슬라이드로 열립니다.',
-    sub: '← → 키보드로 페이지 전환 · PDF 인쇄 지원',
+    desc: 'AI가 생성한 HTML 코드를 저장해 브라우저에서 열면 고급 슬라이드로 표시됩니다. PDF로 인쇄하거나 팀과 공유하세요.',
+    sub: '← → 키로 페이지 전환 · PDF 인쇄 지원',
   },
 ];
 
@@ -75,7 +76,7 @@ export default function GuidePage() {
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <h2 className="text-2xl font-bold text-white mb-12 text-center">6단계 완성 가이드</h2>
         <div className="space-y-6">
-          {steps.map((s) => (
+          {steps.map((s, idx) => (
             <div key={s.num} className="flex gap-6 items-start p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
               <div className="shrink-0 w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
                 <Icon icon={s.icon} className="text-accent text-2xl" />

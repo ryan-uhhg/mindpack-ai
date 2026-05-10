@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import PageHero from '../components/shared/PageHero';
 import CTABanner from '../components/shared/CTABanner';
@@ -357,6 +357,12 @@ const containerVariants = {
 
 function SkillCard({ skill, index }) {
   const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
+
+  const handleDemoClick = (e) => {
+    e.stopPropagation();
+    navigate(`/demo?skill=${skill.id}`);
+  };
 
   return (
     <motion.div
@@ -403,10 +409,10 @@ function SkillCard({ skill, index }) {
 
         {/* Key Benefit */}
         <div className="p-3 rounded-lg bg-accent/[0.06] border border-accent/15">
-          <p className="text-[11px] text-accent/90 font-semibold leading-snug italic">"{skill.keyBenefit}"</p>
+          <p className="text-[11px] text-accent/90 font-semibold leading-snug italic">\"{skill.keyBenefit}\"</p>
         </div>
 
-        {/* Expand button */}
+        {/* Expand button + CTA */}
         <div className="mt-4 pt-4 border-t border-white/[0.04] flex items-center justify-between">
           <div className="text-[10px] text-ash/60">대상: {skill.targetRoles.slice(0, 2).join(', ')}</div>
           <Icon
@@ -439,6 +445,13 @@ function SkillCard({ skill, index }) {
                 <p className="text-[10px] text-ash/80 font-semibold mb-1">Mindpack에서의 활용</p>
                 <p className="text-[11px] text-silver/80 leading-relaxed">{skill.useCase}</p>
               </div>
+              <button
+                onClick={handleDemoClick}
+                className="w-full mt-3 px-3 py-2 rounded-lg bg-accent/20 border border-accent/40 text-accent text-[12px] font-semibold hover:bg-accent/30 transition-colors flex items-center justify-center gap-2"
+              >
+                <Icon icon="solar:play-bold-duotone" className="w-4 h-4" />
+                데모 시작하기
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
