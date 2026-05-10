@@ -1,8 +1,16 @@
 services:
-  - type: static_site
+  - type: web
     name: mindpack-ai
-    staticPublishPath: ./dist
-    buildCommand: npm run build
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
+      - key: PORT
+        value: 3000
+      - key: EMAILOCTOPUS_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        value: https://mindpackai.onrender.com
