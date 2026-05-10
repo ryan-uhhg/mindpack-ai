@@ -444,6 +444,292 @@ const DEMO_RESULTS = {
       { day: '일', value: 3.5 },
     ],
   },
+  'gtd': {
+    title: '당신의 GTD 시스템 준비됨',
+    insights: [
+      { label: '관리 업무', value: '25~30개 (효율화)' },
+      { label: '수집 방식', value: '다채널 (Email, Slack, Voice)' },
+      { label: '우선순위 정렬', value: '3단계 (긴급/중요/다음)' },
+      { label: '시스템 복잡도', value: '낮음 (5분 온보딩)' },
+    ],
+    comparison: {
+      before: { value: '까먹음 40%', percentage: 0 },
+      after: { value: '까먹음 0%', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 28 },
+      { day: '화', value: 26 },
+      { day: '수', value: 31 },
+      { day: '목', value: 27 },
+      { day: '금', value: 23 },
+      { day: '토', value: 5 },
+      { day: '일', value: 12 },
+    ],
+  },
+  'habits': {
+    title: '당신의 습관 시스템 준비됨',
+    insights: [
+      { label: '도전 분야', value: '새 습관 시작' },
+      { label: '트래킹 방식', value: '앱 + 시각화' },
+      { label: '성공 확률', value: '88% (Atomic 기반)' },
+      { label: '목표', value: '66일 자동화' },
+    ],
+    comparison: {
+      before: { value: '0개 성공', percentage: 0 },
+      after: { value: '6개 이상', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '1주', value: 2.5 },
+      { day: '2주', value: 4.2 },
+      { day: '3주', value: 5.8 },
+      { day: '4주', value: 7.1 },
+      { day: '5주', value: 8.3 },
+      { day: '6주', value: 8.9 },
+      { day: '7주', value: 9.5 },
+    ],
+  },
+  'okr': {
+    title: '당신의 OKR 시스템 준비됨',
+    insights: [
+      { label: '목표 설정', value: '분기별 3~5개' },
+      { label: '역할', value: '팀 리더 (책임자)' },
+      { label: '추적 주기', value: '주 1회 + 월 1회' },
+      { label: '팀 정렬', value: '100% (동기화)' },
+    ],
+    comparison: {
+      before: { value: '달성률 45%', percentage: 0 },
+      after: { value: '달성률 87%', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '1월', value: 45 },
+      { day: '2월', value: 58 },
+      { day: '3월', value: 72 },
+      { day: '4월', value: 80 },
+      { day: '5월', value: 85 },
+      { day: '6월', value: 87 },
+      { day: '7월', value: 87 },
+    ],
+  },
+  'para': {
+    title: '당신의 PARA 정보 시스템 준비됨',
+    insights: [
+      { label: '수집량', value: '일 20~30개' },
+      { label: '정보 유형', value: '뉴스/아이디어/고객' },
+      { label: '검색 시간', value: '평균 2분' },
+      { label: '활용률', value: '65% (이전 30%)' },
+    ],
+    comparison: {
+      before: { value: '찾기 30분', percentage: 0 },
+      after: { value: '찾기 2분', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 145 },
+      { day: '화', value: 168 },
+      { day: '수', value: 192 },
+      { day: '목', value: 175 },
+      { day: '금', value: 138 },
+      { day: '토', value: 45 },
+      { day: '일', value: 62 },
+    ],
+  },
+  'second-brain': {
+    title: '당신의 Second Brain 준비됨',
+    insights: [
+      { label: '저장 방식', value: 'Notion (연결 중심)' },
+      { label: '활용도', value: '매우 자주 (80%+)' },
+      { label: '업무 영역', value: '글쓰기/전략' },
+      { label: '아이디어 재사용', value: '월 8~12회' },
+    ],
+    comparison: {
+      before: { value: '아이디어 까먹음', percentage: 0 },
+      after: { value: '아이디어 100% 보관', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 12 },
+      { day: '화', value: 15 },
+      { day: '수', value: 18 },
+      { day: '목', value: 16 },
+      { day: '금', value: 14 },
+      { day: '토', value: 8 },
+      { day: '일', value: 10 },
+    ],
+  },
+  'time-block': {
+    title: '당신의 Time Block 시스템 준비됨',
+    insights: [
+      { label: '계획 주기', value: '월 1회 (시스템)' },
+      { label: '연속 집중', value: '2~4시간 가능' },
+      { label: '스케줄 변동성', value: '30% → 10%' },
+      { label: '휴식 시간', value: '일 1.5시간 확보' },
+    ],
+    comparison: {
+      before: { value: '계획 없음', percentage: 0 },
+      after: { value: '100% 블로킹됨', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 8 },
+      { day: '화', value: 9 },
+      { day: '수', value: 8.5 },
+      { day: '목', value: 7.5 },
+      { day: '금', value: 8 },
+      { day: '토', value: 4 },
+      { day: '일', value: 3 },
+    ],
+  },
+  'pomodoro': {
+    title: '당신의 Pomodoro 시스템 준비됨',
+    insights: [
+      { label: '선호 단위', value: '25분 (표준)' },
+      { label: '연속 집중', value: '5~6회 (2.5시간)' },
+      { label: '휴식 활동', value: '산책 + 명상' },
+      { label: '일일 사이클', value: '6사이클 (3시간)' },
+    ],
+    comparison: {
+      before: { value: '집중 불가능', percentage: 0 },
+      after: { value: '6사이클 완성', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 6 },
+      { day: '화', value: 6.5 },
+      { day: '수', value: 5.8 },
+      { day: '목', value: 6.2 },
+      { day: '금', value: 5.5 },
+      { day: '토', value: 3 },
+      { day: '일', value: 2 },
+    ],
+  },
+  'decision': {
+    title: '당신의 의사결정 시스템 준비됨',
+    insights: [
+      { label: '결정 상황', value: '팀 의사결정' },
+      { label: '고려 요소', value: '6~10개 (분석적)' },
+      { label: '도구', value: 'Matrix + 점수' },
+      { label: '결정 시간', value: '30분 → 10분' },
+    ],
+    comparison: {
+      before: { value: '후회 비율 60%', percentage: 0 },
+      after: { value: '후회 비율 10%', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 3 },
+      { day: '화', value: 4 },
+      { day: '수', value: 5 },
+      { day: '목', value: 3.5 },
+      { day: '금', value: 2 },
+      { day: '토', value: 1 },
+      { day: '일', value: 1.5 },
+    ],
+  },
+  'priority': {
+    title: '당신의 우선순위 시스템 준비됨',
+    insights: [
+      { label: '설정 방식', value: 'Eisenhower Matrix' },
+      { label: '주간 업무', value: '20~40개 (관리)' },
+      { label: '도구', value: 'Kanban (시각화)' },
+      { label: '중요한 것 놓침', value: '100% → 0%' },
+    ],
+    comparison: {
+      before: { value: '혼란 상태', percentage: 0 },
+      after: { value: '완벽 정렬됨', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 35 },
+      { day: '화', value: 38 },
+      { day: '수', value: 40 },
+      { day: '목', value: 36 },
+      { day: '금', value: 28 },
+      { day: '토', value: 5 },
+      { day: '일', value: 8 },
+    ],
+  },
+  'journey': {
+    title: '당신의 커리어 계획 준비됨',
+    insights: [
+      { label: '커리어 상태', value: '중기 (5~10년)' },
+      { label: '계획', value: '5년 이상' },
+      { label: '발전 방향', value: '리더십 + 전문화' },
+      { label: '로드맵', value: '분기별 마일스톤' },
+    ],
+    comparison: {
+      before: { value: '방향 불명확', percentage: 0 },
+      after: { value: '명확한 로드맵', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '분기1', value: 20 },
+      { day: '분기2', value: 35 },
+      { day: '분기3', value: 50 },
+      { day: '분기4', value: 65 },
+      { day: '년2', value: 75 },
+      { day: '년3', value: 85 },
+      { day: '년5', value: 95 },
+    ],
+  },
+  'habit-stack': {
+    title: '당신의 Habit Stacking 시스템 준비됨',
+    insights: [
+      { label: '기존 루틴', value: '아침 커피 + 산책' },
+      { label: '연결 습관', value: '3~5개' },
+      { label: '성공률', value: '92% (기존 루틴)' },
+      { label: '자동화 시간', value: '66일' },
+    ],
+    comparison: {
+      before: { value: '습관 형성 불가', percentage: 0 },
+      after: { value: '자동 습관화', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '1주', value: 1.5 },
+      { day: '2주', value: 3 },
+      { day: '3주', value: 4.2 },
+      { day: '4주', value: 4.8 },
+      { day: '5주', value: 4.9 },
+      { day: '6주', value: 4.95 },
+      { day: '7주', value: 5 },
+    ],
+  },
+  'energy': {
+    title: '당신의 에너지 관리 시스템 준비됨',
+    insights: [
+      { label: '에너지 패턴', value: '아침형 + 오후 저점' },
+      { label: '저점 시간', value: '오후 1~3시' },
+      { label: '관리 방법', value: '운동 + 수면' },
+      { label: '에너지 회복', value: '일 +40%' },
+    ],
+    comparison: {
+      before: { value: '오후 집중도 40%', percentage: 0 },
+      after: { value: '오후 집중도 75%', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '월', value: 6.5 },
+      { day: '화', value: 7 },
+      { day: '수', value: 7.2 },
+      { day: '목', value: 6.8 },
+      { day: '금', value: 6.3 },
+      { day: '토', value: 5 },
+      { day: '일', value: 5.5 },
+    ],
+  },
+  'weekly': {
+    title: '당신의 주간 리뷰 시스템 준비됨',
+    insights: [
+      { label: '리뷰 빈도', value: '주 1회 (일요일)' },
+      { label: '체크 항목', value: '완료율 + 학습 + 개선' },
+      { label: '실행 계획', value: '주 3개 실천' },
+      { label: '개선율', value: '월 +15%' },
+    ],
+    comparison: {
+      before: { value: '리뷰 안 함', percentage: 0 },
+      after: { value: '주 1회 루틴', percentage: 100 },
+    },
+    weeklyData: [
+      { day: '1주', value: 30 },
+      { day: '2주', value: 45 },
+      { day: '3주', value: 58 },
+      { day: '4주', value: 68 },
+      { day: '5주', value: 75 },
+      { day: '6주', value: 82 },
+      { day: '7주', value: 87 },
+    ],
+  },
 };
 
 const FAQ_ITEMS = [
@@ -753,19 +1039,27 @@ export default function DemoPage() {
                     exit="exit"
                     transition={{ duration: 0.4 }}
                   >
-                    <div className="mb-8">
-                      <h3 className="text-2xl font-extrabold text-snow mb-2">
-                        ✅ 분석 완료!
-                      </h3>
-                      <p className="text-silver text-[14px]">
-                        당신의 맞춤형 Deep Work 시스템 생성됨
-                      </p>
+                    <div className="mb-8 flex items-start justify-between">
+                      <div>
+                        <h3 className="text-2xl font-extrabold text-snow mb-2">
+                          ✅ 분석 완료!
+                        </h3>
+                        <p className="text-silver text-[14px]">
+                          당신의 맞춤형 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 시스템 생성됨
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setCurrentStep(2)}
+                        className="px-4 py-2 text-[13px] text-ash hover:text-silver transition-colors flex items-center gap-2"
+                      >
+                        ← 이전
+                      </button>
                     </div>
 
                     <div className="space-y-8">
                       {/* Analysis Summary */}
                       <div className="grid grid-cols-2 gap-4">
-                        {DEMO_RESULTS['deep-work'].insights.map((insight, i) => (
+                        {DEMO_RESULTS[selectedSkill]?.insights.map((insight, i) => (
                           <motion.div
                             key={i}
                             initial={{ opacity: 0, y: 10 }}
@@ -790,14 +1084,14 @@ export default function DemoPage() {
                           <div>
                             <div className="text-ash text-[12px] mb-2">현재</div>
                             <div className="text-2xl font-extrabold text-silver">
-                              {DEMO_RESULTS['deep-work'].comparison.before.value}
+                              {DEMO_RESULTS[selectedSkill]?.comparison.before.value}
                             </div>
                           </div>
                           <Icon icon="solar:arrow-right-bold-duotone" className="w-6 h-6 text-emerald-accent" />
                           <div>
                             <div className="text-emerald-accent text-[12px] mb-2">3개월 후</div>
                             <div className="text-2xl font-extrabold text-emerald-accent">
-                              {DEMO_RESULTS['deep-work'].comparison.after.value}
+                              {DEMO_RESULTS[selectedSkill]?.comparison.after.value}
                             </div>
                           </div>
                         </div>
@@ -810,10 +1104,10 @@ export default function DemoPage() {
                       <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.08]">
                         <div className="text-snow text-[14px] font-semibold mb-6 flex items-center gap-2">
                           <Icon icon="solar:chart-square-bold-duotone" className="w-4 h-4 text-accent" />
-                          당신의 Deep Work 진화
+                          당신의 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 진화
                         </div>
                         <div className="flex items-end justify-between gap-2 h-32">
-                          {DEMO_RESULTS['deep-work'].weeklyData.map((data, i) => (
+                          {DEMO_RESULTS[selectedSkill]?.weeklyData.map((data, i) => (
                             <motion.div
                               key={i}
                               className="flex-1 flex flex-col items-center gap-2"
@@ -902,7 +1196,7 @@ export default function DemoPage() {
                         transition={{ delay: 0.3, duration: 0.5 }}
                       >
                         <h3 className="text-2xl font-extrabold text-snow mb-3">
-                          당신의 Deep Work 시스템 준비됨 ✅
+                          당신의 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 시스템 준비됨 ✅
                         </h3>
                         <p className="text-silver text-[14px] max-w-md mx-auto mb-8">
                           아래 정보만 남겨주세요. 내일부터 매일 AI 체크인이 시작됩니다. (30초)
@@ -933,12 +1227,20 @@ export default function DemoPage() {
                         <button className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent text-white font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-all">
                           무료로 시작하기
                         </button>
-                        <button
-                          onClick={handleReset}
-                          className="w-full px-8 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
-                        >
-                          다시 시도
-                        </button>
+                        <div className="flex gap-3">
+                          <button
+                            onClick={() => setCurrentStep(4)}
+                            className="flex-1 px-8 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
+                          >
+                            ← 이전
+                          </button>
+                          <button
+                            onClick={handleReset}
+                            className="flex-1 px-8 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
+                          >
+                            처음부터 시작
+                          </button>
+                        </div>
                       </motion.div>
 
                       <motion.div
