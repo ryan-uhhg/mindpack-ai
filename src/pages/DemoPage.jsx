@@ -23,58 +23,402 @@ const SKILLS = [
   { id: 'weekly', name: '주간 계획', icon: 'solar:notebook-bold-duotone', framework: 'Weekly Review' },
 ];
 
-/* ── QnA Questions ── */
-const QNA_QUESTIONS = [
-  {
-    q: '현재 당신의 일일 스케줄은?',
-    options: [
+/* ── QnA Questions by Skill ── */
+const QNA_QUESTIONS_BY_SKILL = {
+  'deep-work': [
+    { q: '현재 당신의 일일 스케줄은?', options: [
       { text: '정해진 시간이 없음 (재택/프리랜서)', value: 'freelance' },
       { text: '오전에 회의가 많음 (직장인 PM)', value: 'morning-meetings' },
       { text: '오후에 집중 업무 가능 (분석/개발)', value: 'afternoon-focus' },
       { text: '시간대 상관없음, 하지만 중단 많음', value: 'frequent-interruptions' },
-    ],
-  },
-  {
-    q: 'Deep Work 시간을 얼마나 확보하고 싶으신가요?',
-    options: [
+    ]},
+    { q: 'Deep Work 시간을 얼마나 확보하고 싶으신가요?', options: [
       { text: '주 2시간 (겨우 시작)', value: '2h' },
       { text: '주 10시간 (목표)', value: '10h' },
       { text: '주 15시간 (이상적)', value: '15h' },
       { text: '매일 최소 2시간 (절대 조건)', value: 'daily-2h' },
-    ],
-  },
-  {
-    q: '현재 사용 중인 도구는? (중복 선택)',
-    type: 'multi',
-    options: [
+    ]},
+    { q: '현재 사용 중인 도구는? (중복 선택)', type: 'multi', options: [
       { text: 'Google Calendar', value: 'calendar' },
       { text: 'Slack', value: 'slack' },
       { text: 'Notion', value: 'notion' },
       { text: 'Outlook', value: 'outlook' },
       { text: '특별한 도구 없음', value: 'none' },
-    ],
-  },
-  {
-    q: '집중을 방해하는 주요 요소는? (중복 선택)',
-    type: 'multi',
-    options: [
+    ]},
+    { q: '집중을 방해하는 주요 요소는? (중복 선택)', type: 'multi', options: [
       { text: '이메일/메시지 알림', value: 'notifications' },
       { text: '회의 요청 (건 너무 많음)', value: 'meetings' },
       { text: '주변 소음', value: 'noise' },
       { text: '의지 부족', value: 'willpower' },
       { text: '명확한 목표 부재', value: 'unclear-goal' },
-    ],
-  },
-  {
-    q: 'Deep Work에 적합한 시간대는?',
-    options: [
-      { text: '아침 8~10시 (회의 전)', value: 'morning' },
-      { text: '점심 후 1~3시 (회의 없음)', value: 'midday' },
-      { text: '늦은 오후 4~6시 (조용함)', value: 'afternoon' },
-      { text: '저녁 6시 이후 (자유 시간)', value: 'evening' },
-    ],
-  },
-];
+    ]},
+  ],
+  'gtd': [
+    { q: '현재 할 일 관리 방식은?', options: [
+      { text: '머리 속에만 기억 (휴지통)', value: 'mental' },
+      { text: '메모장 (흩어짐)', value: 'scattered' },
+      { text: '투두 앱 (체계 없음)', value: 'todo-app' },
+      { text: '이미 체계적 (더 나아지고 싶음)', value: 'organized' },
+    ]},
+    { q: '매일 관리해야 할 업무는 대략 몇 개?', options: [
+      { text: '5~10개 (간단함)', value: 'few' },
+      { text: '15~30개 (중간)', value: 'medium' },
+      { text: '30~50개 (많음)', value: 'many' },
+      { text: '50개 이상 (엄청 많음)', value: 'tons' },
+    ]},
+    { q: '수집 도구로 뭘 쓰세요? (중복 선택)', type: 'multi', options: [
+      { text: '이메일', value: 'email' },
+      { text: '메신저 (Slack/카톡)', value: 'messenger' },
+      { text: '음성 메모', value: 'voice' },
+      { text: 'Task 앱', value: 'app' },
+      { text: '메모장', value: 'notes' },
+    ]},
+    { q: '가장 큰 스트레스는?', type: 'multi', options: [
+      { text: '일을 까먹음', value: 'forget' },
+      { text: '우선순위를 못 정함', value: 'priority' },
+      { text: '완료하지 못함', value: 'incomplete' },
+      { text: '검토·회고 안 함', value: 'review' },
+      { text: '시스템이 복잡함', value: 'complex' },
+    ]},
+  ],
+  'habits': [
+    { q: '당신의 가장 큰 습관 도전은?', options: [
+      { text: '새 습관 시작 (동기 부족)', value: 'start' },
+      { text: '기존 습관 유지 (3주 넘기 힘듦)', value: 'sustain' },
+      { text: '나쁜 습관 제거 (담배/술)', value: 'quit' },
+      { text: '좋은 습관과 나쁜 습관 충돌', value: 'conflict' },
+    ]},
+    { q: '지난 1년간 시작한 습관 몇 개 성공?', options: [
+      { text: '0개 (아무것도 안 됨)', value: 'zero' },
+      { text: '1~2개 (가끔)', value: 'few' },
+      { text: '3~5개 (절반 정도)', value: 'half' },
+      { text: '6개 이상 (꽤 잘함)', value: 'many' },
+    ]},
+    { q: '습관 트래킹 방법은? (중복 선택)', type: 'multi', options: [
+      { text: '종이 (O 칠하기)', value: 'paper' },
+      { text: '앱 (Streaks/Atomic)', value: 'app' },
+      { text: '일지/블로그', value: 'journal' },
+      { text: '타인과 공유', value: 'share' },
+      { text: '안 함', value: 'none' },
+    ]},
+    { q: '가장 효과 있던 습관 게시는?', options: [
+      { text: '친구들 앞에서 선언', value: 'public' },
+      { text: '매일 기록·시각화', value: 'track' },
+      { text: '작은 목표부터 시작', value: 'small' },
+      { text: '이미 습관화된 것에 붙임', value: 'stack' },
+    ]},
+  ],
+  'okr': [
+    { q: '현재 목표 설정 방식은?', options: [
+      { text: '없음 (그냥 일함)', value: 'none' },
+      { text: '막연함 (큼직한 꿈)', value: 'vague' },
+      { text: '구체적 (매년 쓰임)', value: 'annual' },
+      { text: '체계적 (분기별 검토)', value: 'quarterly' },
+    ]},
+    { q: '당신의 역할은?', options: [
+      { text: '개인 (자영업/프리랜서)', value: 'solo' },
+      { text: '팀 리더 (책임자)', value: 'lead' },
+      { text: '팀원 (마니저 있음)', value: 'member' },
+      { text: '회사/조직 전략가', value: 'strategic' },
+    ]},
+    { q: '목표 추적 도구로 뭘 쓰세요?', type: 'multi', options: [
+      { text: 'Notion', value: 'notion' },
+      { text: 'Excel', value: 'excel' },
+      { text: 'Jira', value: 'jira' },
+      { text: '종이 노트', value: 'paper' },
+      { text: '아무것도 없음', value: 'none' },
+    ]},
+    { q: '가장 큰 목표 달성 방해요소는?', type: 'multi', options: [
+      { text: '명확한 목표 수립 못함', value: 'unclear' },
+      { text: '중간에 우선순위 변경', value: 'shift' },
+      { text: '진행도 추적 안 함', value: 'notrack' },
+      { text: '팀/조직 정렬 실패', value: 'misalign' },
+      { text: '외부 변수 (경제/시장)', value: 'external' },
+    ]},
+  ],
+  'para': [
+    { q: '현재 정보 보관 방식은?', options: [
+      { text: '폴더/드라이브 (복잡함)', value: 'folders' },
+      { text: '북마크 (찾기 힘듦)', value: 'bookmarks' },
+      { text: 'Notion (단계적)', value: 'notion' },
+      { text: 'Obsidian (연결 중심)', value: 'obsidian' },
+      { text: '혼합 (정리 안 됨)', value: 'mixed' },
+    ]},
+    { q: '매일 수집하는 정보량은?', options: [
+      { text: '거의 없음 (1~3개)', value: 'rare' },
+      { text: '조금 (5~10개)', value: 'few' },
+      { text: '많음 (20~30개)', value: 'many' },
+      { text: '엄청 많음 (50개+)', value: 'tons' },
+    ]},
+    { q: '자주 참고하는 정보 유형은? (중복 선택)', type: 'multi', options: [
+      { text: '기사/뉴스', value: 'news' },
+      { text: '스크린샷/이미지', value: 'images' },
+      { text: '콘텐츠/튜토리얼', value: 'tutorials' },
+      { text: '아이디어/메모', value: 'ideas' },
+      { text: '고객 정보', value: 'customers' },
+    ]},
+    { q: '정보 정리에서 가장 어려운 점은?', type: 'multi', options: [
+      { text: '수집 (나중에 보자)', value: 'collect' },
+      { text: '분류 (어디에 놓지?)', value: 'organize' },
+      { text: '연결 (관계 만들기)', value: 'connect' },
+      { text: '검색 (찾을 수 없음)', value: 'search' },
+      { text: '활용 (묵혀있음)', value: 'use' },
+    ]},
+  ],
+  'second-brain': [
+    { q: '현재 아이디어/정보 저장 방식은?', options: [
+      { text: 'SNS 스크린샷', value: 'screenshots' },
+      { text: 'Notion', value: 'notion' },
+      { text: 'Evernote/OneNote', value: 'evernote' },
+      { text: 'Local folder', value: 'folder' },
+      { text: '노트장', value: 'notebook' },
+    ]},
+    { q: '저장한 정보를 다시 활용하는 빈도는?', options: [
+      { text: '거의 안 함 (20%)', value: '20' },
+      { text: '가끔 (40%)', value: '40' },
+      { text: '자주 (60%)', value: '60' },
+      { text: '매우 자주 (80%+)', value: '80' },
+    ]},
+    { q: '당신의 주요 업무 영역은? (중복 선택)', type: 'multi', options: [
+      { text: '글쓰기/콘텐츠', value: 'writing' },
+      { text: '기획/전략', value: 'strategy' },
+      { text: '개발/기술', value: 'dev' },
+      { text: '영업/마케팅', value: 'sales' },
+      { text: '교육/코칭', value: 'teaching' },
+    ]},
+    { q: 'Second Brain이 필요한 이유는?', type: 'multi', options: [
+      { text: '좋은 아이디어 까먹음', value: 'ideas' },
+      { text: '다시 찾기 어려움', value: 'search' },
+      { text: '연결해서 새 아이디어 만들기', value: 'connect' },
+      { text: '동료/팀과 공유', value: 'share' },
+      { text: '나중에 활용할 자산', value: 'asset' },
+    ]},
+  ],
+  'time-block': [
+    { q: '하루 일정이 정해지는 시점은?', options: [
+      { text: '아침 (출근 후)', value: 'morning' },
+      { text: '전날 저녁 (준비)', value: 'evening' },
+      { text: '주간 시작 (월요일)', value: 'weekly' },
+      { text: '매달 (계획 재수립)', value: 'monthly' },
+    ]},
+    { q: '방해 없이 일할 수 있는 연속 시간은?', options: [
+      { text: '1시간 미만', value: 'under1h' },
+      { text: '1~2시간', value: '1-2h' },
+      { text: '2~4시간', value: '2-4h' },
+      { text: '4시간 이상', value: 'over4h' },
+    ]},
+    { q: '일정 관리 도구는? (중복 선택)', type: 'multi', options: [
+      { text: 'Google Calendar', value: 'calendar' },
+      { text: 'Outlook', value: 'outlook' },
+      { text: 'Notion', value: 'notion' },
+      { text: '메모/노트', value: 'notes' },
+      { text: '머리 속', value: 'memory' },
+    ]},
+    { q: '가장 큰 스케줄 문제는?', type: 'multi', options: [
+      { text: '갑작스러운 회의 추가', value: 'meetings' },
+      { text: '예상 외 업무', value: 'unexpected' },
+      { text: '예정된 업무 시간 부족', value: 'insufficient' },
+      { text: '쉬는 시간 없음', value: 'no-break' },
+      { text: '시간 예측 못 함', value: 'no-estimate' },
+    ]},
+  ],
+  'pomodoro': [
+    { q: '당신이 선호하는 업무 집중 단위는?', options: [
+      { text: '15분 (짧은 태스크)', value: '15m' },
+      { text: '25분 (표준)', value: '25m' },
+      { text: '45분 (깊은 작업)', value: '45m' },
+      { text: '90분 (울트라 집중)', value: '90m' },
+    ]},
+    { q: '보통 연속으로 집중할 수 있는 시간은?', options: [
+      { text: '1~2번 (25~50분)', value: '1-2' },
+      { text: '3~4번 (75~100분)', value: '3-4' },
+      { text: '5~6번 (2~3시간)', value: '5-6' },
+      { text: '그 이상 (장시간 가능)', value: '6plus' },
+    ]},
+    { q: '쉬는 시간에 뭘 하세요? (중복 선택)', type: 'multi', options: [
+      { text: '스트레칭/산책', value: 'stretch' },
+      { text: '간식 먹기', value: 'snack' },
+      { text: '휴대폰 보기', value: 'phone' },
+      { text: '눈 쉬기', value: 'eyes' },
+      { text: '명상', value: 'meditation' },
+    ]},
+    { q: '현재 Pomodoro 기법 사용 경험은?', options: [
+      { text: '처음 들음', value: 'first' },
+      { text: '알긴 한데 안 씀', value: 'know' },
+      { text: '가끔 씀 (정기적 아님)', value: 'sometimes' },
+      { text: '매일 씀 (습관화)', value: 'daily' },
+    ]},
+  ],
+  'decision': [
+    { q: '의사결정 상황은 주로?', options: [
+      { text: '개인 선택 (뭘 할까)', value: 'personal' },
+      { text: '팀 의사결정', value: 'team' },
+      { text: '회사/조직 전략', value: 'org' },
+      { text: '고객/시장 대응', value: 'customer' },
+    ]},
+    { q: '의사결정할 때 고려하는 요소 개수는?', options: [
+      { text: '1~2개 (직관)', value: '1-2' },
+      { text: '3~5개 (중간)', value: '3-5' },
+      { text: '6~10개 (분석적)', value: '6-10' },
+      { text: '10개 이상 (매우 신중)', value: '10plus' },
+    ]},
+    { q: '의사결정 도구 사용 경험은? (중복 선택)', type: 'multi', options: [
+      { text: '우단점 (장단점)', value: 'pros-cons' },
+      { text: '프로콘 리스트', value: 'list' },
+      { text: '점수 매기기', value: 'scoring' },
+      { text: '데이터/통계', value: 'data' },
+      { text: '직관', value: 'intuition' },
+    ]},
+    { q: '가장 어려운 의사결정 상황은?', type: 'multi', options: [
+      { text: '정보 부족', value: 'info' },
+      { text: '옵션 너무 많음', value: 'options' },
+      { text: '장기/단기 충돌', value: 'conflict' },
+      { text: '팀원 의견 다름', value: 'team' },
+      { text: '후회/미안함', value: 'regret' },
+    ]},
+  ],
+  'priority': [
+    { q: '현재 우선순위 설정 방식은?', options: [
+      { text: '무작위 (먼저 들어온 것)', value: 'fifo' },
+      { text: '긴급도 (지금 필요)', value: 'urgent' },
+      { text: '중요도 (영향력)', value: 'important' },
+      { text: '조합 (긴급+중요)', value: 'matrix' },
+    ]},
+    { q: '주간 업무는 대략 몇 개?', options: [
+      { text: '5~10개', value: '5-10' },
+      { text: '10~20개', value: '10-20' },
+      { text: '20~40개', value: '20-40' },
+      { text: '40개 이상', value: '40plus' },
+    ]},
+    { q: '우선순위 정렬 도구는? (중복 선택)', type: 'multi', options: [
+      { text: 'Eisenhower Matrix', value: 'eisenhower' },
+      { text: 'MoSCoW', value: 'moscow' },
+      { text: '스코어링', value: 'scoring' },
+      { text: 'Kanban', value: 'kanban' },
+      { text: '메모장', value: 'notes' },
+    ]},
+    { q: '우선순위 문제는?', type: 'multi', options: [
+      { text: '정하기 어려움', value: 'hard' },
+      { text: '자꾸 바뀜', value: 'changes' },
+      { text: '중요한 것 놓침', value: 'miss' },
+      { text: '분석에 시간 낭비', value: 'analysis' },
+      { text: '팀원이 다른 우선순위', value: 'team' },
+    ]},
+  ],
+  'journey': [
+    { q: '현재 커리어 상태는?', options: [
+      { text: '갓 시작 (1년 미만)', value: 'junior' },
+      { text: '초중기 (1~5년)', value: 'early' },
+      { text: '중기 (5~10년)', value: 'mid' },
+      { text: '경력 (10년+)', value: 'senior' },
+    ]},
+    { q: '커리어 계획이 있으신가요?', options: [
+      { text: '없음 (그냥 일함)', value: 'none' },
+      { text: '막연함 (꿈만 있음)', value: 'vague' },
+      { text: '2~3년 계획', value: 'short' },
+      { text: '5년 이상 계획', value: 'long' },
+    ]},
+    { q: '커리어 발전 방향은? (중복 선택)', type: 'multi', options: [
+      { text: '같은 분야 深化 (전문가)', value: 'expert' },
+      { text: '다른 분야 전환', value: 'switch' },
+      { text: '스킬 업그레이드', value: 'upskill' },
+      { text: '리더십 (관리자)', value: 'leadership' },
+      { text: '창업/독립', value: 'startup' },
+    ]},
+    { q: '가장 큰 커리어 도전은?', type: 'multi', options: [
+      { text: '길 찾기 (무엇을)', value: 'path' },
+      { text: '스킬 부족', value: 'skills' },
+      { text: '시간/비용', value: 'resources' },
+      { text: '자신감 없음', value: 'confidence' },
+      { text: '주변 지원 부족', value: 'support' },
+    ]},
+  ],
+  'habit-stack': [
+    { q: '현재 확실한 일일 루틴은?', options: [
+      { text: '아침 커피 마시기', value: 'coffee' },
+      { text: '저녁 산책', value: 'walk' },
+      { text: '출퇴근 이동', value: 'commute' },
+      { text: '잠자기 전 습관', value: 'bedtime' },
+      { text: '없음 (불규칙)', value: 'none' },
+    ]},
+    { q: '새 습관을 기존 습관에 연결한 경험은?', options: [
+      { text: '처음 들음', value: 'first' },
+      { text: '생각만 함', value: 'thought' },
+      { text: '시도했는데 실패', value: 'failed' },
+      { text: '성공한 경험 있음', value: 'success' },
+    ]},
+    { q: '반복되는 일상의 고리가 있나요? (중복 선택)', type: 'multi', options: [
+      { text: '아침 루틴', value: 'morning' },
+      { text: '점심시간', value: 'lunch' },
+      { text: '오후 다운타임', value: 'afternoon' },
+      { text: '저녁 루틴', value: 'evening' },
+      { text: '주말', value: 'weekend' },
+    ]},
+    { q: '새로 추가하고 싶은 습관은?', type: 'multi', options: [
+      { text: '운동', value: 'exercise' },
+      { text: '독서', value: 'reading' },
+      { text: '학습', value: 'learning' },
+      { text: '명상', value: 'meditation' },
+      { text: '정리정돈', value: 'organizing' },
+    ]},
+  ],
+  'energy': [
+    { q: '당신의 에너지 패턴은?', options: [
+      { text: '아침형 (떠오름)', value: 'morning' },
+      { text: '저녁형 (밤에 각성)', value: 'night' },
+      { text: '불규칙 (매일 다름)', value: 'irregular' },
+      { text: '종일 일정한', value: 'stable' },
+    ]},
+    { q: '하루 중 가장 에너지 낮은 시간대는?', options: [
+      { text: '오후 1~3시 (점심 후)', value: '1-3pm' },
+      { text: '오후 3~5시', value: '3-5pm' },
+      { text: '저녁 6시 이후', value: '6pm' },
+      { text: '아침 (자고 있음)', value: 'morning' },
+    ]},
+    { q: '에너지 관리 방법은? (중복 선택)', type: 'multi', options: [
+      { text: '운동', value: 'exercise' },
+      { text: '수면', value: 'sleep' },
+      { text: '음식 (카페인/영양)', value: 'nutrition' },
+      { text: '휴식', value: 'rest' },
+      { text: '재미있는 활동', value: 'fun' },
+    ]},
+    { q: '가장 큰 에너지 드레인은?', type: 'multi', options: [
+      { text: '반복 업무', value: 'repetition' },
+      { text: '회의 (많음)', value: 'meetings' },
+      { text: '인간관계 스트레스', value: 'relationships' },
+      { text: '미결정 사항', value: 'undecided' },
+      { text: '자신감 부족', value: 'confidence' },
+    ]},
+  ],
+  'weekly': [
+    { q: '당신의 주간 리뷰 빈도는?', options: [
+      { text: '없음 (안 함)', value: 'none' },
+      { text: '가끔 (월 1회)', value: 'monthly' },
+      { text: '정기적 (주 1회)', value: 'weekly' },
+      { text: '매우 정기적 (여러 번)', value: 'frequent' },
+    ]},
+    { q: '주간 계획을 세우는 시점은?', options: [
+      { text: '월요일 아침', value: 'monday-am' },
+      { text: '일요일 저녁', value: 'sunday-pm' },
+      { text: '관계없음 (계획 안 함)', value: 'none' },
+      { text: '주중 (특정 날짜)', value: 'midweek' },
+    ]},
+    { q: '리뷰에서 체크하는 항목은? (중복 선택)', type: 'multi', options: [
+      { text: '완료율', value: 'completion' },
+      { text: '학습한 점', value: 'learning' },
+      { text: '개선할 점', value: 'improvement' },
+      { text: '다음주 계획', value: 'next' },
+      { text: '시간 사용 분석', value: 'time' },
+    ]},
+    { q: '주간 리뷰 시 가장 어려운 점은?', type: 'multi', options: [
+      { text: '시간 부족', value: 'time' },
+      { text: '하기 싫음 (루틴화 안 됨)', value: 'motivation' },
+      { text: '무엇을 기록할지 불명확', value: 'unclear' },
+      { text: '피드백 받기 힘듦', value: 'feedback' },
+      { text: '개선 실행 못 함', value: 'action' },
+    ]},
+  ],
+};
 
 /* ── Demo Data ── */
 const DEMO_RESULTS = {
@@ -154,8 +498,9 @@ export default function DemoPage() {
       [questionIndex]: answer,
     });
 
-    const allAnswered = Object.keys(qnaAnswers).length >= 4;
-    if (allAnswered && questionIndex === 4) {
+    const currentQuestions = QNA_QUESTIONS_BY_SKILL[selectedSkill] || [];
+    const allAnswered = Object.keys(qnaAnswers).length >= currentQuestions.length - 1;
+    if (allAnswered && questionIndex === currentQuestions.length - 1) {
       setTimeout(() => setCurrentStep(3), 600);
     }
   };
@@ -276,7 +621,11 @@ export default function DemoPage() {
                           {Object.keys(qnaAnswers).length + 1}
                         </div>
                         <h3 className="text-2xl font-extrabold text-snow">
-                          {QNA_QUESTIONS[Object.keys(qnaAnswers).length]?.q}
+                          {(() => {
+                            const currentQuestions = QNA_QUESTIONS_BY_SKILL[selectedSkill] || [];
+                            const currentQuestion = currentQuestions[Object.keys(qnaAnswers).length];
+                            return currentQuestion?.q || '';
+                          })()}
                         </h3>
                       </div>
                       <p className="text-silver text-[14px] ml-11">
@@ -285,37 +634,45 @@ export default function DemoPage() {
                     </div>
 
                     <div className="space-y-3 ml-11">
-                      {QNA_QUESTIONS[Object.keys(qnaAnswers).length]?.type === 'multi' ? (
-                        QNA_QUESTIONS[Object.keys(qnaAnswers).length]?.options.map((option) => (
-                          <motion.button
-                            key={option.value}
-                            whileHover={{ x: 4 }}
-                            onClick={() => handleQnaAnswer(Object.keys(qnaAnswers).length, option.value)}
-                            className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
-                          >
-                            <div className="w-5 h-5 rounded border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
-                              <Icon icon="solar:check-bold" className="w-3 h-3 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </div>
-                            <span className="text-snow text-[14px] font-medium">{option.text}</span>
-                          </motion.button>
-                        ))
-                      ) : (
-                        QNA_QUESTIONS[Object.keys(qnaAnswers).length]?.options.map((option) => (
-                          <motion.button
-                            key={option.value}
-                            whileHover={{ x: 4 }}
-                            onClick={() => {
-                              handleQnaAnswer(Object.keys(qnaAnswers).length, option.value);
-                            }}
-                            className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
-                          >
-                            <div className="w-5 h-5 rounded-full border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
-                              <div className="w-2 h-2 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </div>
-                            <span className="text-snow text-[14px] font-medium">{option.text}</span>
-                          </motion.button>
-                        ))
-                      )}
+                      {(() => {
+                        const currentQuestions = QNA_QUESTIONS_BY_SKILL[selectedSkill] || [];
+                        const currentQuestionIndex = Object.keys(qnaAnswers).length;
+                        const currentQuestion = currentQuestions[currentQuestionIndex];
+                        
+                        if (!currentQuestion) return null;
+                        
+                        return currentQuestion.type === 'multi' ? (
+                          currentQuestion.options.map((option) => (
+                            <motion.button
+                              key={option.value}
+                              whileHover={{ x: 4 }}
+                              onClick={() => handleQnaAnswer(currentQuestionIndex, option.value)}
+                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
+                            >
+                              <div className="w-5 h-5 rounded border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
+                                <Icon icon="solar:check-bold" className="w-3 h-3 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </div>
+                              <span className="text-snow text-[14px] font-medium">{option.text}</span>
+                            </motion.button>
+                          ))
+                        ) : (
+                          currentQuestion.options.map((option) => (
+                            <motion.button
+                              key={option.value}
+                              whileHover={{ x: 4 }}
+                              onClick={() => {
+                                handleQnaAnswer(currentQuestionIndex, option.value);
+                              }}
+                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
+                            >
+                              <div className="w-5 h-5 rounded-full border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
+                                <div className="w-2 h-2 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                              </div>
+                              <span className="text-snow text-[14px] font-medium">{option.text}</span>
+                            </motion.button>
+                          ))
+                        );
+                      })()}
                     </div>
                   </motion.div>
                 )}
