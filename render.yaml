@@ -1,0 +1,8 @@
+services:
+  - type: static_site
+    name: mindpack-ai
+    staticPublishPath: ./dist
+    buildCommand: npm run build
+    envVars:
+      - key: NODE_ENV
+        value: production
