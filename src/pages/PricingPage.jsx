@@ -15,7 +15,7 @@ const tiers = [
     ctaHref: '#free-email',
     isPrimary: false,
     features: [
-      '14개 스킬 중 1개 선택 가능',
+      '55개 스킬 중 1개 선택 가능',
       'QnA 온보딩 (5분)',
       '매일 AI 텍스트 체크인',
       '주간 이메일 요약',
@@ -29,14 +29,14 @@ const tiers = [
     name: 'Premium',
     price: '49',
     originalPrice: '99',
-    tagline: '14개 모든 스킬 + 평생',
+    tagline: '55개 스킬 모두 + 평생',
     desc: '얼리버드 특가로 평생 소장. 추후 가격 인상 예정.',
     cta: '얼리버드 특가로 시작',
     ctaHref: '#purchase-premium',
     isPrimary: true,
     badge: '🔥 얼리버드 특가: $49 (평생)',
     features: [
-      '14개 모든 스킬 무제한 사용',
+      '55개 모든 스킬 무제한 사용',
       '스킬 무제한 전환 가능',
       'QnA 온보딩 (5분)',
       '매일 AI 텍스트 + 음성 체크인',
@@ -54,7 +54,7 @@ const tiers = [
 ];
 
 const matrixRows = [
-  { label: '스킬 개수', free: '1개 선택', premium: '14개 모두' },
+  { label: '스킬 개수', free: '1개 선택', premium: '55개 모두' },
   { label: '스킬 전환', free: '30일 후', premium: '언제든지' },
   { label: 'QnA 온보딩', free: true, premium: true },
   { label: '텍스트 체크인', free: true, premium: true },
@@ -77,7 +77,7 @@ const faqItems = [
     a: '아니요, 일회성 구매입니다. $49 (얼리버드)로 한 번 결제하면 평생 업데이트를 받습니다. 추가 비용은 없습니다. 추후 정가는 $99로 인상될 예정입니다.',
   },
   {
-    q: '14개 스킬을 동시에 사용할 수 있나요?',
+    q: '55개 스킬을 동시에 사용할 수 있나요?',
     a: '네, 가능합니다. 하지만 처음에는 1~2개부터 시작해 3개월 후 추가하는 것을 권장합니다. 스킬 간 간섭을 피하기 위함입니다.',
   },
   {
