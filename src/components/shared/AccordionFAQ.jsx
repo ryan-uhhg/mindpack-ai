@@ -14,7 +14,7 @@ export default function AccordionFAQ({ items }) {
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full flex items-center justify-between gap-4 px-8 py-6 text-left cursor-pointer"
             >
-              <span className="text-ivory text-[14px] font-semibold leading-[1.5]">{item.q}</span>
+              <span className="text-text-primary text-[14px] font-semibold leading-[1.5]">{item.q}</span>
               <Icon
                 icon="solar:alt-arrow-down-bold"
                 className={`w-4 h-4 text-accent/60 shrink-0 transition-transform duration-300 ${openIndex === i ? 'rotate-180' : ''}`}
@@ -29,8 +29,8 @@ export default function AccordionFAQ({ items }) {
                   transition={{ duration: 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
                   className="overflow-hidden"
                 >
-                  <div className="px-8 pb-8 border-t border-white/[0.04]">
-                    <p className="text-silver text-[13.5px] leading-[1.85] pt-5">{item.a}</p>
+                  <div className="px-8 pb-8 border-t border-border-light/50">
+                    <p className="text-text-secondary text-[13.5px] leading-[1.85] pt-5">{item.a}</p>
                   </div>
                 </motion.div>
               )}

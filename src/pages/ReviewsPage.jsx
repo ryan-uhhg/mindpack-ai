@@ -60,11 +60,11 @@ export default function ReviewsPage() {
                 </div>
 
                 {/* Quote */}
-                <blockquote className="text-ivory font-semibold text-[14px] leading-[1.7] mb-4 flex-1">
+                <blockquote className="text-text-primary font-semibold text-[14px] leading-[1.7] mb-4 flex-1">
                   "{r.quote}"
                 </blockquote>
 
-                <p className="text-silver text-[12.5px] leading-[1.8] mb-5">{r.body}</p>
+                <p className="text-text-secondary text-[12.5px] leading-[1.8] mb-5">{r.body}</p>
 
                 {/* Metric */}
                 <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[12px] font-bold mb-6 ${colorMap[r.color]}`}>
@@ -73,9 +73,9 @@ export default function ReviewsPage() {
                 </div>
 
                 {/* Profile */}
-                <div className="pt-4 border-t border-white/[0.05]">
-                  <div className="text-ivory text-[13px] font-semibold">{r.name}</div>
-                  <div className="text-ash text-[12px] mt-0.5">{r.role}</div>
+                <div className="pt-4 border-t border-border-light/60">
+                  <div className="text-text-primary text-[13px] font-semibold">{r.name}</div>
+                  <div className="text-text-tertiary text-[12px] mt-0.5">{r.role}</div>
                 </div>
               </div>
             </div>
@@ -89,8 +89,8 @@ export default function ReviewsPage() {
           <div className="card-bezel">
             <div className="card-bezel-inner text-center py-10">
               <Icon icon="solar:pen-bold-duotone" className="w-10 h-10 text-accent mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-snow mb-3">귀하의 경험을 공유하여 주십시오</h3>
-              <p className="text-silver text-[13.5px] mb-6">베타 테스트에 참여하셨거나 제품을 구매하셨다면, 귀하의 경험을 들려주십시오.</p>
+              <h3 className="text-xl font-bold text-text-primary mb-3">귀하의 경험을 공유하여 주십시오</h3>
+              <p className="text-text-secondary text-[13.5px] mb-6">베타 테스트에 참여하셨거나 제품을 구매하셨다면, 귀하의 경험을 들려주십시오.</p>
               <a
                 href="mailto:mindpackai.help@gmail.com?subject=Mindpack AI 후기 제출"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] transition-all duration-300"

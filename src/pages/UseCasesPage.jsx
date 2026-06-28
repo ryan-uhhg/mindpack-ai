@@ -308,7 +308,7 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
               <Icon icon={persona.icon} className={`w-5 h-5 ${col.icon}`} />
             </div>
             <div>
-              <h3 className="text-ivory font-bold text-[15px]">{persona.name}</h3>
+              <h3 className="text-text-primary font-bold text-[15px]">{persona.name}</h3>
             </div>
           </div>
           <motion.div
@@ -320,7 +320,7 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
         </div>
 
         {/* Situation preview */}
-        <p className="text-ash text-[13px] leading-[1.7] mb-4">{persona.situation}</p>
+        <p className="text-text-tertiary text-[13px] leading-[1.7] mb-4">{persona.situation}</p>
 
         {/* Expand content */}
         <AnimatePresence>
@@ -332,7 +332,7 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
               transition={{ duration: 0.3 }}
               className="overflow-hidden"
             >
-              <div className="pt-4 border-t border-white/[0.05] space-y-6">
+              <div className="pt-4 border-t border-border-light/60 space-y-6">
                 {/* Frameworks */}
                 <div>
                   <h4 className={`text-[12px] font-semibold tracking-widest uppercase ${col.icon} mb-3`}>적용 프레임워크</h4>
@@ -357,13 +357,13 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
 
                 {/* Before/After Metrics */}
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-lg bg-white/[0.02] border border-white/[0.05] p-4">
-                    <h4 className="text-ash text-[11px] font-semibold tracking-widest uppercase mb-3">변화 전</h4>
+                  <div className="rounded-lg bg-bg-raised border border-border-light/60 p-4">
+                    <h4 className="text-text-tertiary text-[11px] font-semibold tracking-widest uppercase mb-3">변화 전</h4>
                     <div className="space-y-2">
                       {persona.before.metrics.map((m, i) => (
                         <div key={i} className="flex justify-between items-center">
-                          <span className="text-ash text-[11px]">{m.label}</span>
-                          <span className="text-silver font-bold text-[13px]">{m.value}</span>
+                          <span className="text-text-tertiary text-[11px]">{m.label}</span>
+                          <span className="text-text-secondary font-bold text-[13px]">{m.value}</span>
                         </div>
                       ))}
                     </div>
@@ -373,7 +373,7 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
                     <div className="space-y-2">
                       {persona.after.metrics.map((m, i) => (
                         <div key={i} className="flex justify-between items-center">
-                          <span className="text-ash text-[11px]">{m.label}</span>
+                          <span className="text-text-tertiary text-[11px]">{m.label}</span>
                           <span className={`font-bold text-[13px] ${m.color}`}>{m.value}</span>
                         </div>
                       ))}
@@ -382,8 +382,8 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
                 </div>
 
                 {/* Quote */}
-                <div className="rounded-lg bg-white/[0.02] border border-white/[0.05] p-4">
-                  <p className="text-silver text-[13px] leading-[1.7] italic">"{persona.quote}"</p>
+                <div className="rounded-lg bg-bg-raised border border-border-light/60 p-4">
+                  <p className="text-text-secondary text-[13px] leading-[1.7] italic">"{persona.quote}"</p>
                 </div>
 
                 {/* Testimonials */}
@@ -391,8 +391,8 @@ function PersonaCard({ persona, isExpanded, onToggle }) {
                   <h4 className={`text-[12px] font-semibold tracking-widest uppercase ${col.icon} mb-3`}>고객 후기</h4>
                   <div className="space-y-3">
                     {persona.testimonials.map((t, i) => (
-                      <div key={i} className="rounded-lg bg-white/[0.02] border border-white/[0.05] p-3">
-                        <p className="text-silver text-[12px] leading-[1.6] mb-2">"{t.text}"</p>
+                      <div key={i} className="rounded-lg bg-bg-raised border border-border-light/60 p-3">
+                        <p className="text-text-secondary text-[12px] leading-[1.6] mb-2">"{t.text}"</p>
                         <p className={`text-[11px] font-semibold ${col.icon}`}>— {t.author}, {t.role}</p>
                       </div>
                     ))}
@@ -443,20 +443,20 @@ export default function UseCasesPage() {
             className="card-bezel"
           >
             <div className="card-bezel-inner">
-              <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em] mb-8">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em] mb-8">
                 모든 사용자가 경험하는 공통 효과
               </h2>
-              <p className="text-silver text-[15px] leading-[1.8] mb-8 max-w-2xl">
+              <p className="text-text-secondary text-[15px] leading-[1.8] mb-8 max-w-2xl">
                 3개월 사용 후 평균적인 개선도. Mindpack 사용자들의 모든 직군과 산업을 대상으로 한 정량 데이터입니다.
               </p>
 
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
-                    <tr className="border-b border-white/[0.05]">
-                      <th className="text-left py-4 px-4 text-ash text-[12px] font-semibold tracking-widest uppercase">지표</th>
-                      <th className="text-center py-4 px-4 text-ash text-[12px] font-semibold tracking-widest uppercase">Before</th>
-                      <th className="text-center py-4 px-4 text-ash text-[12px] font-semibold tracking-widest uppercase">After</th>
+                    <tr className="border-b border-border-light/60">
+                      <th className="text-left py-4 px-4 text-text-tertiary text-[12px] font-semibold tracking-widest uppercase">지표</th>
+                      <th className="text-center py-4 px-4 text-text-tertiary text-[12px] font-semibold tracking-widest uppercase">Before</th>
+                      <th className="text-center py-4 px-4 text-text-tertiary text-[12px] font-semibold tracking-widest uppercase">After</th>
                       <th className="text-center py-4 px-4 text-emerald-accent text-[12px] font-semibold tracking-widest uppercase">개선도</th>
                     </tr>
                   </thead>
@@ -468,11 +468,11 @@ export default function UseCasesPage() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, duration: 0.5 }}
-                        className="border-b border-white/[0.02] hover:bg-white/[0.02] transition-colors"
+                        className="border-b border-border-light/40 hover:bg-bg-hover/50 transition-colors"
                       >
-                        <td className="py-4 px-4 text-silver text-[13px] font-medium">{stat.metric}</td>
-                        <td className="text-center py-4 px-4 text-ash text-[13px]">{stat.before}</td>
-                        <td className="text-center py-4 px-4 text-ivory text-[13px] font-semibold">{stat.after}</td>
+                        <td className="py-4 px-4 text-text-secondary text-[13px] font-medium">{stat.metric}</td>
+                        <td className="text-center py-4 px-4 text-text-tertiary text-[13px]">{stat.before}</td>
+                        <td className="text-center py-4 px-4 text-text-primary text-[13px] font-semibold">{stat.after}</td>
                         <td className="text-center py-4 px-4 text-emerald-accent text-[13px] font-bold">{stat.change}</td>
                       </motion.tr>
                     ))}
@@ -481,7 +481,7 @@ export default function UseCasesPage() {
               </div>
 
               <div className="mt-8 p-4 rounded-lg bg-accent/[0.05] border border-accent/15">
-                <p className="text-silver text-[13px] leading-[1.7]">
+                <p className="text-text-secondary text-[13px] leading-[1.7]">
                   <span className="font-semibold text-accent">💡 통계 기반:</span> 2025년 1월~4월 Mindpack 유료 사용자 782명 대상 3개월 추적 연구 기반
                 </p>
               </div>

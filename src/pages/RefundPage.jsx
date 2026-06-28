@@ -12,10 +12,10 @@ export default function RefundPage() {
               <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
             </svg>
           </div>
-          <h2 className="text-2xl font-extrabold text-snow tracking-[-0.04em] mb-3">
+          <h2 className="text-2xl font-extrabold text-text-primary tracking-[-0.04em] mb-3">
             작동하지 않으면, 전액 돌려드립니다.
           </h2>
-          <p className="text-silver text-[14px] leading-[1.8] max-w-md mx-auto text-center">
+          <p className="text-text-secondary text-[14px] leading-[1.8] max-w-md mx-auto text-center">
             질문하지 않습니다. 조건을 달지 않습니다. 귀하의 환경에서 Createnova가 정상 작동하지
             않으면, 결제 금액 전액을 환불해 드립니다.
           </p>
@@ -24,7 +24,7 @@ export default function RefundPage() {
 
       <LegalSection title="적용 대상">
         <p>
-          본 환불 정책은 <strong className="text-ivory">Premium 플랜</strong> 구매자에 한해
+          본 환불 정책은 <strong className="text-text-primary">Premium 플랜</strong> 구매자에 한해
           적용됩니다. Free 및 Basic 플랜은 환불 정책 적용 대상이 아닙니다.
         </p>
       </LegalSection>
@@ -55,7 +55,7 @@ export default function RefundPage() {
             '환불 요청 기한(14일) 초과',
           ].map((t) => (
             <li key={t} className="flex items-start gap-2">
-              <span className="text-ash/40 mt-1 shrink-0">✕</span>{t}
+              <span className="text-text-tertiary/40 mt-1 shrink-0">✕</span>{t}
             </li>
           ))}
         </ul>
@@ -70,14 +70,14 @@ export default function RefundPage() {
           ].map((item) => (
             <div
               key={item.step}
-              className="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.05]"
+              className="flex gap-4 p-4 rounded-xl bg-bg-raised border border-border-light/60"
             >
               <div className="w-8 h-8 rounded-full bg-accent/[0.1] border border-accent/20 flex items-center justify-center shrink-0">
                 <span className="text-accent font-bold text-[13px]">{item.step}</span>
               </div>
               <div>
-                <div className="text-ivory font-semibold text-[13.5px] mb-1">{item.title}</div>
-                <div className="text-ash text-[12.5px] leading-[1.7]">{item.desc}</div>
+                <div className="text-text-primary font-semibold text-[13.5px] mb-1">{item.title}</div>
+                <div className="text-text-tertiary text-[12.5px] leading-[1.7]">{item.desc}</div>
               </div>
             </div>
           ))}
@@ -86,12 +86,12 @@ export default function RefundPage() {
 
       <LegalSection title="환불 기한">
         <p>
-          구매일로부터 <strong className="text-ivory">14일 이내</strong>에 요청하셔야 합니다.
+          구매일로부터 <strong className="text-text-primary">14일 이내</strong>에 요청하셔야 합니다.
         </p>
       </LegalSection>
 
-      <div className="mt-12 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-        <p className="text-ash text-[12.5px]">
+      <div className="mt-12 p-5 rounded-2xl border border-border-light bg-bg-raised">
+        <p className="text-text-tertiary text-[12.5px]">
           환불 문의:{' '}
           <a href="mailto:mindpackai.help@gmail.com" className="text-accent hover:underline">
             mindpackai.help@gmail.com

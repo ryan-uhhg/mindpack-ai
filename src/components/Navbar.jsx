@@ -67,17 +67,17 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? 'bg-void/80 backdrop-blur-2xl border-b border-white/[0.05] shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
+          ? 'bg-bg-base/80 backdrop-blur-2xl border-b border-border-light/50 shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
           : 'bg-transparent'
       }`}
     >
       <nav className="section-container h-[72px] flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent-glow to-accent-deep flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
             <Icon icon="solar:star-bold-duotone" className="w-4 h-4 text-white" />
           </div>
-          <span className="text-ivory font-extrabold text-sm tracking-tight group-hover:text-snow transition-colors duration-300">
+          <span className="text-text-primary font-extrabold text-sm tracking-tight group-hover:text-text-primary transition-colors duration-300">
             Mindpack AI
           </span>
         </Link>
@@ -89,7 +89,7 @@ export default function Navbar() {
           <div ref={productRef} className="relative">
             <button
               onClick={() => { setProductOpen(!productOpen); setGuideOpen(false); }}
-              className="flex items-center gap-1 text-ash text-[13.5px] font-medium hover:text-pearl transition-colors duration-300 py-1"
+              className="flex items-center gap-1 text-text-tertiary text-[13.5px] font-medium hover:text-text-primary transition-colors duration-300 py-1"
             >
               제품
               <Icon
@@ -104,21 +104,21 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-2xl bg-obsidian/95 backdrop-blur-2xl border border-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
                 >
                   <div className="p-2">
                     {productLinks.map((link) => (
                       <Link
                         key={link.href}
                         to={link.href}
-                        className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-colors duration-200 group"
+                        className="flex items-start gap-3 px-3 py-2.5 rounded-xl hover:bg-bg-hover transition-colors duration-200 group"
                       >
                         <div className="w-8 h-8 rounded-lg bg-accent/[0.08] border border-accent/15 flex items-center justify-center shrink-0 mt-0.5">
                           <Icon icon={link.icon} className="w-4 h-4 text-accent" />
                         </div>
                         <div>
-                          <div className="text-ivory text-[13px] font-semibold group-hover:text-snow transition-colors">{link.label}</div>
-                          <div className="text-ash text-[11px] leading-[1.5] mt-0.5">{link.desc}</div>
+                          <div className="text-text-primary text-[13px] font-semibold group-hover:text-text-primary transition-colors">{link.label}</div>
+                          <div className="text-text-tertiary text-[11px] leading-[1.5] mt-0.5">{link.desc}</div>
                         </div>
                       </Link>
                     ))}
@@ -131,7 +131,7 @@ export default function Navbar() {
           {/* 요금제 */}
           <Link
             to="/pricing"
-            className="text-ash text-[13.5px] font-medium hover:text-pearl transition-colors duration-300 relative group py-1"
+            className="text-text-tertiary text-[13.5px] font-medium hover:text-text-primary transition-colors duration-300 relative group py-1"
           >
             요금제
             <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -141,7 +141,7 @@ export default function Navbar() {
           <div ref={guideRef} className="relative">
             <button
               onClick={() => { setGuideOpen(!guideOpen); setProductOpen(false); }}
-              className="flex items-center gap-1 text-ash text-[13.5px] font-medium hover:text-pearl transition-colors duration-300 py-1"
+              className="flex items-center gap-1 text-text-tertiary text-[13.5px] font-medium hover:text-text-primary transition-colors duration-300 py-1"
             >
               가이드
               <Icon
@@ -156,17 +156,17 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-2xl bg-obsidian/95 backdrop-blur-2xl border border-white/[0.06] shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
                 >
                   <div className="p-2">
                     {guideLinks.map((link) => (
                       <Link
                         key={link.href}
                         to={link.href}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white/[0.04] transition-colors duration-200 group"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-bg-hover transition-colors duration-200 group"
                       >
                         <Icon icon={link.icon} className="w-4 h-4 text-accent/60" />
-                        <span className="text-silver text-[13px] font-medium group-hover:text-pearl transition-colors">{link.label}</span>
+                        <span className="text-text-secondary text-[13px] font-medium group-hover:text-text-primary transition-colors">{link.label}</span>
                       </Link>
                     ))}
                   </div>
@@ -178,7 +178,7 @@ export default function Navbar() {
           {/* 소개 */}
           <Link
             to="/about"
-            className="text-ash text-[13.5px] font-medium hover:text-pearl transition-colors duration-300 relative group py-1"
+            className="text-text-tertiary text-[13.5px] font-medium hover:text-text-primary transition-colors duration-300 relative group py-1"
           >
             소개
             <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent/50 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -198,12 +198,12 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-white/[0.05] transition-colors duration-200"
+          className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-bg-hover/70 transition-colors duration-200"
           aria-label="메뉴 열기"
         >
           <Icon
             icon={mobileOpen ? 'solar:close-circle-bold-duotone' : 'solar:hamburger-menu-bold-duotone'}
-            className="w-5 h-5 text-silver"
+            className="w-5 h-5 text-text-secondary"
           />
         </button>
       </nav>
@@ -216,38 +216,38 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="md:hidden overflow-hidden bg-obsidian/95 backdrop-blur-2xl border-b border-white/[0.04]"
+            className="md:hidden overflow-hidden bg-bg-soft/95 backdrop-blur-2xl border-b border-border-light/50"
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {/* 제품 그룹 */}
-              <p className="text-ash/60 text-[10px] font-semibold tracking-widest uppercase mb-2 mt-1">제품</p>
+              <p className="text-text-tertiary/60 text-[10px] font-semibold tracking-widest uppercase mb-2 mt-1">제품</p>
               {productLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="flex items-center gap-3 py-2.5 text-silver text-[14px] font-medium hover:text-pearl transition-colors duration-200"
+                  className="flex items-center gap-3 py-2.5 text-text-secondary text-[14px] font-medium hover:text-text-primary transition-colors duration-200"
                 >
                   <Icon icon={link.icon} className="w-4 h-4 text-accent/60" />
                   {link.label}
                 </Link>
               ))}
-              <div className="h-px bg-white/[0.04] my-3" />
+              <div className="h-px bg-border-light/50 my-3" />
               {/* 요금제 / 소개 */}
-              <Link to="/pricing" className="py-2.5 text-silver text-[14px] font-medium hover:text-pearl transition-colors duration-200">요금제</Link>
-              <Link to="/about" className="py-2.5 text-silver text-[14px] font-medium hover:text-pearl transition-colors duration-200">소개</Link>
-              <div className="h-px bg-white/[0.04] my-3" />
+              <Link to="/pricing" className="py-2.5 text-text-secondary text-[14px] font-medium hover:text-text-primary transition-colors duration-200">요금제</Link>
+              <Link to="/about" className="py-2.5 text-text-secondary text-[14px] font-medium hover:text-text-primary transition-colors duration-200">소개</Link>
+              <div className="h-px bg-border-light/50 my-3" />
               {/* 가이드 그룹 */}
-              <p className="text-ash/60 text-[10px] font-semibold tracking-widest uppercase mb-2">가이드</p>
+              <p className="text-text-tertiary/60 text-[10px] font-semibold tracking-widest uppercase mb-2">가이드</p>
               {guideLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="py-2.5 text-silver text-[14px] font-medium hover:text-pearl transition-colors duration-200"
+                  className="py-2.5 text-text-secondary text-[14px] font-medium hover:text-text-primary transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="h-px bg-white/[0.04] my-3" />
+              <div className="h-px bg-border-light/50 my-3" />
               <Link to="/pricing">
                 <button className="w-full py-3 rounded-xl bg-accent/[0.1] border border-accent/20 text-accent-bright text-sm font-semibold hover:bg-accent/[0.18] transition-all duration-300">
                   얼리버드 특가로 소장하기

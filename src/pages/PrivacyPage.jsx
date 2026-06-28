@@ -5,7 +5,7 @@ export default function PrivacyPage() {
     <LegalLayout title="개인정보처리방침" lastUpdated="2026년 4월 12일">
       <div className="mb-10 p-5 rounded-2xl border border-emerald-accent/20 bg-emerald-accent/[0.03]">
         <p className="text-emerald-accent text-[13px] font-semibold mb-2">데이터 처리 투명성 선언</p>
-        <p className="text-silver text-[13px] leading-[1.8]">
+        <p className="text-text-secondary text-[13px] leading-[1.8]">
           Mindpack AI 앱은 원본 파일을 업로드하지 않습니다. 파이썬이 로컬에서 텍스트만 추출하고,
           추출된 텍스트만 Claude API(Anthropic)로 전송합니다. Mindpack AI 자체 서버에는 어떠한
           데이터도 전송되지 않습니다.
@@ -28,38 +28,38 @@ export default function PrivacyPage() {
       </LegalSection>
 
       <LegalSection title="제2조 (앱 내 데이터 처리)">
-        <p className="font-semibold text-ivory mb-2">로컬에서 처리되는 것</p>
+        <p className="font-semibold text-text-primary mb-2">로컬에서 처리되는 것</p>
         <ul className="space-y-1 mb-5 list-none">
           {[
             '원본 파일(PDF, PPTX, XLSX 등)의 파싱 및 텍스트 추출',
             '.pptx 보고서 생성 및 저장',
             '모든 원본 파일 및 결과물의 저장',
           ].map((t) => (
-            <li key={t} className="flex items-start gap-2 text-silver">
+            <li key={t} className="flex items-start gap-2 text-text-secondary">
               <span className="text-emerald-accent mt-1 shrink-0">→</span>{t}
             </li>
           ))}
         </ul>
-        <p className="font-semibold text-ivory mb-2">Claude API로 전송되는 것</p>
+        <p className="font-semibold text-text-primary mb-2">Claude API로 전송되는 것</p>
         <ul className="space-y-1 mb-5 list-none">
           {[
             '전처리 모듈이 추출한 텍스트 (원본 파일 자체가 아님)',
             '선택한 분석 프레임워크 정보',
           ].map((t) => (
-            <li key={t} className="flex items-start gap-2 text-silver">
+            <li key={t} className="flex items-start gap-2 text-text-secondary">
               <span className="text-accent mt-1 shrink-0">→</span>{t}
             </li>
           ))}
         </ul>
-        <p className="font-semibold text-ivory mb-2">수집하지 않는 것 (제로 텔레메트리)</p>
+        <p className="font-semibold text-text-primary mb-2">수집하지 않는 것 (제로 텔레메트리)</p>
         <ul className="space-y-1 list-none">
           {[
             '앱 사용 통계 (실행 횟수, 사용 시간 등)',
             'IP 주소, 기기 정보, 위치 정보',
             'Mindpack AI 자체 서버로의 어떠한 데이터 전송',
           ].map((t) => (
-            <li key={t} className="flex items-start gap-2 text-silver">
-              <span className="text-ash/50 mt-1 shrink-0">✕</span>{t}
+            <li key={t} className="flex items-start gap-2 text-text-secondary">
+              <span className="text-text-tertiary/50 mt-1 shrink-0">✕</span>{t}
             </li>
           ))}
         </ul>

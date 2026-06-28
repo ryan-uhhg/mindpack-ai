@@ -44,7 +44,7 @@ export default function MailingForm({ compact = false }) {
         </div>
         <div>
           <p className="text-emerald-accent text-[13px] font-semibold">구독 완료!</p>
-          <p className="text-ash text-[11px]">프레임워크 패키지를 이메일로 발송해 드렸습니다.</p>
+          <p className="text-text-tertiary text-[11px]">프레임워크 패키지를 이메일로 발송해 드렸습니다.</p>
         </div>
       </div>
     );
@@ -59,9 +59,9 @@ export default function MailingForm({ compact = false }) {
           onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
           placeholder="your@email.com"
           className={`
-            flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl
-            text-silver placeholder:text-ash/40 text-[13px]
-            focus:outline-none focus:border-accent/40 focus:bg-white/[0.06]
+            flex-1 bg-bg-soft border border-border-mid rounded-xl
+            text-text-secondary placeholder:text-text-tertiary/40 text-[13px]
+            focus:outline-none focus:border-accent/40 focus:bg-bg-card
             transition-all duration-200
             ${compact ? 'px-3 py-2' : 'px-4 py-3'}
           `}
@@ -85,7 +85,7 @@ export default function MailingForm({ compact = false }) {
         <p className="mt-2 text-red-400/80 text-[11px]">{errorMsg}</p>
       )}
       {!compact && (
-        <p className="mt-2.5 text-ash/50 text-[11px]">
+        <p className="mt-2.5 text-text-tertiary/50 text-[11px]">
           스팸 없음. 언제든 구독 취소 가능.
         </p>
       )}

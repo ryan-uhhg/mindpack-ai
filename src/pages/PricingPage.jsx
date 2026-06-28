@@ -105,7 +105,7 @@ const faqItems = [
 function MatrixCell({ value }) {
   if (value === true) return <Icon icon="solar:check-circle-bold-duotone" className="w-5 h-5 text-emerald-accent mx-auto" />;
   if (value === false) return <span className="text-ash/40 text-lg mx-auto block text-center">—</span>;
-  return <span className="text-ivory text-[13px] font-medium">{value}</span>;
+  return <span className="text-text-primary text-[13px] font-medium">{value}</span>;
 }
 
 export default function PricingPage() {
@@ -133,7 +133,7 @@ export default function PricingPage() {
                   /* Premium — animated gold border */
                   <div className="relative rounded-[24px] p-[1.5px]">
                     <div className="absolute inset-0 rounded-[24px] premium-border-animated" />
-                    <div className="relative rounded-[23px] bg-gradient-to-b from-graphite to-obsidian overflow-hidden">
+                    <div className="relative rounded-[23px] bg-gradient-to-b from-bg-raised to-bg-soft overflow-hidden">
                       {tier.badge && (
                         <div className="text-center py-2.5 border-b border-gold/10">
                           <span className="text-gold text-[12px] font-bold tracking-wide">{tier.badge}</span>
@@ -158,13 +158,13 @@ export default function PricingPage() {
       <FreeDownloadSection />
 
       {/* Feature matrix */}
-      <section className="w-full py-24 border-t border-white/[0.04]">
+      <section className="w-full py-24 border-t border-border-light/50">
         <div className="section-container">
           <div className="text-center mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               Feature Matrix
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em]">
               플랜별 기능 비교
             </h2>
           </div>
@@ -173,16 +173,16 @@ export default function PricingPage() {
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[600px]">
                   <thead>
-                    <tr className="border-b border-white/[0.06]">
+                    <tr className="border-b border-border-light">
                       <th className="text-left px-6 py-4 text-ash text-[12px] font-semibold w-1/2">기능</th>
-                      <th className="text-center px-4 py-4 text-silver text-[12px] font-semibold">Free</th>
+                      <th className="text-center px-4 py-4 text-text-secondary text-[12px] font-semibold">Free</th>
                       <th className="text-center px-4 py-4 text-gold text-[12px] font-bold bg-gold/[0.04]">Premium</th>
                     </tr>
                   </thead>
                   <tbody>
                     {matrixRows.map((row, i) => (
-                      <tr key={i} className={`border-b border-white/[0.04] ${i % 2 === 0 ? '' : 'bg-white/[0.01]'}`}>
-                        <td className="px-6 py-3.5 text-silver text-[13px]">{row.label}</td>
+                      <tr key={i} className={`border-b border-border-light/50 ${i % 2 === 0 ? '' : 'bg-bg-hover/50'}`}>
+                        <td className="px-6 py-3.5 text-text-secondary text-[13px]">{row.label}</td>
                         <td className="px-4 py-3.5 text-center"><MatrixCell value={row.free} /></td>
                         <td className="px-4 py-3.5 text-center bg-gold/[0.03]"><MatrixCell value={row.premium} /></td>
                       </tr>
@@ -201,8 +201,8 @@ export default function PricingPage() {
           <div className="card-bezel">
             <div className="card-bezel-inner text-center py-10">
               <Icon icon="solar:shield-check-bold-duotone" className="w-12 h-12 text-emerald-accent mx-auto mb-5" />
-              <h3 className="text-xl font-bold text-snow mb-3">기술 문제 시 환불 보증</h3>
-              <p className="text-silver text-[14px] leading-[1.8] max-w-md mx-auto mb-5 text-center">
+              <h3 className="text-xl font-bold text-text-primary mb-3">기술 문제 시 환불 보증</h3>
+              <p className="text-text-secondary text-[14px] leading-[1.8] max-w-md mx-auto mb-5 text-center">
                 프리미엄 플랜: 기술적 문제로 정상 작동하지 않으면 환불. 프리 플랜은 비용이 없으므로 자동 환불 대상 아님.
               </p>
               <Link to="/refund" className="text-emerald-accent text-[13px] font-medium hover:opacity-80 transition-opacity">
@@ -220,7 +220,7 @@ export default function PricingPage() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               FAQ
             </span>
-            <h2 className="text-2xl font-extrabold text-snow tracking-[-0.04em]">요금제 자주 묻는 질문</h2>
+            <h2 className="text-2xl font-extrabold text-text-primary tracking-[-0.04em]">요금제 자주 묻는 질문</h2>
           </div>
           <AccordionFAQ items={faqItems} />
         </div>
@@ -232,12 +232,12 @@ export default function PricingPage() {
           <p className="text-ash text-[14px] mb-6">여전히 결정하지 못하셨나요?</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/demo">
-              <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] text-silver text-[14px] font-medium hover:bg-white/[0.04] hover:text-pearl transition-all duration-300 cursor-pointer">
+              <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-border-mid text-text-secondary text-[14px] font-medium hover:bg-bg-hover hover:text-text-primary transition-all duration-300 cursor-pointer">
                 데모 5분 체험
               </button>
             </Link>
             <Link to="/use-cases">
-              <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/[0.08] text-silver text-[14px] font-medium hover:bg-white/[0.04] hover:text-pearl transition-all duration-300 cursor-pointer">
+              <button className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-border-mid text-text-secondary text-[14px] font-medium hover:bg-bg-hover hover:text-text-primary transition-all duration-300 cursor-pointer">
                 직업별 효과 확인
               </button>
             </Link>
@@ -263,7 +263,7 @@ function PricingCardInner({ tier }) {
           <Icon icon={tier.icon} className={`w-5 h-5 ${c.icon}`} />
         </div>
         <div>
-          <div className="text-ivory font-bold text-[15px]">{tier.name}</div>
+          <div className="text-text-primary font-bold text-[15px]">{tier.name}</div>
           <div className="text-ash text-[11px]">{tier.tagline}</div>
         </div>
       </div>
@@ -286,14 +286,14 @@ function PricingCardInner({ tier }) {
         )}
       </div>
 
-      <div className="h-px bg-white/[0.05] mb-6" />
+      <div className="h-px bg-border-light/60 mb-6" />
 
       {/* Features */}
       <ul className="flex flex-col gap-3 flex-1 mb-8">
         {tier.features.map((f, i) => {
           const isNot = tier.notIncluded && tier.notIncluded.includes(i);
           return (
-            <li key={i} className={`flex items-start gap-2.5 text-[13px] ${isNot ? 'text-ash/50' : 'text-silver'}`}>
+            <li key={i} className={`flex items-start gap-2.5 text-[13px] ${isNot ? 'text-ash/50' : 'text-text-secondary'}`}>
               <Icon
                 icon={isNot ? 'solar:close-circle-bold' : 'solar:check-circle-bold-duotone'}
                 className={`w-4 h-4 shrink-0 mt-0.5 ${isNot ? 'text-ash/30' : 'text-emerald-accent'}`}
@@ -307,19 +307,19 @@ function PricingCardInner({ tier }) {
       {/* CTA */}
       {tier.name === 'Free' ? (
         <a href="#free-email" onClick={(e) => { e.preventDefault(); document.querySelector('#free-email')?.scrollIntoView({ behavior: 'smooth' }); }}>
-          <button className="w-full py-4 rounded-2xl border border-white/[0.08] text-silver text-[14px] font-semibold hover:bg-white/[0.04] hover:text-pearl transition-all duration-300 cursor-pointer">
+          <button className="w-full py-4 rounded-2xl border border-border-mid text-text-secondary text-[14px] font-semibold hover:bg-bg-hover hover:text-text-primary transition-all duration-300 cursor-pointer">
             {tier.cta}
           </button>
         </a>
       ) : tier.isPrimary ? (
         <a href={`mailto:mindpackai.help@gmail.com?subject=Premium 구매 문의&body=안녕하세요, Premium 플랜 ($49 얼리버드)을 구매하고 싶습니다.`}>
-          <button className="group w-full py-4 rounded-2xl bg-gradient-to-r from-gold/90 via-gold to-gold-bright font-bold text-void text-[14px] transition-all duration-300 hover:shadow-[0_0_50px_rgba(240,198,116,0.35)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+          <button className="group w-full py-4 rounded-2xl bg-gradient-to-r from-gold/90 via-gold to-gold-bright font-bold text-bg-base text-[14px] transition-all duration-300 hover:shadow-[0_0_50px_rgba(240,198,116,0.35)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
             {tier.cta}
           </button>
         </a>
       ) : (
         <a href={`mailto:mindpackai.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.`}>
-          <button className="w-full py-4 rounded-2xl border border-white/[0.08] text-silver text-[14px] font-semibold hover:bg-white/[0.04] hover:text-pearl transition-all duration-300 cursor-pointer">
+          <button className="w-full py-4 rounded-2xl border border-border-mid text-text-secondary text-[14px] font-semibold hover:bg-bg-hover hover:text-text-primary transition-all duration-300 cursor-pointer">
             {tier.cta}
           </button>
         </a>

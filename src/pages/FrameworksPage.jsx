@@ -39,8 +39,8 @@ export default function FrameworksPage() {
           {categories.map(cat => (
             <div key={cat} className="mb-14">
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-ash/60 text-[10px] font-semibold tracking-widest uppercase">{cat}</span>
-                <div className="flex-1 h-px bg-white/[0.04]" />
+                <span className="text-text-tertiary/60 text-[10px] font-semibold tracking-widest uppercase">{cat}</span>
+                <div className="flex-1 h-px bg-border-light/40" />
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {frameworks.filter(f => f.category === cat).map((fw, i) => {
@@ -53,14 +53,14 @@ export default function FrameworksPage() {
                             <Icon icon={fw.icon} className={`w-5 h-5 ${col.icon}`} />
                           </div>
                           <div>
-                            <h3 className="text-ivory font-bold text-[15px] mb-1">{fw.name}</h3>
+                            <h3 className="text-text-primary font-bold text-[15px] mb-1">{fw.name}</h3>
                             <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${col.badge}`}>{fw.category}</span>
                           </div>
                         </div>
-                        <p className="text-silver text-[13px] leading-[1.8] mb-4">{fw.desc}</p>
+                        <p className="text-text-secondary text-[13px] leading-[1.8] mb-4">{fw.desc}</p>
                         <div className="flex items-start gap-2 text-[12px]">
                           <Icon icon="solar:check-circle-bold-duotone" className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${col.icon}`} />
-                          <span className="text-ash"><span className={`font-semibold ${col.icon}`}>적합 상황</span>: {fw.best}</span>
+                          <span className="text-text-tertiary"><span className={`font-semibold ${col.icon}`}>적합 상황</span>: {fw.best}</span>
                         </div>
                       </div>
                     </div>

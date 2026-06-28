@@ -91,7 +91,7 @@ function PricingCard({ plan, index }) {
             <div className="premium-border-animated absolute inset-0" />
           </div>
           {/* Static inner mask to create border effect */}
-          <div className="absolute -inset-[1px] rounded-[23px] bg-carbon" style={{ zIndex: 0 }} />
+          <div className="absolute -inset-[1px] rounded-[23px] bg-bg-card" style={{ zIndex: 0 }} />
         </>
       )}
 
@@ -102,7 +102,7 @@ function PricingCard({ plan, index }) {
             {plan.badge}
           </span>
           {plan.popularBadge && (
-            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/[0.05] border border-white/[0.08] text-pearl text-[11px] font-medium whitespace-nowrap">
+            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-bg-soft border border-border-mid text-text-secondary text-[11px] font-medium whitespace-nowrap">
               <Icon icon="solar:users-group-rounded-bold-duotone" className="w-3 h-3 text-accent/70" />
               {plan.popularBadge}
             </span>
@@ -113,7 +113,7 @@ function PricingCard({ plan, index }) {
       <div
         className={`relative flex flex-col h-full z-10 ${
           isPremium
-            ? 'rounded-[22px] bg-gradient-to-b from-graphite via-carbon to-obsidian border border-gold/20'
+            ? 'rounded-[22px] bg-gradient-to-b from-bg-raised via-bg-card to-bg-soft border border-gold/20'
             : 'card-bezel'
         }`}
       >
@@ -132,10 +132,10 @@ function PricingCard({ plan, index }) {
           {/* Header */}
           <div className="relative z-10 mb-10">
             <div className="flex items-center gap-3 mb-5">
-              <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${isPremium ? 'bg-gold/12 border border-gold/20' : 'bg-accent/[0.06] border border-white/[0.04]'}`}>
+              <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${isPremium ? 'bg-gold/12 border border-gold/20' : 'bg-accent/[0.06] border border-border-mid'}`}>
                 <Icon icon={plan.icon} className={`w-5 h-5 ${isPremium ? 'text-gold-bright' : 'text-accent'}`} />
               </div>
-              <span className={`text-sm font-bold tracking-wide ${isPremium ? 'text-gold-bright' : 'text-silver'}`}>
+              <span className={`text-sm font-bold tracking-wide ${isPremium ? 'text-gold-bright' : 'text-text-secondary'}`}>
                 {plan.tier}
               </span>
             </div>
@@ -144,28 +144,28 @@ function PricingCard({ plan, index }) {
             <div className="mb-3">
               {isPremium && plan.originalPrice && (
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-ash text-sm line-through opacity-60">{plan.originalPrice}원</span>
+                  <span className="text-text-tertiary text-sm line-through opacity-60">{plan.originalPrice}원</span>
                   <span className="text-xs font-bold text-gold/80 bg-gold/10 px-2 py-0.5 rounded-full border border-gold/15">
                     51% OFF
                   </span>
                 </div>
               )}
               <div className="flex items-baseline gap-1.5">
-                <span className={`text-4xl md:text-5xl font-extrabold tracking-tight ${isPremium ? 'text-snow' : 'text-ivory'}`}>
+                <span className={`text-4xl md:text-5xl font-extrabold tracking-tight ${isPremium ? 'text-text-primary' : 'text-text-primary'}`}>
                   {plan.price}
                 </span>
-                <span className="text-ash text-base font-medium">{plan.priceUnit}</span>
+                <span className="text-text-tertiary text-base font-medium">{plan.priceUnit}</span>
               </div>
             </div>
 
-            <p className={`text-sm font-semibold mb-2 ${isPremium ? 'text-gold' : 'text-pearl'}`}>
+            <p className={`text-sm font-semibold mb-2 ${isPremium ? 'text-gold' : 'text-text-secondary'}`}>
               {plan.tagline}
             </p>
-            <p className="text-ash text-[13px] leading-[1.65]">{plan.description}</p>
+            <p className="text-text-tertiary text-[13px] leading-[1.65]">{plan.description}</p>
           </div>
 
           {/* Divider */}
-          <div className={`h-px mb-9 ${isPremium ? 'bg-gradient-to-r from-transparent via-gold/20 to-transparent' : 'bg-white/[0.04]'}`} />
+          <div className={`h-px mb-9 ${isPremium ? 'bg-gradient-to-r from-transparent via-gold/20 to-transparent' : 'bg-border-mid'}`} />
 
           {/* Features */}
           <ul className="relative z-10 flex-1 space-y-5 mb-12">
@@ -175,7 +175,7 @@ function PricingCard({ plan, index }) {
                   icon={isPremium ? 'solar:check-circle-bold-duotone' : 'solar:check-circle-linear'}
                   className={`w-5 h-5 shrink-0 mt-0.5 ${isPremium ? 'text-gold' : 'text-accent/50'}`}
                 />
-                <span className={`text-sm leading-[1.8] ${isPremium ? 'text-pearl' : 'text-silver'}`}>
+                <span className={`text-sm leading-[1.8] ${isPremium ? 'text-text-secondary' : 'text-text-secondary'}`}>
                   {feature}
                 </span>
               </li>
@@ -196,7 +196,7 @@ function PricingCard({ plan, index }) {
               </a>
             ) : plan.tier === 'Free' ? (
               <a href="/pricing#free-email">
-                <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
+                <button className="group w-full py-3.5 rounded-2xl border border-border-light bg-bg-soft text-text-secondary text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-text-primary cursor-pointer">
                   <span className="flex items-center justify-center gap-2">
                     {plan.cta}
                     <Icon icon="solar:arrow-right-linear" className="w-4 h-4 opacity-40 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-0.5" />
@@ -205,7 +205,7 @@ function PricingCard({ plan, index }) {
               </a>
             ) : (
               <a href="mailto:mindpackai.help@gmail.com?subject=Basic 구매 문의&body=안녕하세요, Basic 플랜 구매를 원합니다.">
-                <button className="group w-full py-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] text-silver text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-pearl cursor-pointer">
+                <button className="group w-full py-3.5 rounded-2xl border border-border-light bg-bg-soft text-text-secondary text-sm font-semibold transition-all duration-300 hover:border-accent/25 hover:bg-accent/[0.04] hover:text-text-primary cursor-pointer">
                   <span className="flex items-center justify-center gap-2">
                     {plan.cta}
                     <Icon icon="solar:arrow-right-linear" className="w-4 h-4 opacity-40 group-hover:opacity-80 transition-all duration-300 group-hover:translate-x-0.5" />
@@ -242,10 +242,10 @@ export default function PricingSection() {
           <span className="inline-block px-4 py-1.5 rounded-full border border-gold/15 bg-gold/[0.04] text-gold text-xs font-medium tracking-wider uppercase mb-7">
             Pricing
           </span>
-          <h2 className="text-3xl md:text-[2.75rem] font-extrabold text-snow tracking-tight mb-7">
+          <h2 className="text-3xl md:text-[2.75rem] font-extrabold text-text-primary tracking-tight mb-7">
             같은 시간, 더 많은 아웃풋에 투자하십시오
           </h2>
-          <p className="text-silver text-lg max-w-xl mx-auto leading-[1.8] text-center">
+          <p className="text-text-secondary text-lg max-w-xl mx-auto leading-[1.8] text-center">
             한 번의 결제로 영구 소장. AI가 14개 생산성 시스템을 당신의 워크플로에 직접 구현합니다.
           </p>
         </motion.div>
@@ -267,13 +267,13 @@ export default function PricingSection() {
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border border-emerald-accent/15 bg-emerald-accent/[0.03]">
             <Icon icon="solar:shield-check-bold-duotone" className="w-5 h-5 text-emerald-accent" />
-            <span className="text-ash text-sm">
+            <span className="text-text-tertiary text-sm">
               환경 내 미작동 시{' '}
-              <span className="text-pearl font-semibold">100% 환불 보증</span>
+              <span className="text-text-secondary font-semibold">100% 환불 보증</span>
               {' '}— 어떤 질문도 하지 않습니다.
             </span>
           </div>
-          <p className="text-ash/50 text-xs">* 얼리버드 특가는 선착순 50명 마감 시 자동 종료됩니다.</p>
+          <p className="text-text-tertiary/50 text-xs">* 얼리버드 특가는 선착순 50명 마감 시 자동 종료됩니다.</p>
         </motion.div>
       </div>
     </section>

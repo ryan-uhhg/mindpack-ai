@@ -373,7 +373,7 @@ function SkillCard({ skill, index }) {
       viewport={{ once: true }}
       className="h-full"
     >
-      <div className={`relative h-full p-6 rounded-2xl bg-graphite/40 border border-white/[0.06] hover:border-white/[0.12] transition-all duration-300 group cursor-pointer`}
+      <div className={`relative h-full p-6 rounded-2xl bg-bg-card border border-border-light hover:border-border-mid transition-all duration-300 group cursor-pointer`}
         onClick={() => setExpanded(!expanded)}>
         
         {/* Header */}
@@ -381,29 +381,28 @@ function SkillCard({ skill, index }) {
           <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${skill.color} flex items-center justify-center mb-4`}>
             <Icon icon={skill.icon} className="w-5 h-5 text-white/80" />
           </div>
-          <h3 className="text-ivory text-sm font-bold mb-1">{skill.name}</h3>
-          <p className="text-ash text-xs mb-2">{skill.author}</p>
-          <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-ash/80">
+          <h3 className="text-text-primary text-sm font-bold mb-1">{skill.name}</h3>
+          <p className="text-text-tertiary text-xs mb-2">{skill.author}</p>
+          <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-bg-hover border border-border-light text-text-tertiary/80">
             {skill.category}
           </span>
         </div>
 
         {/* Book Validation - Quick View */}
-        <div className="mb-4 p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-          <p className="text-[11px] text-ash/80 mb-2 font-semibold">원본 검증</p>
+        <div className="mb-4 p-3 rounded-lg bg-bg-raised border border-border-light/50">
+          <p className="text-[11px] text-text-tertiary/80 mb-2 font-semibold">원본 검증</p>
           <div className="space-y-1">
-            <div className="text-[11px] text-silver/80">📊 {skill.bookValidation.sales}</div>
-            <div className="text-[11px] text-silver/80">🌍 {skill.bookValidation.countries}</div>
-            <div className="text-[11px] text-silver/80">{skill.bookValidation.rating}</div>
+            <div className="text-[11px] text-text-secondary/80">📊 {skill.bookValidation.sales}</div>
+            <div className="text-[11px] text-text-secondary/80">🌍 {skill.bookValidation.countries}</div>
+            <div className="text-[11px] text-text-secondary/80">{skill.bookValidation.rating}</div>
           </div>
         </div>
 
-        {/* Effectiveness */}
-        <div className="mb-4 p-3 rounded-lg bg-white/[0.02] border border-white/[0.04]">
-          <p className="text-[11px] text-ash/80 mb-2 font-semibold">효과 (사용자 평균)</p>
+        <div className="mb-4 p-3 rounded-lg bg-bg-raised border border-border-light/50">
+          <p className="text-[11px] text-text-tertiary/80 mb-2 font-semibold">효과 (사용자 평균)</p>
           <div className="space-y-1">
-            <div className="text-[11px] text-silver/80">✅ {skill.effectiveness.adoptionRate}</div>
-            <div className="text-[11px] text-silver/80">📈 {skill.effectiveness.keyMetric}</div>
+            <div className="text-[11px] text-text-secondary/80">✅ {skill.effectiveness.adoptionRate}</div>
+            <div className="text-[11px] text-text-secondary/80">📈 {skill.effectiveness.keyMetric}</div>
           </div>
         </div>
 
@@ -413,8 +412,8 @@ function SkillCard({ skill, index }) {
         </div>
 
         {/* Expand button + CTA */}
-        <div className="mt-4 pt-4 border-t border-white/[0.04] flex items-center justify-between">
-          <div className="text-[10px] text-ash/60">대상: {skill.targetRoles.slice(0, 2).join(', ')}</div>
+        <div className="mt-4 pt-4 border-t border-border-light/50 flex items-center justify-between">
+          <div className="text-[10px] text-text-tertiary/60">대상: {skill.targetRoles.slice(0, 2).join(', ')}</div>
           <Icon
             icon="solar:alt-arrow-down-bold"
             className={`w-4 h-4 text-accent/60 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
@@ -429,21 +428,21 @@ function SkillCard({ skill, index }) {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="mt-4 pt-4 border-t border-white/[0.06] space-y-3"
+              className="mt-4 pt-4 border-t border-border-light space-y-3"
             >
               <div>
-                <p className="text-[10px] text-ash/80 font-semibold mb-1">대상 역할</p>
+                <p className="text-[10px] text-text-tertiary/80 font-semibold mb-1">대상 역할</p>
                 <div className="flex flex-wrap gap-1">
                   {skill.targetRoles.map((role) => (
-                    <span key={role} className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.03] text-silver/70">
+                    <span key={role} className="text-[10px] px-2 py-0.5 rounded-full bg-bg-hover/50 text-text-secondary/70">
                       {role}
                     </span>
                   ))}
                 </div>
               </div>
               <div>
-                <p className="text-[10px] text-ash/80 font-semibold mb-1">Mindpack에서의 활용</p>
-                <p className="text-[11px] text-silver/80 leading-relaxed">{skill.useCase}</p>
+                <p className="text-[10px] text-text-tertiary/80 font-semibold mb-1">Mindpack에서의 활용</p>
+                <p className="text-[11px] text-text-secondary/80 leading-relaxed">{skill.useCase}</p>
               </div>
               <button
                 onClick={handleDemoClick}
@@ -474,8 +473,8 @@ export default function ProductivitySkillsPage() {
       {/* Skills Grid */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-light/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-light/20 to-transparent" />
         </div>
 
         <div className="section-container max-w-7xl">
@@ -486,10 +485,10 @@ export default function ProductivitySkillsPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               각 프레임워크의 파워
             </h2>
-            <p className="text-silver text-base max-w-2xl mx-auto">
+            <p className="text-text-secondary text-base max-w-2xl mx-auto">
               카드를 클릭해서 각 스킬의 검증 데이터, 효과, 그리고 Mindpack에서의 활용 방식을 확인하세요.
             </p>
           </motion.div>
@@ -511,7 +510,7 @@ export default function ProductivitySkillsPage() {
       {/* Comparison Section */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-deep/[0.04] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-dim blur-[120px]" />
         </div>
 
         <div className="section-container max-w-5xl relative z-10">
@@ -525,10 +524,10 @@ export default function ProductivitySkillsPage() {
             <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
               왜 Mindpack인가
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               책만 읽을 때 vs Mindpack 적용 시
             </h2>
-            <p className="text-silver text-base max-w-xl mx-auto">
+            <p className="text-text-secondary text-base max-w-xl mx-auto">
               같은 프레임워크, 완전히 다른 결과
             </p>
           </motion.div>
@@ -542,9 +541,9 @@ export default function ProductivitySkillsPage() {
           >
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-white/[0.08]">
-                  <th className="text-left px-4 py-4 text-ivory font-semibold text-sm">구분</th>
-                  <th className="text-left px-4 py-4 text-silver font-medium text-sm">책만 읽을 때</th>
+                <tr className="border-b border-border-mid">
+                  <th className="text-left px-4 py-4 text-text-primary font-semibold text-sm">구분</th>
+                  <th className="text-left px-4 py-4 text-text-secondary font-medium text-sm">책만 읽을 때</th>
                   <th className="text-left px-4 py-4 text-accent font-semibold text-sm">Mindpack 적용 시</th>
                 </tr>
               </thead>
@@ -557,11 +556,10 @@ export default function ProductivitySkillsPage() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors"
+                    className="border-b border-border-light/50 hover:bg-bg-hover transition-colors"
                   >
-                    <td className="px-4 py-5 text-ivory font-medium text-sm">{metric}</td>
-                    <td className="px-4 py-5 text-silver text-sm">{book}</td>
-                    <td className="px-4 py-5 text-accent/90 text-sm font-medium">{mindpack}</td>
+                    <td className="px-4 py-5 text-text-primary font-medium text-sm">{metric}</td>
+                    <td className="px-4 py-5 text-text-secondary text-sm">{book}</td>
                   </motion.tr>
                 ))}
               </tbody>
@@ -573,7 +571,7 @@ export default function ProductivitySkillsPage() {
       {/* FAQ Section */}
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-light/20 to-transparent" />
         </div>
 
         <div className="section-container max-w-3xl relative z-10">
@@ -587,7 +585,7 @@ export default function ProductivitySkillsPage() {
             <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
               자주 묻는 질문
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight">
               질문과 답변
             </h2>
           </motion.div>

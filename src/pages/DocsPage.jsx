@@ -58,7 +58,7 @@ export default function DocsPage() {
               >
                 <div className="card-bezel-inner !py-4 flex flex-col items-center gap-2 text-center">
                   <Icon icon={item.icon} className="w-5 h-5 text-accent" />
-                  <span className="text-silver text-[12px] font-medium">{item.label}</span>
+                  <span className="text-text-secondary text-[12px] font-medium">{item.label}</span>
                 </div>
               </Link>
             ))}
@@ -67,32 +67,33 @@ export default function DocsPage() {
       </section>
 
       {/* System requirements */}
-      <section id="requirements" className="py-16 border-t border-white/[0.04]">
+      {/* System requirements */}
+      <section id="requirements" className="py-16 border-t border-border-light/40">
         <div className="section-container max-w-3xl">
-          <h2 className="text-xl font-extrabold text-snow tracking-tight mb-2">시스템 요구사항</h2>
-          <p className="text-ash text-[13.5px] mb-8">일반 업무용 노트북이면 충분합니다.</p>
+          <h2 className="text-xl font-extrabold text-text-primary tracking-tight mb-2">시스템 요구사항</h2>
+          <p className="text-text-tertiary text-[13.5px] mb-8">일반 업무용 노트북이면 충분합니다.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {Object.entries(sysReqs).map(([os, rows]) => (
               <div key={os} className="card-bezel">
                 <div className="card-bezel-inner !p-0 overflow-hidden">
-                  <div className="flex items-center gap-2 px-6 py-4 border-b border-white/[0.05] bg-white/[0.02]">
+                  <div className="flex items-center gap-2 px-6 py-4 border-b border-border-light/60 bg-bg-raised">
                     <Icon icon={os === 'macOS' ? 'solar:apple-bold-duotone' : 'solar:windows-bold-duotone'} className="w-4 h-4 text-accent" />
-                    <span className="text-ivory font-bold text-[14px]">{os}</span>
+                    <span className="text-text-primary font-bold text-[14px]">{os}</span>
                   </div>
                   <div className="overflow-x-auto">
                   <table className="w-full min-w-[560px]">
                     <thead>
-                      <tr className="border-b border-white/[0.04]">
-                        <th className="text-left px-5 py-2.5 text-ash text-[11px]">항목</th>
-                        <th className="text-left px-4 py-2.5 text-ash text-[11px]">최소</th>
+                      <tr className="border-b border-border-light/40">
+                        <th className="text-left px-5 py-2.5 text-text-tertiary text-[11px]">항목</th>
+                        <th className="text-left px-4 py-2.5 text-text-tertiary text-[11px]">최소</th>
                         <th className="text-left px-4 py-2.5 text-emerald-accent text-[11px]">권장</th>
                       </tr>
                     </thead>
                     <tbody>
                       {rows.map((r, i) => (
-                        <tr key={i} className="border-b border-white/[0.03]">
-                          <td className="px-5 py-2.5 text-ash text-[12px]">{r.label}</td>
-                          <td className="px-4 py-2.5 text-silver text-[12px]">{r.min}</td>
+                        <tr key={i} className="border-b border-border-light/40">
+                          <td className="px-5 py-2.5 text-text-tertiary text-[12px]">{r.label}</td>
+                          <td className="px-4 py-2.5 text-text-secondary text-[12px]">{r.min}</td>
                           <td className="px-4 py-2.5 text-emerald-accent text-[12px] font-medium">{r.rec}</td>
                         </tr>
                       ))}
@@ -107,10 +108,10 @@ export default function DocsPage() {
       </section>
 
       {/* Install steps */}
-      <section id="install" className="py-16 border-t border-white/[0.04]">
+      <section id="install" className="py-16 border-t border-border-light/40">
         <div className="section-container max-w-3xl">
-          <h2 className="text-xl font-extrabold text-snow tracking-tight mb-2">설치 방법</h2>
-          <p className="text-ash text-[13.5px] mb-8">CLI가 없습니다. 일반 앱처럼 설치합니다.</p>
+          <h2 className="text-xl font-extrabold text-text-primary tracking-tight mb-2">설치 방법</h2>
+          <p className="text-text-tertiary text-[13.5px] mb-8">CLI가 없습니다. 일반 앱처럼 설치합니다.</p>
           <div className="flex flex-col gap-4">
             {installSteps.map((s) => (
               <div key={s.step} className="flex gap-4 card-bezel">
@@ -119,8 +120,8 @@ export default function DocsPage() {
                     <span className="text-accent font-bold text-[13px]">{s.step}</span>
                   </div>
                   <div>
-                    <div className="text-ivory font-semibold text-[14px] mb-1">{s.title}</div>
-                    <div className="text-silver text-[13px] leading-[1.75]">{s.desc}</div>
+                    <div className="text-text-primary font-semibold text-[14px] mb-1">{s.title}</div>
+                    <div className="text-text-secondary text-[13px] leading-[1.75]">{s.desc}</div>
                   </div>
                 </div>
               </div>
@@ -130,10 +131,10 @@ export default function DocsPage() {
       </section>
 
       {/* First run */}
-      <section id="first-run" className="py-16 border-t border-white/[0.04]">
+      <section id="first-run" className="py-16 border-t border-border-light/40">
         <div className="section-container max-w-3xl">
-          <h2 className="text-xl font-extrabold text-snow tracking-tight mb-2">첫 번째 분석 실행</h2>
-          <p className="text-ash text-[13.5px] mb-8">설치 완료 후 첫 분석까지 5분이면 충분합니다.</p>
+          <h2 className="text-xl font-extrabold text-text-primary tracking-tight mb-2">첫 번째 분석 실행</h2>
+          <p className="text-text-tertiary text-[13.5px] mb-8">설치 완료 후 첫 분석까지 5분이면 충분합니다.</p>
           <div className="card-bezel">
             <div className="card-bezel-inner">
               <ol className="space-y-5">
@@ -148,7 +149,7 @@ export default function DocsPage() {
                     <div className="w-6 h-6 rounded-full bg-emerald-accent/[0.1] border border-emerald-accent/20 flex items-center justify-center shrink-0 mt-0.5">
                       <span className="text-emerald-accent font-bold text-[11px]">{i + 1}</span>
                     </div>
-                    <span className="text-silver text-[13.5px] leading-[1.75]">{step}</span>
+                    <span className="text-text-secondary text-[13.5px] leading-[1.75]">{step}</span>
                   </li>
                 ))}
               </ol>
@@ -158,9 +159,9 @@ export default function DocsPage() {
       </section>
 
       {/* FAQ */}
-      <section className="w-full py-16 border-t border-white/[0.04]">
+      <section className="w-full py-16 border-t border-border-light/40">
         <div className="section-container max-w-3xl">
-          <h2 className="text-xl font-extrabold text-snow tracking-tight mb-8">설치 FAQ</h2>
+          <h2 className="text-xl font-extrabold text-text-primary tracking-tight mb-8">설치 FAQ</h2>
           <AccordionFAQ items={faqInstall} />
           <div className="mt-8 text-center">
             <Link to="/docs/faq" className="text-accent text-[13px] font-medium hover:opacity-80 transition-opacity">

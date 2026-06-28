@@ -12,7 +12,7 @@ export default function Layout() {
   }, [pathname]);
 
   return (
-    <div className="relative w-full min-h-screen bg-void overflow-x-hidden">
+    <div className="relative w-full min-h-screen bg-bg-base overflow-x-hidden">
       <Navbar />
       <main className="relative z-10 w-full pt-[72px]">
         <Outlet />

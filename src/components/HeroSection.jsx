@@ -27,11 +27,11 @@ export default function HeroSection() {
     <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pb-20">
       {/* Background layers */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(109,40,217,0.18),transparent)]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-accent-deep/[0.06] blur-[180px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(212,163,115,0.12),transparent)]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-accent-dim blur-[180px]" />
         {/* Subtle grid */}
         <div className="absolute inset-0 opacity-[0.025]"
-          style={{ backgroundImage: 'linear-gradient(rgba(167,139,250,1) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,1) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
+          style={{ backgroundImage: 'linear-gradient(rgba(212,163,115,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(212,163,115,0.5) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 section-container max-w-5xl text-center pt-32">
@@ -46,7 +46,7 @@ export default function HeroSection() {
 
         {/* Headline */}
         <motion.h1 custom={1} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-snow tracking-tight leading-[1.1] mb-6">
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-text-primary tracking-tight leading-[1.1] mb-6">
           당신이 가진 시간은<br />
           <span className="bg-gradient-to-r from-accent-bright via-accent to-accent-glow bg-clip-text text-transparent">
             이미 충분합니다.
@@ -55,24 +55,24 @@ export default function HeroSection() {
 
         {/* Sub-headline */}
         <motion.p custom={2} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-lg md:text-xl text-silver max-w-2xl mx-auto mb-4 leading-relaxed">
+          className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-4 leading-relaxed">
           문제는 시스템입니다.
         </motion.p>
         <motion.p custom={3} variants={fadeUp} initial="hidden" animate="visible"
-          className="text-base md:text-lg text-ash max-w-2xl mx-auto mb-12 leading-loose">
+          className="text-base md:text-lg text-text-tertiary max-w-2xl mx-auto mb-12 leading-loose">
           GTD, Deep Work, OKR — 당신이 이미 알고 있는 프레임워크들.<br />
-          <span className="text-ivory">Mindpack AI가 그것을 당신의 실제 업무 방식에 직접 구현합니다.</span>
+          <span className="text-text-primary">Mindpack AI가 그것을 당신의 실제 업무 방식에 직접 구현합니다.</span>
         </motion.p>
 
         {/* Thinkers scroll */}
         <motion.div custom={4} variants={fadeUp} initial="hidden" animate="visible" className="mb-12 overflow-hidden">
           <div className="flex gap-3 justify-center flex-wrap max-w-xl mx-auto">
             {THINKERS.map((name) => (
-              <span key={name} className="px-3 py-1 rounded-full bg-graphite border border-slate-mid/50 text-ash text-xs font-medium">
+              <span key={name} className="px-3 py-1 rounded-full bg-bg-raised border border-border-light/50 text-text-tertiary text-xs font-medium">
                 {name}
               </span>
             ))}
-            <span className="px-3 py-1 rounded-full bg-graphite border border-accent/20 text-accent text-xs font-medium">
+            <span className="px-3 py-1 rounded-full bg-bg-raised border border-accent/20 text-accent text-xs font-medium">
               +6 more
             </span>
           </div>
@@ -88,7 +88,7 @@ export default function HeroSection() {
             </button>
           </Link>
           <Link to="/pricing#free-email">
-            <button className="px-8 py-4 text-base font-medium rounded-xl border border-white/10 text-pearl hover:border-accent/30 hover:text-ivory transition-all">
+            <button className="px-8 py-4 text-base font-medium rounded-xl border border-border-light text-text-secondary hover:border-accent/30 hover:text-text-primary transition-all">
               무료로 먼저 체험
             </button>
           </Link>
@@ -96,7 +96,7 @@ export default function HeroSection() {
 
         {/* Trust badges */}
         <motion.div custom={6} variants={fadeUp} initial="hidden" animate="visible"
-          className="flex flex-wrap justify-center gap-6 text-ash text-sm">
+          className="flex flex-wrap justify-center gap-6 text-text-tertiary text-sm">
           {[
             { icon: 'solar:clock-circle-linear', text: '설정 5분' },
             { icon: 'solar:refresh-circle-linear', text: '매일 30초 체크인' },
@@ -114,7 +114,7 @@ export default function HeroSection() {
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-ash/50">
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-tertiary/50">
         <span className="text-xs tracking-widest uppercase">Scroll</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
           <Icon icon="solar:alt-arrow-down-linear" className="w-4 h-4" />

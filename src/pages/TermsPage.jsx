@@ -9,9 +9,9 @@ export default function TermsPage() {
       </LegalSection>
 
       <LegalSection title="제2조 (용어 정의)">
-        <p><strong className="text-ivory">"서비스"</strong>란 Createnova가 제공하는 일체의 디지털 제품(프롬프트, 앱, 템플릿 등)을 의미합니다.</p>
-        <p><strong className="text-ivory">"사용자"</strong>란 본 약관에 동의하고 제품을 구매한 개인 또는 법인을 의미합니다.</p>
-        <p><strong className="text-ivory">"라이선스"</strong>란 구매를 통해 부여받는 비독점적, 양도 불가능한 제품 사용 권리를 의미합니다.</p>
+        <p><strong className="text-text-primary">"서비스"</strong>란 Createnova가 제공하는 일체의 디지털 제품(프롬프트, 앱, 템플릿 등)을 의미합니다.</p>
+        <p><strong className="text-text-primary">"사용자"</strong>란 본 약관에 동의하고 제품을 구매한 개인 또는 법인을 의미합니다.</p>
+        <p><strong className="text-text-primary">"라이선스"</strong>란 구매를 통해 부여받는 비독점적, 양도 불가능한 제품 사용 권리를 의미합니다.</p>
       </LegalSection>
 
       <LegalSection title="제3조 (라이선스 범위)">
@@ -24,7 +24,7 @@ export default function TermsPage() {
             '라이선스 범위를 초과하여 다수의 사용자에게 제공하는 행위',
           ].map((t) => (
             <li key={t} className="flex items-start gap-2">
-              <span className="text-ash/50 mt-1 shrink-0">•</span>{t}
+              <span className="text-text-tertiary/50 mt-1 shrink-0">•</span>{t}
             </li>
           ))}
         </ul>
@@ -54,8 +54,8 @@ export default function TermsPage() {
         <p>본 약관은 대한민국 법률에 따라 해석되며, 분쟁 발생 시 운영자의 소재지를 관할하는 법원을 전속 관할 법원으로 합니다.</p>
       </LegalSection>
 
-      <div className="mt-12 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
-        <p className="text-ash text-[12.5px]">
+      <div className="mt-12 p-5 rounded-2xl border border-border-light bg-bg-raised">
+        <p className="text-text-tertiary text-[12.5px]">
           문의:{' '}
           <a href="mailto:mindpackai.help@gmail.com" className="text-accent hover:underline">
             mindpackai.help@gmail.com

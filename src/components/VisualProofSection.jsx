@@ -65,16 +65,16 @@ export default function VisualProofSection() {
         <div className="section-container max-w-6xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-ash text-xs tracking-wider uppercase mb-4">
+            <span className="inline-block px-3 py-1 rounded-full border border-border-light bg-bg-soft text-text-tertiary text-xs tracking-wider uppercase mb-4">
               14 Frameworks
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               세계에서 검증된 생산성 시스템.<br />
               <span className="bg-gradient-to-r from-accent-bright to-accent bg-clip-text text-transparent">
                 이제 AI가 직접 구현합니다.
               </span>
             </h2>
-            <p className="text-silver text-base max-w-xl mx-auto">
+            <p className="text-text-secondary text-base max-w-xl mx-auto">
               14명의 사상가. 단 하나의 시스템으로 통합. 당신의 워크플로에 직접 이식됩니다.
             </p>
           </motion.div>
@@ -83,13 +83,13 @@ export default function VisualProofSection() {
             {SKILLS.map(({ name, author, icon, tag, color }, i) => (
               <motion.div key={name} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
-                className={`relative p-4 rounded-xl bg-graphite/50 border border-white/[0.06] hover:border-white/[0.15] transition-colors group cursor-default`}>
+                className={`relative p-4 rounded-xl bg-bg-raised/50 border border-border-mid hover:border-border-light transition-colors group cursor-default`}>
                 <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center mb-3`}>
                   <Icon icon={icon} className="w-4 h-4 text-white/80" />
                 </div>
-                <div className="text-ivory text-xs font-semibold leading-snug mb-1">{name}</div>
-                <div className="text-ash text-[10px] leading-tight mb-2">{author}</div>
-                <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-ash/80">
+                <div className="text-text-primary text-xs font-semibold leading-snug mb-1">{name}</div>
+                <div className="text-text-tertiary text-[10px] leading-tight mb-2">{author}</div>
+                <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-bg-soft border border-border-mid text-text-tertiary/80">
                   {tag}
                 </span>
               </motion.div>
@@ -100,7 +100,7 @@ export default function VisualProofSection() {
               className="p-4 rounded-xl bg-accent/[0.04] border border-accent/15 flex flex-col items-center justify-center text-center">
               <Icon icon="solar:add-circle-bold-duotone" className="w-8 h-8 text-accent/60 mb-2" />
               <div className="text-accent/80 text-xs font-medium">지속 추가 예정</div>
-              <div className="text-ash/60 text-[10px] mt-1">얼리버드는 자동 업데이트</div>
+              <div className="text-text-tertiary/60 text-[10px] mt-1">얼리버드는 자동 업데이트</div>
             </motion.div>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function VisualProofSection() {
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
-          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-deep/[0.04] blur-[120px]" />
+          <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-dim blur-[120px]" />
         </div>
         <div className="section-container max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -118,10 +118,10 @@ export default function VisualProofSection() {
             <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
               How it works
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               설정 5분. 이후엔 AI가 알아서 돌립니다.
             </h2>
-            <p className="text-silver text-base max-w-xl mx-auto">
+            <p className="text-text-secondary text-base max-w-xl mx-auto">
               어렵게 공부하고, 힘들게 유지하던 시대는 끝났습니다.
             </p>
           </motion.div>
@@ -136,14 +136,14 @@ export default function VisualProofSection() {
                   whileInView="visible" viewport={{ once: true }}
                   className="relative flex flex-col items-center md:items-start text-center md:text-left">
                   {/* Step icon */}
-                  <div className="relative w-20 h-20 rounded-2xl bg-graphite border border-accent/15 flex items-center justify-center mb-5 shrink-0">
+                  <div className="relative w-20 h-20 rounded-2xl bg-bg-raised border border-accent/15 flex items-center justify-center mb-5 shrink-0">
                     <Icon icon={icon} className="w-8 h-8 text-accent" />
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-void text-[10px] font-extrabold flex items-center justify-center">
+                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-bg-base text-[10px] font-extrabold flex items-center justify-center">
                       {step}
                     </span>
                   </div>
-                  <h3 className="text-ivory font-semibold mb-2 text-sm">{title}</h3>
-                  <p className="text-ash text-sm leading-relaxed">{desc}</p>
+                  <h3 className="text-text-primary font-semibold mb-2 text-sm">{title}</h3>
+                  <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -152,12 +152,12 @@ export default function VisualProofSection() {
           {/* Quote */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.5 }}
-            className="mt-20 text-center p-8 rounded-2xl bg-graphite/40 border border-white/[0.06]">
-            <p className="text-silver text-lg leading-relaxed italic mb-4">
+            className="mt-20 text-center p-8 rounded-2xl bg-bg-raised/40 border border-border-mid">
+            <p className="text-text-secondary text-lg leading-relaxed italic mb-4">
               "AI는 일회성 답변을 주는 도구가 아니라,<br />
-              <span className="text-ivory not-italic font-medium">당신과 함께 성장하는 영구적 시스템이어야 한다.</span>"
+              <span className="text-text-primary not-italic font-medium">당신과 함께 성장하는 영구적 시스템이어야 한다.</span>"
             </p>
-            <p className="text-ash text-sm">Mindpack AI의 설계 철학</p>
+            <p className="text-text-tertiary text-sm">Mindpack AI의 설계 철학</p>
           </motion.div>
         </div>
       </section>

@@ -59,13 +59,13 @@ export default function ProblemReliefSection() {
         <div className="section-container max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-16">
-            <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-ash text-xs tracking-wider uppercase mb-4">
+            <span className="inline-block px-3 py-1 rounded-full border border-border-light bg-bg-soft text-text-tertiary text-xs tracking-wider uppercase mb-4">
               Problem
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               당신이 작심삼일인 게 아닙니다.
             </h2>
-            <p className="text-silver text-lg max-w-xl mx-auto">
+            <p className="text-text-secondary text-lg max-w-xl mx-auto">
               시스템이 없는 것입니다.
             </p>
           </motion.div>
@@ -74,12 +74,12 @@ export default function ProblemReliefSection() {
             {PROBLEMS.map(({ icon, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
-                className="relative p-6 rounded-2xl bg-graphite/60 border border-white/[0.06] group">
+                className="relative p-6 rounded-2xl bg-bg-raised/60 border border-border-mid group">
                 <div className="w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center mb-4">
-                  <Icon icon={icon} className="w-5 h-5 text-ash" />
+                  <Icon icon={icon} className="w-5 h-5 text-text-tertiary" />
                 </div>
-                <h3 className="text-ivory font-semibold mb-2">{title}</h3>
-                <p className="text-ash text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-text-primary font-semibold mb-2">{title}</h3>
+                <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
                 {/* Strike decoration */}
                 <div className="absolute top-5 right-5 opacity-20">
                   <Icon icon="solar:close-circle-bold" className="w-5 h-5 text-red-400" />
@@ -91,9 +91,9 @@ export default function ProblemReliefSection() {
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
             viewport={{ once: true }} transition={{ delay: 0.4 }}
             className="text-center mt-12">
-            <p className="text-silver text-lg">
+            <p className="text-text-secondary text-lg">
               의지력은 유한합니다.{' '}
-              <span className="text-ivory font-medium">시스템은 영속합니다.</span>
+              <span className="text-text-primary font-medium">시스템은 영속합니다.</span>
             </p>
           </motion.div>
         </div>
@@ -103,7 +103,7 @@ export default function ProblemReliefSection() {
       <section className="relative py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-deep/[0.05] blur-[140px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-dim blur-[140px]" />
         </div>
         <div className="section-container max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -111,13 +111,13 @@ export default function ProblemReliefSection() {
             <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
               Solution
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               Mindpack AI는 설치하는 것입니다.<br />
               <span className="bg-gradient-to-r from-accent-bright to-accent bg-clip-text text-transparent">
                 읽는 것이 아니라.
               </span>
             </h2>
-            <p className="text-silver text-base max-w-2xl mx-auto">
+            <p className="text-text-secondary text-base max-w-2xl mx-auto">
               세계 최고의 생산성 프레임워크 14개를 AI가 당신의 업무 방식에 직접 구현하고,
               매일 코치처럼 체크하고, 패턴을 분석해 시스템을 진화시킵니다.
             </p>
@@ -127,7 +127,7 @@ export default function ProblemReliefSection() {
             {RELIEFS.map(({ icon, badge, title, desc }, i) => (
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-graphite/60 border border-accent/10 group hover:border-accent/25 transition-colors">
+                className="p-6 rounded-2xl bg-bg-raised/60 border border-accent/10 group hover:border-accent/25 transition-colors">
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/[0.08] flex items-center justify-center">
                     <Icon icon={icon} className="w-5 h-5 text-accent" />
@@ -136,8 +136,8 @@ export default function ProblemReliefSection() {
                     {badge}
                   </span>
                 </div>
-                <h3 className="text-ivory font-semibold mb-2 leading-snug">{title}</h3>
-                <p className="text-ash text-sm leading-relaxed">{desc}</p>
+                <h3 className="text-text-primary font-semibold mb-2 leading-snug">{title}</h3>
+                <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>

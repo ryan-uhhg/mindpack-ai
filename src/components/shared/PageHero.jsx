@@ -17,11 +17,11 @@ export default function PageHero({ eyebrow, headline, subCopy, children }) {
               {eyebrow}
             </span>
           )}
-          <h1 className="text-3xl md:text-5xl font-extrabold text-snow tracking-[-0.04em] leading-[1.25] mb-10 whitespace-pre-line max-w-[18ch] md:max-w-none mx-auto">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-text-primary tracking-[-0.04em] leading-[1.25] mb-10 whitespace-pre-line max-w-[18ch] md:max-w-none mx-auto">
             {headline}
           </h1>
           {subCopy && (
-            <p className="text-silver text-base md:text-lg leading-[1.9] max-w-xl mx-auto mb-12 text-center">
+            <p className="text-text-secondary text-base md:text-lg leading-[1.9] max-w-xl mx-auto mb-12 text-center">
               {subCopy}
             </p>
           )}

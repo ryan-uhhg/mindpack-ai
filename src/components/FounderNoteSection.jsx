@@ -42,13 +42,13 @@ export default function FounderNoteSection() {
         <div className="section-container max-w-4xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] text-ash text-xs tracking-wider uppercase mb-4">
+            <span className="inline-block px-3 py-1 rounded-full border border-border-light bg-bg-soft text-text-tertiary text-xs tracking-wider uppercase mb-4">
               Comparison
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight mb-4">
               다른 방법들과 무엇이 다른가
             </h2>
-            <p className="text-silver text-base max-w-lg mx-auto">
+            <p className="text-text-secondary text-base max-w-lg mx-auto">
               시스템 실제 정착률 기준
             </p>
           </motion.div>
@@ -57,15 +57,15 @@ export default function FounderNoteSection() {
             {COMPARISONS.map(({ label, icon, value, verdict, accent }, i) => (
               <motion.div key={label} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
-                className={`p-5 rounded-2xl border ${accent ? 'bg-accent/[0.05] border-accent/20' : 'bg-graphite/40 border-white/[0.06]'}`}>
+                className={`p-5 rounded-2xl border ${accent ? 'bg-accent/[0.05] border-accent/20' : 'bg-bg-raised/40 border-border-mid'}`}>
                 <div className="flex items-center gap-4">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${accent ? 'bg-accent/10' : 'bg-white/[0.04]'}`}>
-                    <Icon icon={icon} className={`w-5 h-5 ${accent ? 'text-accent' : 'text-ash'}`} />
+                    <Icon icon={icon} className={`w-5 h-5 ${accent ? 'text-accent' : 'text-text-tertiary'}`} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between mb-2">
-                      <span className={`text-sm font-semibold ${accent ? 'text-ivory' : 'text-pearl'}`}>{label}</span>
-                      <span className={`text-sm font-bold ${accent ? 'text-accent' : 'text-ash'}`}>{value}%</span>
+                      <span className={`text-sm font-semibold ${accent ? 'text-text-primary' : 'text-text-secondary'}`}>{label}</span>
+                      <span className={`text-sm font-bold ${accent ? 'text-accent' : 'text-text-tertiary'}`}>{value}%</span>
                     </div>
                     <div className="w-full bg-white/[0.05] rounded-full h-1.5 mb-2">
                       <motion.div
@@ -74,13 +74,13 @@ export default function FounderNoteSection() {
                         className={`h-full rounded-full ${accent ? 'bg-gradient-to-r from-accent to-accent-bright' : 'bg-slate-mid'}`}
                       />
                     </div>
-                    <p className={`text-xs ${accent ? 'text-accent/70' : 'text-ash/70'}`}>{verdict}</p>
+                    <p className={`text-xs ${accent ? 'text-accent/70' : 'text-text-tertiary/70'}`}>{verdict}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-ash/50 text-xs mt-4">* 2024년 얼리버드 사용자 3개월 추적 데이터 기준</p>
+          <p className="text-center text-text-tertiary/50 text-xs mt-4">* 2024년 얼리버드 사용자 3개월 추적 데이터 기준</p>
         </div>
       </section>
 
@@ -88,7 +88,7 @@ export default function FounderNoteSection() {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/8 to-transparent" />
-          <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-deep/[0.04] blur-[120px]" />
+          <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-dim blur-[120px]" />
         </div>
         <div className="section-container max-w-5xl">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export default function FounderNoteSection() {
             <span className="inline-block px-3 py-1 rounded-full border border-accent/15 bg-accent/[0.04] text-accent text-xs tracking-wider uppercase mb-4">
               얼리버드 후기
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-snow tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-primary tracking-tight">
               실제로 유지되는 사람들의 이야기
             </h2>
           </motion.div>
@@ -105,16 +105,16 @@ export default function FounderNoteSection() {
             {TESTIMONIALS.map(({ text, name, role }, i) => (
               <motion.div key={name} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-graphite/50 border border-white/[0.06] flex flex-col">
+                className="p-6 rounded-2xl bg-bg-raised/50 border border-border-mid flex flex-col">
                 <Icon icon="solar:quote-up-bold-duotone" className="w-6 h-6 text-accent/40 mb-4 shrink-0" />
-                <p className="text-silver text-sm leading-relaxed flex-1 mb-6">{text}</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/[0.05]">
+                <p className="text-text-secondary text-sm leading-relaxed flex-1 mb-6">{text}</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-border-mid">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent/30 to-accent-deep/50 flex items-center justify-center">
                     <span className="text-accent-bright text-xs font-bold">{name[0]}</span>
                   </div>
                   <div>
-                    <p className="text-ivory text-sm font-medium">{name}</p>
-                    <p className="text-ash text-xs">{role}</p>
+                    <p className="text-text-primary text-sm font-medium">{name}</p>
+                    <p className="text-text-tertiary text-xs">{role}</p>
                   </div>
                 </div>
               </motion.div>

@@ -63,12 +63,12 @@ export default function AboutPage() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               Founder Story
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">파운더 스토리</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em]">파운더 스토리</h2>
           </div>
 
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-white/[0.06] md:-translate-x-px" />
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border-light/50 md:-translate-x-px" />
 
             <div className="flex flex-col gap-12">
               {timeline.map((item, i) => {
@@ -83,7 +83,7 @@ export default function AboutPage() {
                     className={`relative flex ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 pl-14 md:pl-0`}
                   >
                     {/* Dot */}
-                    <div className={`absolute left-4 md:left-1/2 top-3 w-5 h-5 rounded-full ${c.dot} md:-translate-x-1/2 border-4 border-void shadow-[0_0_12px_rgba(139,92,246,0.3)]`} />
+                    <div className={`absolute left-4 md:left-1/2 top-3 w-5 h-5 rounded-full ${c.dot} md:-translate-x-1/2 border-4 border-bg-base shadow-[0_0_12px_rgba(212,163,115,0.3)]`} />
 
                     {/* Content */}
                     <div className="flex-1 md:max-w-[calc(50%-2rem)]">
@@ -91,10 +91,10 @@ export default function AboutPage() {
                         <div className="card-bezel-inner">
                           <div className="flex items-center gap-3 mb-4">
                             <span className={`font-mono text-xl font-bold ${c.year}`}>{item.year}</span>
-                            <span className="text-ash/50 text-[10px] font-semibold tracking-widest uppercase px-2 py-0.5 rounded-full border border-white/[0.05]">{item.label}</span>
+                            <span className="text-ash/50 text-[10px] font-semibold tracking-widest uppercase px-2 py-0.5 rounded-full border border-border-light/40">{item.label}</span>
                           </div>
-                          <h3 className="text-ivory font-bold text-[16px] mb-3 tracking-tight">{item.title}</h3>
-                          <p className="text-silver text-[13.5px] leading-[1.85]">{item.body}</p>
+                          <h3 className="text-text-primary font-bold text-[16px] mb-3 tracking-tight">{item.title}</h3>
+                          <p className="text-text-secondary text-[13.5px] leading-[1.85]">{item.body}</p>
                         </div>
                       </div>
                     </div>
@@ -110,22 +110,22 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container max-w-3xl">
           <div className="card-bezel">
             <div className="card-bezel-inner text-center py-14 md:py-16 relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[200px] rounded-full bg-accent/[0.05] blur-[80px] pointer-events-none" />
               <div className="relative z-10">
                 <Icon icon="solar:star-bold-duotone" className="w-10 h-10 text-accent mx-auto mb-8" />
-                <blockquote className="text-xl md:text-2xl font-extrabold text-snow tracking-[-0.04em] leading-[1.4] mb-8">
+                <blockquote className="text-xl md:text-2xl font-extrabold text-text-primary tracking-[-0.04em] leading-[1.4] mb-8">
                   "기획자의 시간은 텍스트 정리가 아닌,<br className="hidden md:block" />결정에 쓰여야 합니다."
                 </blockquote>
-                <p className="text-silver text-[14px] leading-[1.85] max-w-xl mx-auto text-center">
+                <p className="text-text-secondary text-[14px] leading-[1.85] max-w-xl mx-auto text-center">
                   Createnova는 기획자의 인지 에너지를 보호하는 것을 사명으로 합니다. 정보를 수집하고 정리하는 반복 노동에서 기획자를 해방시켜, 진정으로 가치 있는 판단과 결정에 집중할 수 있는 환경을 만듭니다.
                 </p>
-                <div className="mt-8 pt-8 border-t border-white/[0.05]">
+                <div className="mt-8 pt-8 border-t border-border-light/60">
                   <div className="text-ash text-[13px]">
-                    <span className="text-ivory font-semibold">Mindpack AI 파운더</span>
+                    <span className="text-text-primary font-semibold">Mindpack AI 파운더</span>
                     <span className="text-ash/50 mx-2">·</span>
                     8년차 UX 기획자
                   </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {stats.map((stat, i) => (

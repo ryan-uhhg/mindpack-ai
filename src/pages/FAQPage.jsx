@@ -50,7 +50,7 @@ export default function FAQPage() {
         <div className="section-container max-w-3xl flex flex-col gap-14">
           {sections.map(sec => (
             <div key={sec.title}>
-              <h2 className="text-ivory font-bold text-[16px] mb-5 pb-3 border-b border-white/[0.06]">{sec.title}</h2>
+              <h2 className="text-text-primary font-bold text-[16px] mb-5 pb-3 border-b border-border-light">{sec.title}</h2>
               <AccordionFAQ items={sec.items} />
             </div>
           ))}
@@ -59,7 +59,7 @@ export default function FAQPage() {
 
       <section className="w-full py-10">
         <div className="section-container max-w-3xl text-center">
-          <p className="text-ash text-[14px] mb-4">원하시는 답변을 찾지 못하셨습니까?</p>
+          <p className="text-text-tertiary text-[14px] mb-4">원하시는 답변을 찾지 못하셨습니까?</p>
           <a
             href="mailto:mindpackai.help@gmail.com"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] transition-all duration-300"

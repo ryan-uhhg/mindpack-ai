@@ -821,12 +821,12 @@ export default function DemoPage() {
           {/* Progress Indicator */}
           <div className="mb-12">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-silver text-[13px] font-semibold tracking-widest uppercase">
+              <span className="text-text-secondary text-[13px] font-semibold tracking-widest uppercase">
                 STEP {currentStep} OF 5
               </span>
               <span className="text-ash text-[12px] font-mono">{Math.round(progressPercentage)}%</span>
             </div>
-            <div className="w-full h-1.5 rounded-full bg-white/[0.08] overflow-hidden">
+            <div className="w-full h-1.5 rounded-full bg-border-light/60 overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-accent-deep to-accent rounded-full"
                 initial={{ width: '0%' }}
@@ -856,10 +856,10 @@ export default function DemoPage() {
                     transition={{ duration: 0.4 }}
                   >
                     <div className="mb-8">
-                      <h3 className="text-2xl font-extrabold text-snow mb-2">
+                      <h3 className="text-2xl font-extrabold text-text-primary mb-2">
                         당신이 해결하고 싶은 문제는?
                       </h3>
-                      <p className="text-silver text-[14px]">
+                      <p className="text-text-secondary text-[14px]">
                         14개 스킬 중 하나를 선택하세요 (30초)
                       </p>
                     </div>
@@ -875,7 +875,7 @@ export default function DemoPage() {
                           className={`p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                             selectedSkill === skill.id
                               ? 'border-accent bg-accent/[0.08] shadow-[0_0_30px_rgba(139,92,246,0.2)]'
-                              : 'border-white/[0.1] bg-white/[0.02] hover:border-accent/40'
+                              : 'border-border-light/40 bg-bg-raised hover:border-accent/40'
                           }`}
                         >
                           <Icon
@@ -884,7 +884,7 @@ export default function DemoPage() {
                               selectedSkill === skill.id ? 'text-accent' : 'text-ash'
                             }`}
                           />
-                          <div className="font-semibold text-snow text-[14px] mb-1">{skill.name}</div>
+                          <div className="font-semibold text-text-primary text-[14px] mb-1">{skill.name}</div>
                           <div className="text-ash text-[12px]">{skill.framework}</div>
                         </motion.button>
                       ))}
@@ -907,7 +907,7 @@ export default function DemoPage() {
                         <div className="w-8 h-8 rounded-full bg-accent/[0.1] border border-accent/20 flex items-center justify-center text-accent text-[13px] font-bold">
                           {Object.keys(qnaAnswers).length + 1}
                         </div>
-                        <h3 className="text-2xl font-extrabold text-snow">
+                        <h3 className="text-2xl font-extrabold text-text-primary">
                           {(() => {
                             const currentQuestions = QNA_QUESTIONS_BY_SKILL[selectedSkill] || [];
                             const currentQuestion = currentQuestions[Object.keys(qnaAnswers).length];
@@ -915,7 +915,7 @@ export default function DemoPage() {
                           })()}
                         </h3>
                       </div>
-                      <p className="text-silver text-[14px] ml-11">
+                      <p className="text-text-secondary text-[14px] ml-11">
                         (3~4분 소요)
                       </p>
                     </div>
@@ -934,12 +934,12 @@ export default function DemoPage() {
                               key={option.value}
                               whileHover={{ x: 4 }}
                               onClick={() => handleQnaAnswer(currentQuestionIndex, option.value)}
-                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
+                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-border-light/40 hover:border-accent/40 hover:bg-bg-hover/50 transition-all text-left group"
                             >
                               <div className="w-5 h-5 rounded border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
                                 <Icon icon="solar:check-bold" className="w-3 h-3 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                               </div>
-                              <span className="text-snow text-[14px] font-medium">{option.text}</span>
+                              <span className="text-text-primary text-[14px] font-medium">{option.text}</span>
                             </motion.button>
                           ))
                         ) : (
@@ -950,12 +950,12 @@ export default function DemoPage() {
                               onClick={() => {
                                 handleQnaAnswer(currentQuestionIndex, option.value);
                               }}
-                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-white/[0.1] hover:border-accent/40 hover:bg-white/[0.03] transition-all text-left group"
+                              className="w-full flex items-center gap-3 p-4 rounded-xl border-2 border-border-light/40 hover:border-accent/40 hover:bg-bg-hover/50 transition-all text-left group"
                             >
                               <div className="w-5 h-5 rounded-full border-2 border-ash/30 group-hover:border-accent/60 transition-all flex items-center justify-center shrink-0">
                                 <div className="w-2 h-2 rounded-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
                               </div>
-                              <span className="text-snow text-[14px] font-medium">{option.text}</span>
+                              <span className="text-text-primary text-[14px] font-medium">{option.text}</span>
                             </motion.button>
                           ))
                         );
@@ -992,10 +992,10 @@ export default function DemoPage() {
                         transition={{ delay: 0.3, duration: 0.5 }}
                         className="text-center mb-8"
                       >
-                        <h3 className="text-2xl font-extrabold text-snow mb-3">
+                        <h3 className="text-2xl font-extrabold text-text-primary mb-3">
                           당신의 상황을 분석 중입니다...
                         </h3>
-                        <p className="text-silver text-[14px]">
+                        <p className="text-text-secondary text-[14px]">
                           일정 패턴 확인 · 업무 방식 파악 · 최적 시간대 식별
                         </p>
                       </motion.div>
@@ -1006,7 +1006,7 @@ export default function DemoPage() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
                       >
-                        <div className="h-2 rounded-full bg-white/[0.08] overflow-hidden">
+                        <div className="h-2 rounded-full bg-border-light/60 overflow-hidden">
                           <motion.div
                             className="h-full bg-gradient-to-r from-accent-deep to-accent rounded-full"
                             initial={{ width: '0%' }}
@@ -1042,16 +1042,16 @@ export default function DemoPage() {
                   >
                     <div className="mb-8 flex items-start justify-between">
                       <div>
-                        <h3 className="text-2xl font-extrabold text-snow mb-2">
+                        <h3 className="text-2xl font-extrabold text-text-primary mb-2">
                           ✅ 분석 완료!
                         </h3>
-                        <p className="text-silver text-[14px]">
+                        <p className="text-text-secondary text-[14px]">
                           당신의 맞춤형 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 시스템 생성됨
                         </p>
                       </div>
                       <button
                         onClick={() => setCurrentStep(2)}
-                        className="px-4 py-2 text-[13px] text-ash hover:text-silver transition-colors flex items-center gap-2"
+                        className="px-4 py-2 text-[13px] text-ash hover:text-text-secondary transition-colors flex items-center gap-2"
                       >
                         ← 이전
                       </button>
@@ -1066,12 +1066,12 @@ export default function DemoPage() {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: i * 0.1 }}
-                            className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]"
+                            className="p-4 rounded-xl bg-bg-hover/50 border border-border-mid"
                           >
                             <div className="text-ash text-[11px] font-semibold tracking-widest mb-1 uppercase">
                               {insight.label}
                             </div>
-                            <div className="text-snow text-[16px] font-bold">{insight.value}</div>
+                            <div className="text-text-primary text-[16px] font-bold">{insight.value}</div>
                           </motion.div>
                         ))}
                       </div>
@@ -1084,7 +1084,7 @@ export default function DemoPage() {
                         <div className="flex items-end justify-between gap-4 mb-4">
                           <div>
                             <div className="text-ash text-[12px] mb-2">현재</div>
-                            <div className="text-2xl font-extrabold text-silver">
+                            <div className="text-2xl font-extrabold text-text-secondary">
                               {DEMO_RESULTS[selectedSkill]?.comparison.before.value}
                             </div>
                           </div>
@@ -1102,8 +1102,8 @@ export default function DemoPage() {
                       </div>
 
                       {/* Weekly Graph Mockup */}
-                      <div className="p-6 rounded-xl bg-white/[0.03] border border-white/[0.08]">
-                        <div className="text-snow text-[14px] font-semibold mb-6 flex items-center gap-2">
+                      <div className="p-6 rounded-xl bg-bg-hover/50 border border-border-mid">
+                        <div className="text-text-primary text-[14px] font-semibold mb-6 flex items-center gap-2">
                           <Icon icon="solar:chart-square-bold-duotone" className="w-4 h-4 text-accent" />
                           당신의 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 진화
                         </div>
@@ -1123,7 +1123,7 @@ export default function DemoPage() {
                                 transition={{ delay: 0.3 + i * 0.05, duration: 0.6 }}
                               />
                               <span className="text-ash text-[11px]">{data.day}</span>
-                              <span className="text-silver text-[10px] font-mono">{data.value}h</span>
+                              <span className="text-text-secondary text-[10px] font-mono">{data.value}h</span>
                             </motion.div>
                           ))}
                         </div>
@@ -1196,10 +1196,10 @@ export default function DemoPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.5 }}
                       >
-                        <h3 className="text-2xl font-extrabold text-snow mb-3">
+                        <h3 className="text-2xl font-extrabold text-text-primary mb-3">
                           당신의 {DEMO_RESULTS[selectedSkill]?.title.replace('당신의 ', '').replace(' 준비됨', '')} 시스템 준비됨 ✅
                         </h3>
-                        <p className="text-silver text-[14px] max-w-md mx-auto mb-8">
+                        <p className="text-text-secondary text-[14px] max-w-md mx-auto mb-8">
                           아래 정보만 남겨주세요. 내일부터 매일 AI 체크인이 시작됩니다. (30초)
                         </p>
                       </motion.div>
@@ -1215,7 +1215,7 @@ export default function DemoPage() {
                           placeholder="you@example.com"
                           value={userEmail}
                           onChange={(e) => setUserEmail(e.target.value)}
-                          className="w-full px-6 py-4 rounded-xl bg-white/[0.04] border border-white/[0.1] text-snow placeholder-ash/40 focus:outline-none focus:border-accent/40 transition-all text-[14px]"
+                          className="w-full px-6 py-4 rounded-xl bg-bg-hover border border-border-light/40 text-text-primary placeholder-ash/40 focus:outline-none focus:border-accent/40 transition-all text-[14px]"
                         />
                       </motion.div>
 
@@ -1225,19 +1225,19 @@ export default function DemoPage() {
                         transition={{ delay: 0.5, duration: 0.4 }}
                         className="flex flex-col gap-3"
                       >
-                        <button className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-accent-deep via-accent-glow to-accent text-white font-semibold hover:shadow-[0_0_40px_rgba(139,92,246,0.3)] transition-all">
+                        <button className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-accent via-accent-glow to-accent text-white font-semibold hover:shadow-[0_0_40px_rgba(212,163,115,0.3)] transition-all">
                           무료로 시작하기
                         </button>
                         <div className="flex gap-3">
                           <button
                             onClick={() => setCurrentStep(4)}
-                            className="flex-1 px-8 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
+                            className="flex-1 px-8 py-3 rounded-xl border border-border-light/40 text-text-secondary text-[14px] font-medium hover:bg-bg-hover/50 transition-all"
                           >
                             ← 이전
                           </button>
                           <button
                             onClick={handleReset}
-                            className="flex-1 px-8 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
+                            className="flex-1 px-8 py-3 rounded-xl border border-border-light/40 text-text-secondary text-[14px] font-medium hover:bg-bg-hover/50 transition-all"
                           >
                             처음부터 시작
                           </button>
@@ -1248,7 +1248,7 @@ export default function DemoPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6, duration: 0.4 }}
-                        className="mt-8 p-6 rounded-xl bg-white/[0.02] border border-white/[0.05]"
+                        className="mt-8 p-6 rounded-xl bg-bg-raised border border-border-light/60"
                       >
                         <div className="text-ash text-[12px] space-y-2 text-left">
                           <div className="flex gap-2">
@@ -1278,7 +1278,7 @@ export default function DemoPage() {
               <motion.button
                 whileHover={{ x: -4 }}
                 onClick={() => setCurrentStep(currentStep - 1)}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-white/[0.1] text-silver text-[14px] font-medium hover:bg-white/[0.03] transition-all"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-border-light/40 text-text-secondary text-[14px] font-medium hover:bg-bg-hover/50 transition-all"
               >
                 <Icon icon="solar:arrow-left-bold" className="w-4 h-4" />
                 이전
@@ -1294,14 +1294,14 @@ export default function DemoPage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full py-20 border-t border-white/[0.04]"
+          className="w-full py-20 border-t border-border-light/50"
         >
           <div className="section-container">
             <div className="text-center mb-12">
-              <h2 className="text-2xl font-extrabold text-snow mb-3">
+              <h2 className="text-2xl font-extrabold text-text-primary mb-3">
                 다른 스킬도 체험해보세요
               </h2>
-              <p className="text-silver text-[14px]">
+              <p className="text-text-secondary text-[14px]">
                 14개 스킬 중 다른 스킬로 미리보기 가능
               </p>
             </div>
@@ -1316,10 +1316,10 @@ export default function DemoPage() {
                     handleReset();
                     setTimeout(() => handleSkillSelect(skill.id), 200);
                   }}
-                  className="p-4 rounded-xl border border-white/[0.1] bg-white/[0.02] hover:border-accent/40 hover:bg-accent/[0.06] transition-all"
+                  className="p-4 rounded-xl border border-border-light/40 bg-bg-raised hover:border-accent/40 hover:bg-accent/[0.06] transition-all"
                 >
                   <Icon icon={skill.icon} className="w-5 h-5 text-accent mx-auto mb-2" />
-                  <div className="text-snow text-[12px] font-semibold text-center">{skill.name}</div>
+                  <div className="text-text-primary text-[12px] font-semibold text-center">{skill.name}</div>
                 </motion.button>
               ))}
             </div>
@@ -1328,13 +1328,13 @@ export default function DemoPage() {
       )}
 
       {/* FAQ Section */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container">
           <div className="text-center mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               FAQ
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em]">
               자주 묻는 질문
             </h2>
           </div>
@@ -1345,13 +1345,13 @@ export default function DemoPage() {
       </section>
 
       {/* Video Demo Script Section */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-extrabold text-snow mb-3">
+            <h2 className="text-2xl font-extrabold text-text-primary mb-3">
               📹 영상 데모 스크립트
             </h2>
-            <p className="text-silver text-[14px] max-w-2xl mx-auto">
+            <p className="text-text-secondary text-[14px] max-w-2xl mx-auto">
               1분 영상 데모의 시나리오입니다. 실제 사용자 경험을 담았습니다.
             </p>
           </div>
@@ -1371,10 +1371,10 @@ export default function DemoPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-4 rounded-xl bg-white/[0.03] border border-white/[0.08]"
+                className="p-4 rounded-xl bg-bg-hover/50 border border-border-mid"
               >
                 <div className="text-accent text-[12px] font-mono font-bold mb-2">{item.time}</div>
-                <div className="text-snow text-[14px] font-semibold mb-1">{item.title}</div>
+                <div className="text-text-primary text-[14px] font-semibold mb-1">{item.title}</div>
                 <div className="text-ash text-[12px] leading-[1.6]">{item.desc}</div>
               </motion.div>
             ))}

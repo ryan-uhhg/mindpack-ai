@@ -69,9 +69,9 @@ export default function ChangelogPage() {
             <div key={i} className="card-bezel">
               <div className="card-bezel-inner">
                 <div className="flex flex-wrap items-center gap-3 mb-6">
-                  <span className="text-ivory font-extrabold text-xl font-mono tracking-tight">{v.version}</span>
+                  <span className="text-text-primary font-extrabold text-xl font-mono tracking-tight">{v.version}</span>
                   <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${releaseConfig[v.type].badge}`}>{v.label}</span>
-                  <span className="text-ash text-[12px] ml-auto">{v.date}</span>
+                  <span className="text-text-tertiary text-[12px] ml-auto">{v.date}</span>
                 </div>
                 <ul className="flex flex-col gap-3">
                   {v.changes.map((c, j) => {
@@ -79,7 +79,7 @@ export default function ChangelogPage() {
                     return (
                       <li key={j} className="flex items-start gap-3">
                         <Icon icon={t.icon} className={`w-4 h-4 shrink-0 mt-0.5 ${t.color}`} />
-                        <span className="text-silver text-[13.5px] leading-[1.7]">{c.text}</span>
+                        <span className="text-text-secondary text-[13.5px] leading-[1.7]">{c.text}</span>
                       </li>
                     );
                   })}

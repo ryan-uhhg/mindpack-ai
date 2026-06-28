@@ -62,7 +62,7 @@ function ExtBadge({ ext }) {
     HTML: 'bg-emerald-accent/[0.08] text-emerald-accent/80 border-emerald-accent/15',
   };
   return (
-    <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold border ${colors[ext] || 'bg-white/[0.05] text-ash border-white/10'}`}>
+    <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold border ${colors[ext] || 'bg-bg-soft text-text-tertiary border-border-light'}`}>
       {ext}
     </span>
   );
@@ -76,8 +76,8 @@ function PackageCard({ pkg, selected, onToggle }) {
       className={`
         w-full text-left rounded-2xl border transition-all duration-300 cursor-pointer p-5
         ${selected
-          ? 'border-accent/30 bg-accent/[0.05] shadow-[0_0_0_1px_rgba(96,165,250,0.15)]'
-          : 'border-white/[0.06] bg-white/[0.02] hover:border-white/[0.12] hover:bg-white/[0.03]'
+          ? 'border-accent/30 bg-accent/[0.05] shadow-[0_0_0_1px_rgba(212,163,115,0.15)]'
+          : 'border-border-mid bg-bg-soft hover:border-border-light hover:bg-bg-card'
         }
       `}
     >
@@ -85,7 +85,7 @@ function PackageCard({ pkg, selected, onToggle }) {
         {/* Checkbox */}
         <div className={`
           mt-0.5 w-5 h-5 rounded-md border-2 flex items-center justify-center shrink-0 transition-all duration-200
-          ${selected ? 'bg-accent border-accent' : 'border-white/20 bg-transparent'}
+          ${selected ? 'bg-accent border-accent' : 'border-border-light bg-transparent'}
         `}>
           {selected && <Icon icon="solar:check-bold" className="w-3 h-3 text-white" />}
         </div>
@@ -94,17 +94,17 @@ function PackageCard({ pkg, selected, onToggle }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2">
             <Icon icon={pkg.icon} className={`w-5 h-5 ${pkg.checkColor}`} />
-            <span className="text-snow text-sm font-bold">{pkg.title}</span>
+            <span className="text-text-primary text-sm font-bold">{pkg.title}</span>
             <span className={`inline-block px-2 py-0.5 rounded-full border text-[10px] font-semibold ${pkg.badgeColor}`}>
               {pkg.subtitle}
             </span>
           </div>
-          <p className="text-ash text-[12px] leading-[1.7] mb-3">{pkg.description}</p>
+          <p className="text-text-tertiary text-[12px] leading-[1.7] mb-3">{pkg.description}</p>
 
           {/* File list */}
           <div className="flex flex-wrap gap-1.5">
             {pkg.files.map((f) => (
-              <span key={f.url} className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-[11px] text-silver">
+              <span key={f.url} className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-bg-soft border border-border-mid text-[11px] text-text-secondary">
                 <ExtBadge ext={f.ext} />
                 {f.label}
               </span>
@@ -122,7 +122,7 @@ function DownloadArea({ selectedIds }) {
 
   if (selectedIds.length === 0) {
     return (
-      <div className="text-center py-6 text-ash/50 text-[13px]">
+      <div className="text-center py-6 text-text-tertiary/50 text-[13px]">
         위에서 받고 싶은 리소스를 선택하세요
       </div>
     );
@@ -135,7 +135,7 @@ function DownloadArea({ selectedIds }) {
       transition={{ duration: 0.4 }}
       className="space-y-2"
     >
-      <p className="text-silver text-[12px] font-semibold mb-3">
+      <p className="text-text-secondary text-[12px] font-semibold mb-3">
         <Icon icon="solar:download-bold-duotone" className="inline w-4 h-4 mr-1 text-accent" />
         선택된 파일 {allFiles.length}개 — 클릭하여 개별 다운로드
       </p>
@@ -144,13 +144,13 @@ function DownloadArea({ selectedIds }) {
           key={f.url}
           href={f.url}
           download
-          className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-white/[0.06] bg-white/[0.03] hover:border-accent/25 hover:bg-accent/[0.04] transition-all duration-200 group"
+          className="flex items-center justify-between gap-3 px-4 py-3 rounded-xl border border-border-mid bg-bg-soft hover:border-accent/25 hover:bg-accent/[0.04] transition-all duration-200 group"
         >
           <div className="flex items-center gap-2 min-w-0">
             <ExtBadge ext={f.ext} />
-            <span className="text-silver text-[12px] group-hover:text-pearl transition-colors duration-200 truncate">{f.label}</span>
+            <span className="text-text-secondary text-[12px] group-hover:text-text-primary transition-colors duration-200 truncate">{f.label}</span>
           </div>
-          <Icon icon="solar:download-minimalistic-linear" className="w-4 h-4 text-ash/40 group-hover:text-accent shrink-0 transition-colors duration-200" />
+          <Icon icon="solar:download-minimalistic-linear" className="w-4 h-4 text-text-tertiary/40 group-hover:text-accent shrink-0 transition-colors duration-200" />
         </a>
       ))}
     </motion.div>
@@ -203,7 +203,7 @@ export default function FreeDownloadSection() {
   };
 
   return (
-    <section id="free-email" className="w-full py-24 border-t border-white/[0.04]">
+    <section id="free-email" className="w-full py-24 border-t border-border-mid">
       <div className="section-container max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -216,10 +216,10 @@ export default function FreeDownloadSection() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-medium tracking-wider uppercase mb-5">
               Free Resources
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-tight mb-3">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-tight mb-3">
               무료 리소스 패키지
             </h2>
-            <p className="text-silver text-[14px] leading-[1.8]">
+            <p className="text-text-secondary text-[14px] leading-[1.8]">
               이메일 주소만 입력하면 즉시 다운로드. 스팸 없음, 언제든 구독 취소 가능.
             </p>
           </div>
@@ -228,7 +228,7 @@ export default function FreeDownloadSection() {
             <div className="card-bezel-inner py-8 px-6 md:px-8 flex flex-col gap-6">
               {/* Step 1: 패키지 선택 */}
               <div>
-                <p className="text-ash text-[11px] font-semibold uppercase tracking-widest mb-3">
+                <p className="text-text-tertiary text-[11px] font-semibold uppercase tracking-widest mb-3">
                   Step 1 — 받고 싶은 리소스 선택
                 </p>
                 <div className="flex flex-col gap-3">
@@ -244,7 +244,7 @@ export default function FreeDownloadSection() {
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-white/[0.04]" />
+              <div className="h-px bg-border-mid" />
 
               {/* Step 2: 이메일 입력 또는 다운로드 */}
               <AnimatePresence mode="wait">
@@ -255,7 +255,7 @@ export default function FreeDownloadSection() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <p className="text-ash text-[11px] font-semibold uppercase tracking-widest mb-3">
+                    <p className="text-text-tertiary text-[11px] font-semibold uppercase tracking-widest mb-3">
                       Step 2 — 이메일 입력 후 받기
                     </p>
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
@@ -264,7 +264,7 @@ export default function FreeDownloadSection() {
                         value={email}
                         onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
                         placeholder="your@email.com"
-                        className="flex-1 bg-white/[0.04] border border-white/[0.08] rounded-xl text-silver placeholder:text-ash/40 text-[13px] px-4 py-3 focus:outline-none focus:border-accent/40 focus:bg-white/[0.06] transition-all duration-200"
+                        className="flex-1 bg-bg-soft border border-border-mid rounded-xl text-text-secondary placeholder:text-text-tertiary/40 text-[13px] px-4 py-3 focus:outline-none focus:border-accent/40 focus:bg-bg-card transition-all duration-200"
                       />
                       <button
                         type="submit"
@@ -279,7 +279,7 @@ export default function FreeDownloadSection() {
                     {status === 'error' && (
                       <p className="mt-2 text-red-400/80 text-[11px]">{errorMsg}</p>
                     )}
-                    <p className="mt-2.5 text-ash/40 text-[11px]">
+                    <p className="mt-2.5 text-text-tertiary/40 text-[11px]">
                       스팸 없음. 언제든 구독 취소 가능. 이메일로도 발송됩니다.
                     </p>
                   </motion.div>
@@ -297,7 +297,7 @@ export default function FreeDownloadSection() {
                       </div>
                       <div>
                         <p className="text-emerald-accent text-[13px] font-semibold">구독 완료! 이메일도 발송되었습니다.</p>
-                        <p className="text-ash text-[11px]">아래에서 바로 다운로드하세요.</p>
+                        <p className="text-text-tertiary text-[11px]">아래에서 바로 다운로드하세요.</p>
                       </div>
                     </div>
 
@@ -315,7 +315,7 @@ export default function FreeDownloadSection() {
         <div className="mt-6 text-center">
           <Link
             to="/guide"
-            className="inline-flex items-center gap-1.5 text-ash/60 hover:text-accent text-[12px] transition-colors duration-200"
+            className="inline-flex items-center gap-1.5 text-text-tertiary/60 hover:text-accent text-[12px] transition-colors duration-200"
           >
             <Icon icon="ph:book-open-duotone" className="w-4 h-4" />
             받은 파일 어떻게 사용하나요? → 사용 가이드 보기

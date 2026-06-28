@@ -113,7 +113,7 @@ export default function SecurityPage() {
             className="card-bezel"
           >
             <div className="card-bezel-inner !py-12">
-              <h3 className="text-center text-lg font-bold text-snow mb-10 tracking-tight">데이터 흐름 아키텍처</h3>
+              <h3 className="text-center text-lg font-bold text-text-primary mb-10 tracking-tight">데이터 흐름 아키텍처</h3>
 
               {/* Laptop box */}
               <div className="border border-emerald-accent/20 rounded-2xl p-6 mb-6 bg-emerald-accent/[0.02]">
@@ -124,7 +124,7 @@ export default function SecurityPage() {
                 <div className="flex flex-col md:flex-row items-center gap-4 text-[13px]">
                   {['문서 투입', '파이썬 전처리', '텍스트 추출'].map((s, i) => (
                     <div key={s} className="flex items-center gap-3">
-                      <div className="px-3 py-2 rounded-lg bg-white/[0.04] border border-white/[0.06] text-silver text-[12px]">{s}</div>
+                      <div className="px-3 py-2 rounded-lg bg-bg-hover border border-border-light text-text-secondary text-[12px]">{s}</div>
                       {i < 2 && <Icon icon="solar:arrow-right-bold" className="w-3 h-3 text-ash/40 shrink-0" />}
                     </div>
                   ))}
@@ -168,8 +168,8 @@ export default function SecurityPage() {
               </div>
 
               {/* Result box */}
-              <div className="border border-white/[0.06] rounded-2xl p-4 bg-white/[0.01] text-center">
-                <span className="text-silver text-[12px]">.pptx 생성 및 로컬 저장 — 결과물은 귀하의 기기에만 존재</span>
+              <div className="border border-border-light rounded-2xl p-4 bg-bg-hover/50 text-center">
+                <span className="text-text-secondary text-[12px]">.pptx 생성 및 로컬 저장 — 결과물은 귀하의 기기에만 존재</span>
               </div>
 
               {/* Zero markers */}
@@ -187,13 +187,13 @@ export default function SecurityPage() {
       </section>
 
       {/* Tech cards */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container">
           <div className="text-center mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               Technical Details
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">기술 상세</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em]">기술 상세</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {techCards.map((card, i) => {
@@ -211,8 +211,8 @@ export default function SecurityPage() {
                     <div className={`w-11 h-11 rounded-xl border flex items-center justify-center mb-5 ${c.bg}`}>
                       <Icon icon={card.icon} className={`w-5 h-5 ${c.icon}`} />
                     </div>
-                    <h3 className="text-ivory font-bold text-[15px] mb-3">{card.title}</h3>
-                    <p className="text-silver text-[13.5px] leading-[1.8]">{card.body}</p>
+                    <h3 className="text-text-primary font-bold text-[15px] mb-3">{card.title}</h3>
+                    <p className="text-text-secondary text-[13.5px] leading-[1.8]">{card.body}</p>
                   </div>
                 </motion.div>
               );
@@ -222,13 +222,13 @@ export default function SecurityPage() {
       </section>
 
       {/* Comparison table */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container">
           <div className="text-center mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               Comparison
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-snow tracking-[-0.04em]">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-text-primary tracking-[-0.04em]">
               웹 AI vs. Mindpack AI 비교
             </h2>
           </div>
@@ -237,7 +237,7 @@ export default function SecurityPage() {
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[680px]">
                   <thead>
-                    <tr className="border-b border-white/[0.06]">
+                    <tr className="border-b border-border-light">
                       <th className="text-left px-6 py-4 text-ash text-[12px] font-semibold w-1/3">항목</th>
                       <th className="text-center px-4 py-4 text-ash text-[12px] font-semibold w-1/3">ChatGPT / Claude 웹</th>
                       <th className="text-center px-4 py-4 text-emerald-accent text-[12px] font-bold bg-emerald-accent/[0.04] w-1/3">Mindpack AI</th>
@@ -245,8 +245,8 @@ export default function SecurityPage() {
                   </thead>
                   <tbody>
                     {comparisonRows.map((row, i) => (
-                      <tr key={i} className={`border-b border-white/[0.04] ${i % 2 === 0 ? '' : 'bg-white/[0.01]'}`}>
-                        <td className="px-6 py-3.5 text-silver text-[12.5px] font-medium">{row.label}</td>
+                      <tr key={i} className={`border-b border-border-light/50 ${i % 2 === 0 ? '' : 'bg-bg-hover/50'}`}>
+                        <td className="px-6 py-3.5 text-text-secondary text-[12.5px] font-medium">{row.label}</td>
                         <td className="px-4 py-3.5 text-center text-ash text-[12px]">{row.web}</td>
                         <td className="px-4 py-3.5 text-center text-emerald-accent text-[12px] font-medium bg-emerald-accent/[0.02]">{row.supra}</td>
                       </tr>
@@ -260,14 +260,14 @@ export default function SecurityPage() {
       </section>
 
       {/* Compliance */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container max-w-4xl">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/[0.06] text-accent text-xs font-semibold tracking-widest uppercase mb-6">
               Compliance
             </span>
-            <h2 className="text-2xl font-extrabold text-snow tracking-[-0.04em] mb-4">보안 규정 적합성</h2>
-            <p className="text-silver text-[14px]">
+            <h2 className="text-2xl font-extrabold text-text-primary tracking-[-0.04em] mb-4">보안 규정 적합성</h2>
+            <p className="text-text-secondary text-[14px]">
               Createnova의 아키텍처는 원본 파일 미전송 구조로, 보안 검토 부담을 크게 줄여줍니다.
             </p>
           </div>
@@ -280,7 +280,7 @@ export default function SecurityPage() {
                     <Icon icon={s.icon} className={`w-5 h-5 shrink-0 mt-0.5 ${s.color}`} />
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-1">
-                        <span className="text-ivory text-[13.5px] font-semibold">{row.label}</span>
+                        <span className="text-text-primary text-[13.5px] font-semibold">{row.label}</span>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${s.color} border-current/20 bg-current/5`}>{s.label}</span>
                       </div>
                       <p className="text-ash text-[12.5px] leading-[1.7]">{row.note}</p>
@@ -302,10 +302,10 @@ export default function SecurityPage() {
       </section>
 
       {/* FAQ */}
-      <section className="w-full py-20 border-t border-white/[0.04]">
+      <section className="w-full py-20 border-t border-border-light/50">
         <div className="section-container max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-extrabold text-snow tracking-[-0.04em]">보안 FAQ</h2>
+            <h2 className="text-2xl font-extrabold text-text-primary tracking-[-0.04em]">보안 FAQ</h2>
           </div>
           <AccordionFAQ items={faqItems} />
         </div>

@@ -74,19 +74,19 @@ export default function GuidePage() {
 
       {/* 6단계 */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-bold text-white mb-12 text-center">6단계 완성 가이드</h2>
+        <h2 className="text-2xl font-bold text-text-primary mb-12 text-center">6단계 완성 가이드</h2>
         <div className="space-y-6">
           {steps.map((s, idx) => (
-            <div key={s.num} className="flex gap-6 items-start p-6 rounded-2xl border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.04] transition-colors">
+            <div key={s.num} className="flex gap-6 items-start p-6 rounded-2xl border border-border-light bg-bg-raised hover:bg-bg-hover transition-colors">
               <div className="shrink-0 w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
                 <Icon icon={s.icon} className="text-accent text-2xl" />
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-1">
                   <span className="text-[11px] font-mono font-bold text-accent/60">STEP {s.num}</span>
-                  <h3 className="text-base font-bold text-white">{s.title}</h3>
+                  <h3 className="text-base font-bold text-text-primary">{s.title}</h3>
                 </div>
-                <p className="text-silver text-[13px] leading-[1.8] mb-2">{s.desc}</p>
+                <p className="text-text-secondary text-[13px] leading-[1.8] mb-2">{s.desc}</p>
                 <span className="inline-block text-[11px] font-medium text-accent/70 bg-accent/5 px-3 py-1 rounded-full border border-accent/10">
                   {s.sub}
                 </span>
@@ -97,14 +97,14 @@ export default function GuidePage() {
       </section>
 
       {/* 프레임워크 목록 */}
-      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/[0.06]">
-        <h2 className="text-2xl font-bold text-white mb-4 text-center">포함된 프레임워크 5종</h2>
-        <p className="text-silver text-sm text-center mb-10">각 MD 파일을 AI에 넣고 내 자료를 추가하면 해당 프레임워크로 분석됩니다.</p>
+      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-border-light">
+        <h2 className="text-2xl font-bold text-text-primary mb-4 text-center">포함된 프레임워크 5종</h2>
+        <p className="text-text-secondary text-sm text-center mb-10">각 MD 파일을 AI에 넣고 내 자료를 추가하면 해당 프레임워크로 분석됩니다.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {frameworks.map((f) => (
-            <div key={f.name} className={`p-5 rounded-2xl border border-white/[0.08] bg-gradient-to-br ${f.color}`}>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2 block">{f.badge}</span>
-              <h3 className="text-base font-bold text-white mb-3">{f.name}</h3>
+            <div key={f.name} className={`p-5 rounded-2xl border border-border-mid bg-gradient-to-br ${f.color}`}>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-text-tertiary/40 mb-2 block">{f.badge}</span>
+              <h3 className="text-base font-bold text-text-primary mb-3">{f.name}</h3>
               <div className="flex gap-2 flex-wrap">
                 <a
                   href={`/free-resources/${f.example}`}
@@ -122,15 +122,15 @@ export default function GuidePage() {
       </section>
 
       {/* 팁 */}
-      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-white/[0.06]">
-        <h2 className="text-2xl font-bold text-white mb-10 text-center">더 좋은 결과를 위한 팁</h2>
+      <section className="py-16 px-6 max-w-5xl mx-auto border-t border-border-light">
+        <h2 className="text-2xl font-bold text-text-primary mb-10 text-center">더 좋은 결과를 위한 팁</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {tips.map((t) => (
-            <div key={t.title} className="flex gap-4 p-5 rounded-2xl border border-white/[0.06] bg-white/[0.02]">
+            <div key={t.title} className="flex gap-4 p-5 rounded-2xl border border-border-light bg-bg-raised">
               <Icon icon={t.icon} className="text-accent text-2xl shrink-0 mt-0.5" />
               <div>
-                <h3 className="text-sm font-bold text-white mb-1">{t.title}</h3>
-                <p className="text-silver text-[13px] leading-[1.7]">{t.desc}</p>
+                <h3 className="text-sm font-bold text-text-primary mb-1">{t.title}</h3>
+                <p className="text-text-secondary text-[13px] leading-[1.7]">{t.desc}</p>
               </div>
             </div>
           ))}
@@ -138,9 +138,9 @@ export default function GuidePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 text-center border-t border-white/[0.06]">
-        <h2 className="text-2xl font-bold text-white mb-4">아직 무료 패키지를 받지 않으셨나요?</h2>
-        <p className="text-silver text-sm mb-8">이메일 하나로 프레임워크 5종 · 프롬프트 3종 · 슬라이드 예시 4종을 모두 받을 수 있습니다.</p>
+      <section className="py-20 px-6 text-center border-t border-border-light">
+        <h2 className="text-2xl font-bold text-text-primary mb-4">아직 무료 패키지를 받지 않으셨나요?</h2>
+        <p className="text-text-secondary text-sm mb-8">이메일 하나로 프레임워크 5종 · 프롬프트 3종 · 슬라이드 예시 4종을 모두 받을 수 있습니다.</p>
         <Link
           to="/pricing#free-email"
           className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm px-8 py-3.5 rounded-xl hover:bg-accent/90 transition-colors"
