@@ -74,7 +74,7 @@ export default function Navbar() {
       <nav className="section-container h-[72px] flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
+          <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
             <Icon icon="solar:star-bold-duotone" className="w-4 h-4 text-white" />
           </div>
           <span className="text-text-primary font-extrabold text-sm tracking-tight group-hover:text-text-primary transition-colors duration-300">
@@ -104,7 +104,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(10,10,11,0.15)] overflow-hidden"
                 >
                   <div className="p-2">
                     {productLinks.map((link) => (
@@ -156,7 +156,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 rounded-2xl bg-bg-soft/95 backdrop-blur-2xl border border-border-light shadow-[0_20px_60px_rgba(10,10,11,0.15)] overflow-hidden"
                 >
                   <div className="p-2">
                     {guideLinks.map((link) => (
@@ -188,7 +188,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block shrink-0">
           <Link to="/pricing">
-            <button className="group inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] hover:border-accent/35 transition-all duration-300">
+            <button className="group inline-flex items-center gap-2 px-5 py-2 rounded-full bg-accent/[0.08] border border-accent/20 text-accent-bright text-[13px] font-semibold hover:bg-accent/[0.15] hover:border-accent/35 transition-all duration-300">
               얼리버드 특가
               <Icon icon="solar:arrow-right-bold" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" />
             </button>
@@ -249,7 +249,7 @@ export default function Navbar() {
               ))}
               <div className="h-px bg-border-light/50 my-3" />
               <Link to="/pricing">
-                <button className="w-full py-3 rounded-xl bg-accent/[0.1] border border-accent/20 text-accent-bright text-sm font-semibold hover:bg-accent/[0.18] transition-all duration-300">
+                <button className="w-full py-3 rounded-full bg-accent/[0.1] border border-accent/20 text-accent-bright text-sm font-semibold hover:bg-accent/[0.18] transition-all duration-300">
                   얼리버드 특가로 소장하기
                 </button>
               </Link>

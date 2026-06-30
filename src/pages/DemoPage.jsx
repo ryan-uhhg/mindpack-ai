@@ -1225,7 +1225,7 @@ export default function DemoPage() {
                         transition={{ delay: 0.5, duration: 0.4 }}
                         className="flex flex-col gap-3"
                       >
-                        <button className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-accent via-accent-glow to-accent text-white font-semibold hover:shadow-[0_0_40px_rgba(212,163,115,0.3)] transition-all">
+                        <button className="w-full px-8 py-4 rounded-xl bg-gradient-to-r from-accent via-accent-glow to-accent text-white font-semibold hover:shadow-[0_0_40px_rgba(71,85,105,0.3)] transition-all">
                           무료로 시작하기
                         </button>
                         <div className="flex gap-3">

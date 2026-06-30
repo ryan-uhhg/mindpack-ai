@@ -4,13 +4,13 @@ import { Icon } from '@iconify/react';
 const SKILLS = [
   { name: 'Atomic Habits', author: 'James Clear', icon: 'solar:refresh-circle-bold-duotone', tag: '습관 시스템', color: 'from-amber-500/20 to-orange-500/10' },
   { name: 'GTD', author: 'David Allen', icon: 'solar:inbox-bold-duotone', tag: '업무 처리', color: 'from-blue-500/20 to-cyan-500/10' },
-  { name: 'Deep Work', author: 'Cal Newport', icon: 'solar:target-bold-duotone', tag: '집중력', color: 'from-indigo-500/20 to-purple-500/10' },
+  { name: 'Deep Work', author: 'Cal Newport', icon: 'solar:target-bold-duotone', tag: '집중력', color: 'from-slate-500/20 to-slate-400/10' },
   { name: 'PARA Method', author: 'Tiago Forte', icon: 'solar:folder-bold-duotone', tag: '지식 구조화', color: 'from-teal-500/20 to-emerald-500/10' },
   { name: 'Eat That Frog', author: 'Brian Tracy', icon: 'solar:clock-bold-duotone', tag: '우선순위', color: 'from-green-500/20 to-lime-500/10' },
   { name: 'The ONE Thing', author: 'Gary Keller', icon: 'solar:star-bold-duotone', tag: '초집중', color: 'from-red-500/20 to-orange-500/10' },
   { name: 'OKR', author: 'John Doerr', icon: 'solar:chart-2-bold-duotone', tag: '목표 설계', color: 'from-blue-500/20 to-indigo-500/10' },
   { name: '7 Habits', author: 'Stephen Covey', icon: 'solar:diamond-bold-duotone', tag: '원칙 중심', color: 'from-navy-500/20 to-blue-500/10' },
-  { name: 'Second Brain', author: 'Tiago Forte', icon: 'solar:server-bold-duotone', tag: '지식 창작', color: 'from-purple-500/20 to-violet-500/10' },
+  { name: 'Second Brain', author: 'Tiago Forte', icon: 'solar:server-bold-duotone', tag: '지식 창작', color: 'from-slate-400/20 to-slate-500/10' },
   { name: 'Ikigai', author: '일본 전통 철학', icon: 'solar:sun-bold-duotone', tag: '삶의 방향', color: 'from-pink-500/20 to-rose-500/10' },
   { name: 'Zettelkasten', author: 'Niklas Luhmann', icon: 'solar:notes-bold-duotone', tag: '노트 연결', color: 'from-slate-500/20 to-gray-500/10' },
   { name: 'Bullet Journal', author: 'Ryder Carroll', icon: 'solar:notebook-bold-duotone', tag: '일상 기록', color: 'from-yellow-500/20 to-amber-500/10' },
@@ -57,7 +57,7 @@ export default function VisualProofSection() {
   return (
     <>
       {/* SKILLS SHOWCASE */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
@@ -107,7 +107,7 @@ export default function VisualProofSection() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
           <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] rounded-full bg-accent-dim blur-[120px]" />
@@ -130,20 +130,24 @@ export default function VisualProofSection() {
             {/* Connector line */}
             <div className="hidden md:block absolute top-10 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
 
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-4 gap-6 md:gap-6">
               {STEPS.map(({ step, icon, title, desc }, i) => (
                 <motion.div key={step} custom={i} variants={fadeUp} initial="hidden"
                   whileInView="visible" viewport={{ once: true }}
-                  className="relative flex flex-col items-center md:items-start text-center md:text-left">
+                  className="relative flex flex-row md:flex-col items-start md:items-center md:text-center gap-4 md:gap-0 pl-14 md:pl-0 pb-8 md:pb-0">
+                  {/* Mobile timeline connector */}
+                  <div className="md:hidden absolute left-5 top-0 bottom-0 w-px bg-accent/15" />
                   {/* Step icon */}
-                  <div className="relative w-20 h-20 rounded-2xl bg-bg-raised border border-accent/15 flex items-center justify-center mb-5 shrink-0">
-                    <Icon icon={icon} className="w-8 h-8 text-accent" />
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-bg-base text-[10px] font-extrabold flex items-center justify-center">
+                  <div className="relative w-14 h-14 md:w-20 md:h-20 rounded-2xl bg-bg-raised border border-accent/15 flex items-center justify-center shrink-0 md:mb-5 z-10">
+                    <Icon icon={icon} className="w-6 h-6 md:w-8 md:h-8 text-accent" />
+                    <span className="absolute -top-2 -right-2 w-5 h-5 md:w-6 md:h-6 rounded-full bg-accent text-bg-base text-[10px] font-extrabold flex items-center justify-center">
                       {step}
                     </span>
                   </div>
-                  <h3 className="text-text-primary font-semibold mb-2 text-sm">{title}</h3>
-                  <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-text-primary font-semibold mb-1 md:mb-2 text-sm">{title}</h3>
+                    <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>

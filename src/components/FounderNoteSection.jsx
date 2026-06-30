@@ -35,7 +35,7 @@ export default function FounderNoteSection() {
   return (
     <>
       {/* COMPARISON */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         </div>
@@ -58,14 +58,14 @@ export default function FounderNoteSection() {
               <motion.div key={label} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
                 className={`p-5 rounded-2xl border ${accent ? 'bg-accent/[0.05] border-accent/20' : 'bg-bg-raised/40 border-border-mid'}`}>
-                <div className="flex items-center gap-4">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${accent ? 'bg-accent/10' : 'bg-white/[0.04]'}`}>
                     <Icon icon={icon} className={`w-5 h-5 ${accent ? 'text-accent' : 'text-text-tertiary'}`} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className={`text-sm font-semibold ${accent ? 'text-text-primary' : 'text-text-secondary'}`}>{label}</span>
-                      <span className={`text-sm font-bold ${accent ? 'text-accent' : 'text-text-tertiary'}`}>{value}%</span>
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <span className={`text-sm font-semibold truncate ${accent ? 'text-text-primary' : 'text-text-secondary'}`}>{label}</span>
+                      <span className={`text-sm font-bold shrink-0 ${accent ? 'text-accent' : 'text-text-tertiary'}`}>{value}%</span>
                     </div>
                     <div className="w-full bg-white/[0.05] rounded-full h-1.5 mb-2">
                       <motion.div
@@ -74,7 +74,7 @@ export default function FounderNoteSection() {
                         className={`h-full rounded-full ${accent ? 'bg-gradient-to-r from-accent to-accent-bright' : 'bg-slate-mid'}`}
                       />
                     </div>
-                    <p className={`text-xs ${accent ? 'text-accent/70' : 'text-text-tertiary/70'}`}>{verdict}</p>
+                    <p className={`text-xs leading-relaxed ${accent ? 'text-accent/70' : 'text-text-tertiary/70'}`}>{verdict}</p>
                   </div>
                 </div>
               </motion.div>
@@ -85,7 +85,7 @@ export default function FounderNoteSection() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/8 to-transparent" />
           <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full bg-accent-dim blur-[120px]" />

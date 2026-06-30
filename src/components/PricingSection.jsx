@@ -83,21 +83,14 @@ function PricingCard({ plan, index }) {
           : 'opacity-80 hover:opacity-100 transition-opacity duration-500'
       }`}
     >
-      {/* ── PREMIUM: Animated conic-gradient border ── */}
+      {/* ── PREMIUM: Simple gold border accent ── */}
       {isPremium && (
-        <>
-          {/* Animated outer ring */}
-          <div className="absolute -inset-[2px] rounded-[24px] overflow-hidden">
-            <div className="premium-border-animated absolute inset-0" />
-          </div>
-          {/* Static inner mask to create border effect */}
-          <div className="absolute -inset-[1px] rounded-[23px] bg-bg-card" style={{ zIndex: 0 }} />
-        </>
+        <div className="absolute -inset-[1px] rounded-[24px] border-2 border-gold/30 pointer-events-none" />
       )}
 
       {/* Limited badge */}
       {plan.badge && (
-        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5">
+        <div className="absolute -top-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5">
           <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-gold to-gold-bright text-void text-xs font-bold tracking-wide shadow-lg shadow-gold/25 whitespace-nowrap">
             {plan.badge}
           </span>
@@ -111,12 +104,11 @@ function PricingCard({ plan, index }) {
       )}
 
       <div
-        className={`relative flex flex-col h-full z-10 ${
+        className={`relative flex flex-col h-full ${
           isPremium
             ? 'rounded-[22px] bg-gradient-to-b from-bg-raised via-bg-card to-bg-soft border border-gold/20'
             : 'card-bezel'
-        }`}
-      >
+        }`}>
         <div className={`flex flex-col h-full ${isPremium ? 'p-9 md:p-12' : 'card-bezel-inner'}`}>
           {/* Top highlight for premium */}
           {isPremium && (

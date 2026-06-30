@@ -52,7 +52,7 @@ export default function ProblemReliefSection() {
   return (
     <>
       {/* PROBLEM */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
         </div>
@@ -75,15 +75,14 @@ export default function ProblemReliefSection() {
               <motion.div key={title} custom={i} variants={fadeUp} initial="hidden"
                 whileInView="visible" viewport={{ once: true }}
                 className="relative p-6 rounded-2xl bg-bg-raised/60 border border-border-mid group">
-                <div className="w-10 h-10 rounded-xl bg-white/[0.04] flex items-center justify-center mb-4">
-                  <Icon icon={icon} className="w-5 h-5 text-text-tertiary" />
+                <div className="w-10 h-10 rounded-xl bg-red-500/[0.08] flex items-center justify-center mb-4">
+                  <Icon icon="solar:close-circle-bold" className="w-5 h-5 text-red-400/80" />
                 </div>
-                <h3 className="text-text-primary font-semibold mb-2">{title}</h3>
+                <h3 className="text-text-primary font-semibold mb-2 flex items-center gap-2">
+                  <Icon icon="solar:close-circle-bold" className="w-4 h-4 text-red-400/70 shrink-0" />
+                  {title}
+                </h3>
                 <p className="text-text-tertiary text-sm leading-relaxed">{desc}</p>
-                {/* Strike decoration */}
-                <div className="absolute top-5 right-5 opacity-20">
-                  <Icon icon="solar:close-circle-bold" className="w-5 h-5 text-red-400" />
-                </div>
               </motion.div>
             ))}
           </div>
@@ -100,7 +99,7 @@ export default function ProblemReliefSection() {
       </section>
 
       {/* RELIEF */}
-      <section className="relative py-28 overflow-hidden">
+      <section className="relative py-24 md:py-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-dim blur-[140px]" />

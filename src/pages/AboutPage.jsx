@@ -83,7 +83,7 @@ export default function AboutPage() {
                     className={`relative flex ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-12 pl-14 md:pl-0`}
                   >
                     {/* Dot */}
-                    <div className={`absolute left-4 md:left-1/2 top-3 w-5 h-5 rounded-full ${c.dot} md:-translate-x-1/2 border-4 border-bg-base shadow-[0_0_12px_rgba(212,163,115,0.3)]`} />
+                    <div className={`absolute left-4 md:left-1/2 top-3 w-5 h-5 rounded-full ${c.dot} md:-translate-x-1/2 border-4 border-bg-base shadow-[0_0_12px_rgba(71,85,105,0.3)]`} />
 
                     {/* Content */}
                     <div className="flex-1 md:max-w-[calc(50%-2rem)]">
