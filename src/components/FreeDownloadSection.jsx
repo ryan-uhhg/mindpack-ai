@@ -76,7 +76,7 @@ function PackageCard({ pkg, selected, onToggle }) {
       className={`
         w-full text-left rounded-2xl border transition-all duration-300 cursor-pointer p-5
         ${selected
-          ? 'border-accent/30 bg-accent/[0.05] shadow-[0_0_0_1px_rgba(212,163,115,0.15)]'
+          ? 'border-accent/30 bg-accent/[0.05] shadow-[0_0_0_1px_rgba(71,85,105,0.15)]'
           : 'border-border-mid bg-bg-soft hover:border-border-light hover:bg-bg-card'
         }
       `}

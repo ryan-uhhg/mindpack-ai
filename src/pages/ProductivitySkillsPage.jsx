@@ -55,7 +55,7 @@ const PRODUCTIVITY_SKILLS = [
     author: 'Cal Newport',
     icon: 'solar:target-bold-duotone',
     category: '집중력',
-    color: 'from-indigo-500/20 to-purple-500/10',
+    color: 'from-slate-500/20 to-slate-400/10',
     accentColor: 'indigo',
     bookValidation: {
       sales: '200만 부 이상',
@@ -181,8 +181,8 @@ const PRODUCTIVITY_SKILLS = [
     author: 'Tiago Forte',
     icon: 'solar:server-bold-duotone',
     category: '지식 창작',
-    color: 'from-purple-500/20 to-violet-500/10',
-    accentColor: 'purple',
+    color: 'from-slate-400/20 to-slate-500/10',
+    accentColor: 'slate',
     bookValidation: {
       sales: '100만 부 이상',
       countries: '20개국 이상',

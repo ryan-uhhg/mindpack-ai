@@ -36,7 +36,7 @@ export default function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center">
+              <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center">
                 <Icon icon="solar:star-bold-duotone" className="w-4 h-4 text-white" />
               </div>
               <span className="text-text-primary font-extrabold text-sm tracking-tight">Mindpack AI</span>

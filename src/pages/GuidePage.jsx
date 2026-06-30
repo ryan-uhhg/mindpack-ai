@@ -57,7 +57,7 @@ const tips = [
 
 const frameworks = [
   { name: 'McKinsey 7S', file: 'frameworks/mckinsey-7s.md', color: 'from-blue-900/20 to-yellow-500/10', badge: '조직 분석', example: 'examples/mckinsey-7s-example.html' },
-  { name: 'SWOT 분석', file: 'frameworks/swot-analysis.md', color: 'from-purple-900/20 to-purple-500/10', badge: '상황 분석', example: 'examples/swot-example.html' },
+  { name: 'SWOT 분석', file: 'frameworks/swot-analysis.md', color: 'from-slate-800/20 to-slate-500/10', badge: '상황 분석', example: 'examples/swot-example.html' },
   { name: 'BCG 매트릭스', file: 'frameworks/bcg-matrix.md', color: 'from-green-900/20 to-green-500/10', badge: '포트폴리오', example: 'examples/bcg-matrix-example.html' },
   { name: "Porter's 5 Forces", file: 'frameworks/porters-five-forces.md', color: 'from-red-900/20 to-red-500/10', badge: '산업 분석', example: 'examples/porters-five-forces-example.html' },
   { name: 'Jobs To Be Done', file: 'frameworks/jobs-to-be-done.md', color: 'from-amber-900/20 to-teal-500/10', badge: '고객 분석', example: 'examples/jtbd-example.html' },

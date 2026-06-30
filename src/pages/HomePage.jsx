@@ -3,6 +3,7 @@ import VisualProofSection from '../components/VisualProofSection';
 import ProblemReliefSection from '../components/ProblemReliefSection';
 import FounderNoteSection from '../components/FounderNoteSection';
 import PricingSection from '../components/PricingSection';
+import FreeDownloadSection from '../components/FreeDownloadSection';
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <div id="pricing">
         <PricingSection />
       </div>
+      <FreeDownloadSection />
     </>
   );
 }
